@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: br.com.marmitaria.MarmitariaApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.562 s - in br.com.marmitaria.MarmitariaApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.726 s - in br.com.marmitaria.MarmitariaApplicationTests
