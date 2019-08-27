@@ -9,4 +9,5 @@ public class MarmitariaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MarmitariaApplication.class, args);
 	}
+
 }
