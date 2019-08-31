@@ -1,5 +1,7 @@
 package br.com.marmitaria.persistence.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,12 +14,12 @@ import org.springframework.lang.NonNull;
 
 @Entity
 @Table(name = "ADMINISTADOR")
-public class Administrador{
+public class Administrador implements Serializable{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6173907806379226164L;
+	private static final long serialVersionUID = 8306415504776915445L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

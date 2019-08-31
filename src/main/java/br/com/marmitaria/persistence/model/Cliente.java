@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.lang.NonNull;
 
+import br.com.marmitaria.rest.request.ClienteRequest;
+
 @Entity
 @Table(name = "CLIENTE")
 public class Cliente implements Serializable{
@@ -38,6 +40,16 @@ public class Cliente implements Serializable{
 	@Column
 	private String senha;
 	
+	public Cliente(ClienteRequest request) {
+		this.nome = request.getNome();
+		this.email = request.getEmail();
+		this.senha = request.getSenha();
+		this.endereco = request.getEndereco();
+	}
+	
+	public Cliente() {
+	}
+
 	public Long getId() {
 		return id;
 	}

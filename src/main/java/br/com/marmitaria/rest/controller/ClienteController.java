@@ -14,8 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.marmitaria.persistence.model.Cliente;
 import br.com.marmitaria.persistence.service.ClienteService;
-import br.com.marmitaria.rest.login.LoginResponse;
+import br.com.marmitaria.rest.exception.usuario.SenhaInvalidaException;
+import br.com.marmitaria.rest.exception.usuario.EmailJaCadastradoException;
+import br.com.marmitaria.rest.exception.usuario.EmailNaoCadastradoException;
 import br.com.marmitaria.rest.login.TokenKey;
+import br.com.marmitaria.rest.reponse.ClienteResponse;
+import br.com.marmitaria.rest.request.ClienteRequest;
+import br.com.marmitaria.rest.request.LoginRequest;
+import br.com.marmitaria.rest.util.Validation;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -28,25 +34,34 @@ public class ClienteController {
 	
 	@PostMapping("/")
 	@ResponseBody
-	public ResponseEntity<Cliente> create(@RequestBody Cliente request){
-		Cliente cliente = clienteService.create(request);
+	public ResponseEntity<Cliente> create(@RequestBody ClienteRequest clienteRequest){
+		Validation.validaCliente(clienteRequest);
+		
+		Cliente clienteSave = clienteService.findByEmail(clienteRequest.getEmail());
+		
+		if(clienteSave != null) {
+			throw new EmailJaCadastradoException();
+		}
+		
+		Cliente cliente = clienteService.create(new Cliente(clienteRequest));
 		return new ResponseEntity<Cliente>(cliente, HttpStatus.CREATED);
 	}
 	
 	@PostMapping("/login")
 	@ResponseBody
-	public ResponseEntity<LoginResponse> login(@RequestBody Cliente cliente) {
-		Cliente clienteSave = this.clienteService.findByEmail(cliente.getEmail());
+	public ResponseEntity<ClienteResponse> login(@RequestBody LoginRequest login) {
+		Validation.validaLogin(login);
+		Cliente cliente = this.clienteService.findByEmail(login.getEmail());
 
-		if (clienteSave == null)
-			throw new RuntimeException("Usuário não encontrado");
-		if (!clienteSave.getSenha().equals(clienteSave.getSenha()))
-			throw new RuntimeException("Senha ou login inválido!");
+		if (cliente == null)
+			throw new EmailNaoCadastradoException();
+		if (!cliente.getSenha().equals(login.getSenha()))
+			throw new SenhaInvalidaException();
 
-		String token = Jwts.builder().setSubject(clienteSave.getEmail())
+		String token = Jwts.builder().setSubject(cliente.getEmail())
 				.signWith(SignatureAlgorithm.HS512, TokenKey.TOKEN_KEY.getValue()).setExpiration(new Date(System.currentTimeMillis() + 1800000)).compact();
 		HttpHeaders  headers = new HttpHeaders();
 		headers.add("Access-Control-Allow-Origin", "*");
-		return new ResponseEntity<LoginResponse> (new LoginResponse("Bearer " + token),HttpStatus.OK);
+		return new ResponseEntity<ClienteResponse> (new ClienteResponse(cliente,"Bearer " + token),HttpStatus.OK);
 	}
 }

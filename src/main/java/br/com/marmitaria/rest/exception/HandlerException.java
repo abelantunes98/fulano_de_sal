@@ -1,5 +1,31 @@
 package br.com.marmitaria.rest.exception;
 
-public class HandlerException {
+import java.util.Date;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.context.request.WebRequest;
+
+import br.com.marmitaria.rest.exception.usuario.UsuarioInvalidoException;
+
+@ControllerAdvice
+public class HandlerException {
+	
+	@ExceptionHandler(DadosInvalidosException.class)
+	public ResponseEntity<CustomError> dadosInvalidos(DadosInvalidosException e, WebRequest request){
+		return dispache(request, e, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(UsuarioInvalidoException.class)
+	public ResponseEntity<CustomError> usuarioInvalido(UsuarioInvalidoException e, WebRequest request) {
+		return dispache(request,e,HttpStatus.FORBIDDEN);
+	}
+
+	private ResponseEntity<CustomError> dispache(WebRequest request, RuntimeException e, HttpStatus status) {
+		CustomError customRestError = new CustomError(new Date(),e.getMessage());
+		request.getDescription(false);
+		return new ResponseEntity<CustomError>(customRestError,status);
+	}
 }
