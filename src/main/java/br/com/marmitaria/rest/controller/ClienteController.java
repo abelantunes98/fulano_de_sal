@@ -24,7 +24,10 @@ import br.com.marmitaria.rest.request.LoginRequest;
 import br.com.marmitaria.rest.util.Validation;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api
 @RestController
 @RequestMapping("/cliente")
 public class ClienteController {
@@ -32,6 +35,7 @@ public class ClienteController {
 	@Autowired
 	private ClienteService clienteService;
 	
+	@ApiOperation("Cria um cliente")
 	@PostMapping("/")
 	@ResponseBody
 	public ResponseEntity<Cliente> create(@RequestBody ClienteRequest clienteRequest){
@@ -47,6 +51,7 @@ public class ClienteController {
 		return new ResponseEntity<Cliente>(cliente, HttpStatus.CREATED);
 	}
 	
+	@ApiOperation("Realiza Login")
 	@PostMapping("/login")
 	@ResponseBody
 	public ResponseEntity<ClienteResponse> login(@RequestBody LoginRequest login) {
