@@ -22,6 +22,11 @@ public class HandlerException {
 	public ResponseEntity<CustomError> usuarioInvalido(UsuarioInvalidoException e, WebRequest request) {
 		return dispache(request,e,HttpStatus.FORBIDDEN);
 	}
+	
+	@ExceptionHandler(UsuarioNaoEncontradoException.class)
+	public ResponseEntity<CustomError> usuarioNaoEncontrado(UsuarioNaoEncontradoException e, WebRequest request){
+		return dispache(request, e, HttpStatus.NOT_FOUND);
+	}
 
 	private ResponseEntity<CustomError> dispache(WebRequest request, RuntimeException e, HttpStatus status) {
 		CustomError customRestError = new CustomError(new Date(),e.getMessage());

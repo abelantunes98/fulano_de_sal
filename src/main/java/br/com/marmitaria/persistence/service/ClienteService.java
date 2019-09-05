@@ -12,7 +12,7 @@ public class ClienteService {
 	@Autowired
 	private ClienteDAO dao;
 
-	public Cliente create(Cliente cliente) {
+	public Cliente salvar(Cliente cliente) {
 		return dao.save(cliente);
 	}
 	
