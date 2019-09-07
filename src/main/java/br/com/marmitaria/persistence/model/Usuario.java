@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
+@Table(name = "USUARIO")
 public class Usuario implements Serializable{
 
 	/**
@@ -23,25 +24,26 @@ public class Usuario implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_USUARIO")
 	private Long id;
 	
 	@NotNull
-	@Column
+	@Column(name = "NOME")
 	private String nome;
 	
 	@NotNull
-	@Column
+	@Column(name = "EMAIL")
 	private String email;
 	
 	@NotNull
-	@Column
+	@Column(name = "SENHA")
 	private String senha;
 	
-	@Column
 	@NotNull
+	@Column(name = "TIPO")
 	private Tipo tipo;
 	
-	@Column
+	@Column(name = "CADASTRO_PENDENTE")
 	private boolean cadastroPendente;
 		
 

@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import br.com.marmitaria.rest.request.ClienteRequest;
 
 @Entity
+@Table(name = "CLIENTE")
 public class Cliente extends Usuario{
 	
 	/**
@@ -18,11 +19,11 @@ public class Cliente extends Usuario{
 	private static final long serialVersionUID = -7902429925373569513L;
 
 	
-	@Column
+	@Column(name = "ENDERECO")
 	@NotNull
 	private String endereco;
 	
-	@Column
+	@Column(name = "TELEFONE")
 	private String telefone;
 	
 	

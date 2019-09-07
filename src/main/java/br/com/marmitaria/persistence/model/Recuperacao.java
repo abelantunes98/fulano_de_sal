@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -15,6 +16,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "RECUPERACAO")
 public class Recuperacao implements Serializable{
 	
 	/**
@@ -24,17 +26,21 @@ public class Recuperacao implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID_RECUPERACAO")
 	private Long id;
 
+	@NotNull
 	@OneToOne
+	@JoinColumn(name = "ID_USUARIO")
 	private Usuario usuario;
 	
-	@Column
 	@NotNull
+	@Column(name = "CODIGO")
 	private String codigo;
 	
-	@Temporal(TemporalType.DATE)
 	@NotNull
+	@Temporal(TemporalType.DATE)
+	@Column(name = "DATA_CRIACAO")
 	private Date dataCriacao;
 	
 	public Recuperacao() {}
