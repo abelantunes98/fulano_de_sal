@@ -54,7 +54,7 @@ public class Email {
 	}
 	
 	private void enviaEmail(String html) throws EmailException, MalformedURLException {
-
+		System.out.println(">>>>>>>>>>>>>>>>>>> SEND EMAIL >>>>>>>>>>>>>>>>");
 		HtmlEmail email = new HtmlEmail();
 		email.setHostName(System.getProperty("mail.smtp.host"));
 		email.setAuthentication(System.getProperty("mail.username"), System.getProperty("mail.password"));
@@ -63,8 +63,11 @@ public class Email {
 		email.setSubject(getSubject());
 		  
 		email.setHtmlMsg(html);
+		email.setTLS(true);
+		email.setTextMsg("email de confirmação");
 		  
 		email.send();
+		System.out.println(">>>>>>>>>>>>>>>>>>> FINISH SEND >>>>>>>>>>>>>>>>");
 	}
 
 	public void enviaCodigoRecuperacao(String codigo) {
