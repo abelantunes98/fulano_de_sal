@@ -10,7 +10,6 @@ import java.util.TimeZone;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MarmitariaApplication {
 
 	public static void main(String[] args) {
+		inicializandoPropriedades();
 		SpringApplication.run(MarmitariaApplication.class, args);
 	}
 
@@ -28,8 +28,8 @@ public class MarmitariaApplication {
 		format.setTimeZone(TimeZone.getTimeZone("America/Recife"));
 		return format.format(new Date());
 	}
-	@Bean
-	public void inicializandoPropriedades() {
+
+	public static void inicializandoPropriedades() {
 		try {
 			Properties properties = new Properties();
 			String path = new File("").getAbsolutePath() + File.separator + "src" + File.separator + "main"
