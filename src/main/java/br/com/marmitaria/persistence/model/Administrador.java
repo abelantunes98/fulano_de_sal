@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ADMINISTADOR")
 public class Administrador extends Usuario{
 
 	/**

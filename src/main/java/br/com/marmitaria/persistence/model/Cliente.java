@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull;
 import br.com.marmitaria.rest.request.ClienteRequest;
 
 @Entity
-@Table(name = "CLIENTE")
 public class Cliente extends Usuario{
 	
 	/**

@@ -15,7 +15,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "RECUPERACAO")
 public class Recuperacao implements Serializable{
 	
 	/**

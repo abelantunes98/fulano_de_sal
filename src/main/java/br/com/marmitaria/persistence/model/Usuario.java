@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="USUARIO")
 @Inheritance(strategy=InheritanceType.JOINED)
 public class Usuario implements Serializable{
 
