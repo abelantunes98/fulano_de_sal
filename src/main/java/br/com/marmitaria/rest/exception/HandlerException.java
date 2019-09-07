@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
+import br.com.marmitaria.rest.exception.notFound.NotFoundException;
 import br.com.marmitaria.rest.exception.usuario.UsuarioInvalidoException;
 
 @ControllerAdvice
@@ -23,8 +24,8 @@ public class HandlerException {
 		return dispache(request,e,HttpStatus.FORBIDDEN);
 	}
 	
-	@ExceptionHandler(UsuarioNaoEncontradoException.class)
-	public ResponseEntity<CustomError> usuarioNaoEncontrado(UsuarioNaoEncontradoException e, WebRequest request){
+	@ExceptionHandler(NotFoundException.class)
+	public ResponseEntity<CustomError> notFound(NotFoundException e, WebRequest request){
 		return dispache(request, e, HttpStatus.NOT_FOUND);
 	}
 

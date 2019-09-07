@@ -24,31 +24,33 @@ public class Cliente extends Usuario{
 	private String endereco;
 	
 	@Column
-	private boolean cadastroPendente;
+	private String telefone;
+	
+	
 	
 	public Cliente(ClienteRequest request) {
 		setNome(request.getNome());
 		setEmail(request.getEmail());
 		setSenha(request.getSenha());
 		setTipo(Tipo.CLIENTE);
+		setCadastroPendente(true);
 		this.endereco = request.getEndereco();
-		this.cadastroPendente = true;
+		this.telefone = request.getTelefone();
 	}
 	
 	public Cliente() {
 		
 	}
-	
-	public boolean isCadastroPendente() {
-		return cadastroPendente;
-	}
-
-	public void setCadastroPendente(boolean cadastroPendente) {
-		this.cadastroPendente = cadastroPendente;
-	}
 
 	public String getEndereco() {
 		return endereco;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 	
 	public void setEndereco(String endereco) {

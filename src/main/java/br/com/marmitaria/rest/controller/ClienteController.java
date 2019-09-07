@@ -18,11 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.marmitaria.persistence.model.Cliente;
 import br.com.marmitaria.persistence.service.ClienteService;
+import br.com.marmitaria.rest.exception.DadosInvalidosException;
 import br.com.marmitaria.rest.exception.UsuarioNaoEncontradoException;
 import br.com.marmitaria.rest.exception.usuario.EmailJaCadastradoException;
 import br.com.marmitaria.rest.request.ClienteRequest;
+import br.com.marmitaria.rest.util.Email;
 import br.com.marmitaria.rest.util.Validation;
-import br.com.marmitaria.util.Email;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -55,8 +56,7 @@ public class ClienteController {
 		return new ResponseEntity<Cliente>(cliente, HttpStatus.CREATED);
 	}
 	
-	@ApiOperation("Realiza a confirmação de cadastro do cliente")
-	@GetMapping("confirmacao/{id}")
+	@GetMapping("/confirmacao/{id}")
 	@ResponseBody
 	public ResponseEntity<String> confirmarCadastro(@PathVariable Long id){
 		Cliente cliente = clienteService.findById(id);
@@ -66,10 +66,36 @@ public class ClienteController {
 		}else {
 			throw new UsuarioNaoEncontradoException();
 		}
-		String mensagem = String.format("Cliente %s confirmado com sucesso", cliente.getNome());
+		String mensagem = String.format("Email %s confirmado com sucesso.", cliente.getEmail());
 		return new ResponseEntity<String>(mensagem,HttpStatus.OK);
 	}
 	
+	@ApiOperation("Realiza a atualização do cadastro")
+	@PostMapping("/atualiza")
+	@ResponseBody
+	public ResponseEntity<Cliente> atualizaCliente(@RequestBody ClienteRequest request) {
+		if(Validation.naoInformado(request.getEmail())) {
+			throw new DadosInvalidosException("Email não informado!");
+		}
+		
+		Cliente cliente = clienteService.findByEmail(request.getEmail());
+		if(!Validation.naoInformado(request.getEndereco())) {
+			cliente.setEndereco(request.getEndereco());
+		}
+		if(!Validation.naoInformado(request.getNome())) {
+			cliente.setNome(request.getNome());
+		}
+		if(!Validation.naoInformado(request.getTelefone())) {
+			cliente.setTelefone(request.getTelefone());
+		}
+		if(!Validation.naoInformado(request.getSenha())) {
+			cliente.setSenha(request.getSenha());
+		}
+		
+		cliente = clienteService.update(cliente);
+		return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
+	}
+
 	private void enviaEmail(Cliente cliente) {
 		Thread mail = new Thread() {
 			public void run() {	
@@ -80,7 +106,7 @@ public class ClienteController {
 					MimeMessageHelper helper = new MimeMessageHelper(mail);
 					helper.setTo(cliente.getEmail());
 					helper.setSubject(email.getSubject());
-					helper.setText(email.getHtml(),true);
+					helper.setText(email.getHtmlConfirmarEmail(),true);
 					mailSender.send(mail);
 				} catch (Exception e) {
 					e.printStackTrace();

@@ -1,5 +1,6 @@
 package br.com.marmitaria.persistence.service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,18 +11,19 @@ import br.com.marmitaria.persistence.model.Usuario;
 public class UsuarioService {
 	
 	@Autowired
-	private UsuarioDAO dao;
+	private UsuarioDAO usuarioDao;
+	
 	
 	public Usuario create(Usuario usuario) {
-		return dao.save(usuario);
-	}
-	
-	public Usuario findById(Long id) {
-		return dao.findById((long)id);
+		return usuarioDao.save(usuario);
 	}
 
 	public Usuario findByEmail(String email) {
-		return dao.findByEmail(email);
+		return usuarioDao.findByEmail(email);
+	}
+
+	public Usuario update(Usuario usuario) {
+		return usuarioDao.save(usuario);
 	}
 
 }

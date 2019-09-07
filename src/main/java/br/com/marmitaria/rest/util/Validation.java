@@ -34,7 +34,7 @@ public abstract class Validation {
 		
 	}
 
-	private static boolean naoInformado(String valor) {
+	public static boolean naoInformado(String valor) {
 		return valor==null || valor.isEmpty();
 	}
 }

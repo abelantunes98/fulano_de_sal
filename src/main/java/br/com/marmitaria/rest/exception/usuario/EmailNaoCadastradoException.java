@@ -1,7 +1,8 @@
 package br.com.marmitaria.rest.exception.usuario;
 
-public class EmailNaoCadastradoException extends UsuarioInvalidoException{
+import br.com.marmitaria.rest.exception.notFound.NotFoundException;
 
+public class EmailNaoCadastradoException extends NotFoundException{
 	
 	/**
 	 * 

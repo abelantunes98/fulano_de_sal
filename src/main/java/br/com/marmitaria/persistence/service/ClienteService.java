@@ -17,11 +17,15 @@ public class ClienteService {
 	}
 	
 	public Cliente findById(Long id) {
-		return dao.findById((long)id);
+		return dao.findById(id).get();
 	}
 
 	public Cliente findByEmail(String email) {
 		return dao.findByEmail(email);
+	}
+
+	public Cliente update(Cliente cliente) {
+		return dao.save(cliente);
 	}
 
 }

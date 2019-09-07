@@ -8,8 +8,6 @@ import br.com.marmitaria.persistence.model.Usuario;
 @Repository
 public interface UsuarioDAO extends JpaRepository<Usuario, Long>{
 	
-	Usuario findById(long id);
-	
 	Usuario findByEmail(String email);
 
 }

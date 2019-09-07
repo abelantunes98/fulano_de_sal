@@ -1,6 +1,8 @@
 package br.com.marmitaria.rest.exception;
 
-public class UsuarioNaoEncontradoException extends RuntimeException {
+import br.com.marmitaria.rest.exception.notFound.NotFoundException;
+
+public class UsuarioNaoEncontradoException extends NotFoundException {
 	
 	/**
 	 * 
