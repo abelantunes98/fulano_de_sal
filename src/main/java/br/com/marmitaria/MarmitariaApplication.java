@@ -29,10 +29,10 @@ public class MarmitariaApplication {
 		return format.format(new Date());
 	}
 	@Bean
-	public void init() {
+	public void inicializandoPropriedades() {
 		try {
 			Properties properties = new Properties();
-			String path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main"
+			String path = new File("").getAbsolutePath() + File.separator + "src" + File.separator + "main"
 					+ File.separator + "resources" + File.separator + "application.properties";
 			FileInputStream stream = new FileInputStream(path);
 
