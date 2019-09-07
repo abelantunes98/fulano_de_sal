@@ -54,7 +54,6 @@ public class UsuarioController {
 	@Autowired
 	private RecuperacaoService recuperacaoService;
 
-	@Autowired
 	private JavaMailSender mailSender;
 
 	@ApiOperation("Realiza Login")
