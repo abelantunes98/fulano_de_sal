@@ -2,16 +2,26 @@ package br.com.marmitaria.rest.util;
 
 import java.net.MalformedURLException;
 
+import javax.mail.internet.MimeMessage;
+
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 
 import br.com.marmitaria.persistence.model.Usuario;
 
+@Service
 public class Email {
+
+	@Autowired
+	private JavaMailSender mailSender;
 
 	private Usuario usuario;
 
-	public Email(Usuario usuario) {
+	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 
@@ -44,40 +54,49 @@ public class Email {
 	}
 
 	public void enviaConfirmaEmail() {
-		try {
-			enviaEmail(getHtmlConfirmarEmail());
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (EmailException e) {
-			e.printStackTrace();
-		}
+		enviaEmail(getHtmlConfirmarEmail());
 	}
-	
-	private void enviaEmail(String html) throws EmailException, MalformedURLException {
-		System.out.println(">>>>>>>>>>>>>>>>>>> SEND EMAIL >>>>>>>>>>>>>>>>");
-		HtmlEmail email = new HtmlEmail();
-		email.setHostName(System.getProperty("mail.smtp.host"));
-		email.setAuthentication(System.getProperty("mail.username"), System.getProperty("mail.password"));
-		email.addTo(usuario.getEmail(),usuario.getNome());
-		email.setFrom(System.getProperty("mail.username"), "Fulano de Sal");
-		email.setSubject(getSubject());
-		  
-		email.setHtmlMsg(html);
-		email.setTLS(true);
-		email.setTextMsg("email de confirmação");
-		  
-		email.send();
-		System.out.println(">>>>>>>>>>>>>>>>>>> FINISH SEND >>>>>>>>>>>>>>>>");
+
+//	private void enviaEmail(String html) throws EmailException, MalformedURLException {
+//		System.out.println(">>>>>>>>>>>>>>>>>>> SEND EMAIL >>>>>>>>>>>>>>>>");
+//		HtmlEmail email = new HtmlEmail();
+//		email.setHostName(System.getProperty("mail.smtp.host"));
+//		email.setAuthentication(System.getProperty("mail.username"), System.getProperty("mail.password"));
+//		email.addTo(usuario.getEmail(),usuario.getNome());
+//		email.setFrom(System.getProperty("mail.username"), "Fulano de Sal");
+//		email.setSubject(getSubject());
+//		  
+//		email.setHtmlMsg(html);
+//		email.setTLS(true);
+//		email.setTextMsg("email de confirmação");
+//		  
+//		email.send();
+//		System.out.println(">>>>>>>>>>>>>>>>>>> FINISH SEND >>>>>>>>>>>>>>>>");
+//		
+//	}
+
+	private void enviaEmail(String html) {
+		Thread mail = new Thread() {
+			public void run() {
+				try {
+					MimeMessage mail = mailSender.createMimeMessage();
+					MimeMessageHelper helper = new MimeMessageHelper(mail);
+					helper.setTo(usuario.getEmail());
+					helper.setSubject(getSubject());
+					helper.setText(html, true);
+					mailSender.send(mail);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		};
+
+		mail.start();
 	}
 
 	public void enviaCodigoRecuperacao(String codigo) {
-		try {
-			enviaEmail(getHtmlrecuperarSenha(codigo));
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (EmailException e) {
-			e.printStackTrace();
-		}
-		
+
+		enviaEmail(getHtmlrecuperarSenha(codigo));
+
 	}
 }

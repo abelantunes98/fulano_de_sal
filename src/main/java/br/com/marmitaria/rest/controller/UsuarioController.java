@@ -53,6 +53,9 @@ public class UsuarioController {
 
 	@Autowired
 	private RecuperacaoService recuperacaoService;
+	
+	@Autowired
+	private Email email;
 
 	@ApiOperation("Realiza Login")
 	@PostMapping("/login")
@@ -112,7 +115,8 @@ public class UsuarioController {
 				.setCodigo(codigo).build();
 			recuperacaoService.create(recuperacao);
 		}
-		Email email = new Email(usuario);
+		
+		email.setUsuario(usuario);
 		email.enviaCodigoRecuperacao(codigo);
 
 		return new ResponseEntity<String>("Email com código de verificação enviado", HttpStatus.OK);

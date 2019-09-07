@@ -34,6 +34,9 @@ public class ClienteController {
 
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private Email email;
 		
 	@ApiOperation("Cria um cliente")
 	@PostMapping("/")
@@ -97,7 +100,7 @@ public class ClienteController {
 		Thread mail = new Thread() {
 			public void run() {	
 				try {
-					Email email = new Email(cliente);
+					email.setUsuario(cliente);
 					email.enviaConfirmaEmail();
 					
 				} catch (Exception e) {
