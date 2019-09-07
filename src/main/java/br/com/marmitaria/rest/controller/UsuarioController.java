@@ -54,8 +54,6 @@ public class UsuarioController {
 	@Autowired
 	private RecuperacaoService recuperacaoService;
 
-	private JavaMailSender mailSender;
-
 	@ApiOperation("Realiza Login")
 	@PostMapping("/login")
 	@ResponseBody
@@ -114,8 +112,8 @@ public class UsuarioController {
 				.setCodigo(codigo).build();
 			recuperacaoService.create(recuperacao);
 		}
-
-		enviaEmailCodigoRecuperacao(usuario, codigo);
+		Email email = new Email(usuario);
+		email.enviaCodigoRecuperacao(codigo);
 
 		return new ResponseEntity<String>("Email com código de verificação enviado", HttpStatus.OK);
 	}
@@ -189,27 +187,6 @@ public class UsuarioController {
 		
 		recuperacaoService.delete(recuperacao);
 		return new ResponseEntity<String>("Senha alterada com sucesso",HttpStatus.OK);
-	}
-
-	private void enviaEmailCodigoRecuperacao(Usuario usuario, String codigo) {
-		Thread mail = new Thread() {
-			public void run() {
-				try {
-					Email email = new Email(usuario);
-					MimeMessage mail = mailSender.createMimeMessage();
-
-					MimeMessageHelper helper = new MimeMessageHelper(mail);
-					helper.setTo(usuario.getEmail());
-					helper.setSubject(email.getSubject());
-					helper.setText(email.getHtmlrecuperarSenha(codigo), true);
-					mailSender.send(mail);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		};
-
-		mail.start();
 	}
 
 }

@@ -42,7 +42,15 @@ public class MarmitariaApplication {
 
 			String hostname = properties.getProperty("api.hostname");
 			System.setProperty("api.hostname", hostname);
-
+			System.setProperty("mail.smtp.host", properties.getProperty("mail.smtp.host"));
+			System.setProperty("mail.smtp.socketFactory.port", properties.getProperty("mail.smtp.socketFactory.port"));
+			System.setProperty("mail.smtp.socketFactory.class", properties.getProperty("mail.smtp.socketFactory.class"));
+			System.setProperty("mail.smtp.auth", properties.getProperty("mail.smtp.auth"));
+			System.setProperty("mail.smtp.port",properties.getProperty("mail.smtp.port"));
+			System.setProperty("mail.username", properties.getProperty("mail.username"));
+			System.setProperty("mail.password", properties.getProperty("mail.password"));
+	
+			System.out.println(System.getProperty("mail.smtp.host"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

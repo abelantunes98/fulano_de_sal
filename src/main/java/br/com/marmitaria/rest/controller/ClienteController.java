@@ -34,10 +34,7 @@ public class ClienteController {
 
 	@Autowired
 	private ClienteService clienteService;
-	
-	@Autowired
-	private JavaMailSender mailSender;
-	
+		
 	@ApiOperation("Cria um cliente")
 	@PostMapping("/")
 	@ResponseBody
@@ -101,13 +98,8 @@ public class ClienteController {
 			public void run() {	
 				try {
 					Email email = new Email(cliente);
-					MimeMessage mail = mailSender.createMimeMessage();
-		
-					MimeMessageHelper helper = new MimeMessageHelper(mail);
-					helper.setTo(cliente.getEmail());
-					helper.setSubject(email.getSubject());
-					helper.setText(email.getHtmlConfirmarEmail(),true);
-					mailSender.send(mail);
+					email.enviaConfirmaEmail();
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
