@@ -73,15 +73,18 @@ public class Email {
 //	}
 
 	private void enviaEmail(String html) {
+		
 		Thread mail = new Thread() {
 			public void run() {
 				try {
+					System.out.println("<<<<<Send>>>>>");
 					MimeMessage mail = mailSender.createMimeMessage();
 					MimeMessageHelper helper = new MimeMessageHelper(mail);
 					helper.setTo(usuario.getEmail());
 					helper.setSubject(getSubject());
 					helper.setText(html, true);
 					mailSender.send(mail);
+					System.out.println("<<<<<Finish>>>>>");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
