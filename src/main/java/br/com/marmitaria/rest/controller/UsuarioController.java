@@ -2,14 +2,11 @@ package br.com.marmitaria.rest.controller;
 
 import java.util.Date;
 
-import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,7 +32,6 @@ import br.com.marmitaria.rest.reponse.UsuarioResponse;
 import br.com.marmitaria.rest.request.ConfirmacaoDeCodigoRequest;
 import br.com.marmitaria.rest.request.LoginRequest;
 import br.com.marmitaria.rest.request.RecuperacaoRequest;
-import br.com.marmitaria.rest.util.Email;
 import br.com.marmitaria.rest.util.GeradorCodigo;
 import br.com.marmitaria.rest.util.Validation;
 import io.jsonwebtoken.Jwts;
@@ -46,7 +42,7 @@ import io.swagger.annotations.ApiOperation;
 @Api("Responsável por atender requisições genericas de usuários")
 @RestController
 @RequestMapping("/usuario")
-public class UsuarioController {
+public class UsuarioController extends Controller{
 
 	@Autowired
 	private UsuarioService usuarioService;
@@ -54,9 +50,6 @@ public class UsuarioController {
 	@Autowired
 	private RecuperacaoService recuperacaoService;
 	
-	@Autowired
-	private Email email;
-
 	@ApiOperation("Realiza Login")
 	@PostMapping("/login")
 	@ResponseBody

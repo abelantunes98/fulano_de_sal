@@ -1,11 +1,8 @@
 package br.com.marmitaria.rest.util;
 
-import java.net.MalformedURLException;
 
 import javax.mail.internet.MimeMessage;
 
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
