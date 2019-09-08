@@ -79,8 +79,8 @@ public class Email {
 			public void run() {
 				try {
 					System.out.println("<<<<<Send>>>>>");
-					System.out.println(mailSender.getJavaMailProperties().get("spring.mail.username"));
-					System.out.println(mailSender.getJavaMailProperties().get("spring.mail.password"));
+					System.out.println(mailSender.getUsername());
+					System.out.println(mailSender.getPassword());
 					MimeMessage mail = mailSender.createMimeMessage();
 					MimeMessageHelper helper = new MimeMessageHelper(mail);
 					helper.setTo(usuario.getEmail());
