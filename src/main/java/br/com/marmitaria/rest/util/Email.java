@@ -1,13 +1,15 @@
 package br.com.marmitaria.rest.util;
 
-
 import javax.mail.internet.MimeMessage;
+import javax.swing.text.html.HTML;
 
+import org.apache.commons.mail.SimpleEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import br.com.marmitaria.persistence.model.Cliente;
 import br.com.marmitaria.persistence.model.Usuario;
 
 @Service
@@ -73,28 +75,44 @@ public class Email {
 //	}
 
 	private void enviaEmail(String html) {
-		
-		Thread mail = new Thread() {
-			public void run() {
-				try {
-					System.out.println("<<<<<Send>>>>>");
-					System.out.println(mailSender.getUsername());
-					System.out.println(mailSender.getPassword());
-					MimeMessage mail = mailSender.createMimeMessage();
-					MimeMessageHelper helper = new MimeMessageHelper(mail);
-					helper.setTo(usuario.getEmail());
-					helper.setSubject(getSubject());
-					helper.setText(html, true);
-					mailSender.send(mail);
-					
-					System.out.println("<<<<<Finish>>>>>");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		};
+		try {
+			System.out.println("<<<<<Send>>>>>");
+			org.apache.commons.mail.Email email = new SimpleEmail();
+			email.setHostName(System.getProperty("mail.host"));
+			email.setSmtpPort(Integer.parseInt(System.getProperty("mail.port")));
+			email.setAuthentication(System.getProperty("mail.username"), System.getProperty("mail.password"));
+			email.setTLS(true);
+			email.setFrom(System.getProperty("mail.username"), "Fulano de Sal");
+			email.setSubject(getSubject());
+			email.setContent(html, "text/html");
+			email.addTo(usuario.getEmail(), usuario.getNome());
+			email.send();
+			System.out.println("<<<<<Finish>>>>>");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		mail.start();
+//		Thread mail = new Thread() {
+//			public void run() {
+//				try {
+//					System.out.println("<<<<<Send>>>>>");
+//					System.out.println(mailSender.getUsername());
+//					System.out.println(mailSender.getPassword());
+//					MimeMessage mail = mailSender.createMimeMessage();
+//					MimeMessageHelper helper = new MimeMessageHelper(mail);
+//					helper.setTo(usuario.getEmail());
+//					helper.setSubject(getSubject());
+//					helper.setText(html, true);
+//					mailSender.send(mail);
+//					
+//					System.out.println("<<<<<Finish>>>>>");
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		};
+//
+//		mail.start();
 	}
 
 	public void enviaCodigoRecuperacao(String codigo) {

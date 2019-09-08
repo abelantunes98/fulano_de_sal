@@ -42,6 +42,25 @@ public class MarmitariaApplication {
 
 			String hostname = properties.getProperty("api.hostname");
 			System.setProperty("api.hostname", hostname);
+			
+			//properties Spring
+			System.setProperty("spring.mail.host", properties.getProperty("spring.mail.host"));
+			System.setProperty("spring.mail.properties.mail.smtp.auth", properties.getProperty("spring.mail.properties.mail.smtp.auth"));
+			System.setProperty("spring.mail.properties.mail.smtp.starttls.enable", properties.getProperty("spring.mail.properties.mail.smtp.starttls.enable"));
+			System.setProperty("spring.mail.properties.mail.smtp.starttls.required", properties.getProperty("spring.mail.properties.mail.smtp.starttls.required"));
+			System.setProperty("spring.mail.port",properties.getProperty("spring.mail.port"));
+			System.setProperty("spring.mail.username", properties.getProperty("spring.mail.username"));
+			System.setProperty("spring.mail.password", properties.getProperty("spring.mail.password"));
+			System.setProperty("spring.mail.properties.mail.smtp.ssl.enable", properties.getProperty("spring.mail.properties.mail.smtp.ssl.enable"));
+			System.setProperty("spring.mail.test-connection",properties.getProperty("spring.mail.test-connection"));
+			
+			//properties mail commons
+			System.setProperty("mail.username", properties.getProperty("mail.username"));
+			System.setProperty("mail.password", properties.getProperty("mail.password"));
+			System.setProperty("mail.host", properties.getProperty("mail.host"));
+			System.setProperty("mail.port", properties.getProperty("mail.port"));
+			
+			System.out.println(System.getProperty("mail.smtp.host"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
