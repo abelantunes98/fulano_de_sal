@@ -5,6 +5,7 @@ import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ import br.com.marmitaria.persistence.model.Usuario;
 public class Email {
 
 	@Autowired
-	private JavaMailSender mailSender;
+	private JavaMailSenderImpl mailSender;
 
 	private Usuario usuario;
 
@@ -78,12 +79,15 @@ public class Email {
 			public void run() {
 				try {
 					System.out.println("<<<<<Send>>>>>");
+					System.out.println(mailSender.getJavaMailProperties().get("spring.mail.username"));
+					System.out.println(mailSender.getJavaMailProperties().get("spring.mail.password"));
 					MimeMessage mail = mailSender.createMimeMessage();
 					MimeMessageHelper helper = new MimeMessageHelper(mail);
 					helper.setTo(usuario.getEmail());
 					helper.setSubject(getSubject());
 					helper.setText(html, true);
 					mailSender.send(mail);
+					
 					System.out.println("<<<<<Finish>>>>>");
 				} catch (Exception e) {
 					e.printStackTrace();
