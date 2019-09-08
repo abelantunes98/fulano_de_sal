@@ -1,10 +1,20 @@
 package br.com.marmitaria.rest.util;
 
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.text.html.HTML;
 
+import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -75,44 +85,34 @@ public class Email {
 //	}
 
 	private void enviaEmail(String html) {
-		try {
-			System.out.println("<<<<<Send>>>>>");
-			org.apache.commons.mail.Email email = new SimpleEmail();
-			email.setHostName(System.getProperty("mail.host"));
-			email.setSmtpPort(Integer.parseInt(System.getProperty("mail.port")));
-			email.setAuthentication(System.getProperty("mail.username"), System.getProperty("mail.password"));
-			email.setTLS(true);
-			email.setFrom(System.getProperty("mail.username"), "Fulano de Sal");
-			email.setSubject(getSubject());
-			email.setContent(html, "text/html");
-			email.addTo(usuario.getEmail(), usuario.getNome());
-			email.send();
-			System.out.println("<<<<<Finish>>>>>");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Thread mailsend = new Thread() {
+			public void run() {
+				try {
+					System.out.println("<<<<<Send>>>>>");
+					org.apache.commons.mail.Email email = new SimpleEmail();
+					email.setHostName(System.getProperty("mail.host"));
+					email.setSmtpPort(Integer.parseInt(System.getProperty("mail.port")));
+					email.setAuthentication(System.getProperty("mail.username"), System.getProperty("mail.password"));
+					email.setStartTLSEnabled(true);
+					email.setFrom(System.getProperty("mail.username"), "Fulano de Sal");
+					email.setSubject(getSubject());
+					email.setContent(html, "text/html");
+					email.setCharset("utf-8");
+					email.addTo(usuario.getEmail(), usuario.getNome());
+					email.send();
+					System.out.println("<<<<<Finish>>>>>");
+					this.finalize();
+				} catch (EmailException e) {
+					e.printStackTrace();
+				} catch (Throwable e) {
+					e.printStackTrace();
+				}
+			};
+			
+		};
+		
+		mailsend.start();
 
-//		Thread mail = new Thread() {
-//			public void run() {
-//				try {
-//					System.out.println("<<<<<Send>>>>>");
-//					System.out.println(mailSender.getUsername());
-//					System.out.println(mailSender.getPassword());
-//					MimeMessage mail = mailSender.createMimeMessage();
-//					MimeMessageHelper helper = new MimeMessageHelper(mail);
-//					helper.setTo(usuario.getEmail());
-//					helper.setSubject(getSubject());
-//					helper.setText(html, true);
-//					mailSender.send(mail);
-//					
-//					System.out.println("<<<<<Finish>>>>>");
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		};
-//
-//		mail.start();
 	}
 
 	public void enviaCodigoRecuperacao(String codigo) {
