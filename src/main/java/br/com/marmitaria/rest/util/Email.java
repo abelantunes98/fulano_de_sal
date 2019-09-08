@@ -1,12 +1,9 @@
 package br.com.marmitaria.rest.util;
 
 
-import java.util.Properties;
-
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -16,6 +13,7 @@ import br.com.marmitaria.persistence.model.Usuario;
 @Service
 public class Email {
 
+	@Autowired
 	private JavaMailSenderImpl mailSender;
 
 	private Usuario usuario;
@@ -79,7 +77,6 @@ public class Email {
 		Thread mail = new Thread() {
 			public void run() {
 				try {
-					mailSender = new JavaMailSenderImpl();
 					System.out.println("<<<<<Send>>>>>");
 					System.out.println(mailSender.getUsername());
 					System.out.println(mailSender.getPassword());
@@ -88,19 +85,6 @@ public class Email {
 					helper.setTo(usuario.getEmail());
 					helper.setSubject(getSubject());
 					helper.setText(html, true);
-					
-					mailSender.setHost("smtp.gmail.com");
-				    mailSender.setPort(587);
-				     
-				    mailSender.setUsername("cursosufcg@gmail.com");
-				    mailSender.setPassword("cursosufcg123");
-				    
-					Properties props = mailSender.getJavaMailProperties();
-				    props.put("mail.transport.protocol", "smtp");
-				    props.put("mail.smtp.auth", "true");
-				    props.put("mail.smtp.starttls.enable", "true");
-				    props.put("mail.debug", "true");
-				    
 					mailSender.send(mail);
 					
 					System.out.println("<<<<<Finish>>>>>");
