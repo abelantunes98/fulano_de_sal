@@ -42,8 +42,6 @@ public class MarmitariaApplication {
 
 			String hostname = properties.getProperty("api.hostname");
 			System.setProperty("api.hostname", hostname);
-			System.setProperty("mail.username", properties.getProperty("mail.username"));
-			System.setProperty("mail.password", properties.getProperty("mail.password"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
