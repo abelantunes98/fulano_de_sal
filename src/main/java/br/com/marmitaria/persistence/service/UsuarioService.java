@@ -8,22 +8,12 @@ import br.com.marmitaria.persistence.dao.UsuarioDAO;
 import br.com.marmitaria.persistence.model.Usuario;
 
 @Service
-public class UsuarioService {
+public class UsuarioService extends GenericService<Usuario>{
 	
 	@Autowired
-	private UsuarioDAO usuarioDao;
+	private UsuarioDAO dao;
 	
-	
-	public Usuario create(Usuario usuario) {
-		return usuarioDao.save(usuario);
-	}
-
 	public Usuario findByEmail(String email) {
-		return usuarioDao.findByEmail(email);
+		return dao.findByEmail(email);
 	}
-
-	public Usuario update(Usuario usuario) {
-		return usuarioDao.save(usuario);
-	}
-
 }

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -28,14 +29,17 @@ public class Usuario implements Serializable{
 	private Long id;
 	
 	@NotNull
+	@NotEmpty
 	@Column(name = "NOME")
 	private String nome;
 	
 	@NotNull
-	@Column(name = "EMAIL")
+	@NotEmpty
+	@Column(name = "EMAIL",updatable = false,unique = true)
 	private String email;
 	
 	@NotNull
+	@NotEmpty
 	@Column(name = "SENHA")
 	private String senha;
 	
@@ -43,6 +47,7 @@ public class Usuario implements Serializable{
 	@Column(name = "TIPO")
 	private Tipo tipo;
 	
+	@NotNull
 	@Column(name = "CADASTRO_PENDENTE")
 	private boolean cadastroPendente;
 		

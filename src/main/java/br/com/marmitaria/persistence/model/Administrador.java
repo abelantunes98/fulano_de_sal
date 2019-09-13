@@ -3,8 +3,6 @@ package br.com.marmitaria.persistence.model;
 
 import javax.persistence.Entity;
 
-import javax.persistence.Table;
-
 @Entity
 public class Administrador extends Usuario{
 

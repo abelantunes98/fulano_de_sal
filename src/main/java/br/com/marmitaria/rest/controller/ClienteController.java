@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.marmitaria.persistence.model.Cliente;
 import br.com.marmitaria.persistence.service.ClienteService;
 import br.com.marmitaria.rest.exception.DadosInvalidosException;
+import br.com.marmitaria.rest.exception.MailNotSendException;
 import br.com.marmitaria.rest.exception.UsuarioNaoEncontradoException;
 import br.com.marmitaria.rest.exception.usuario.EmailJaCadastradoException;
 import br.com.marmitaria.rest.request.ClienteRequest;
+import br.com.marmitaria.rest.util.Email;
 import br.com.marmitaria.rest.util.Validation;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,7 +27,7 @@ import io.swagger.annotations.ApiOperation;
 @Api
 @RestController
 @RequestMapping("/cliente")
-public class ClienteController extends Controller{
+public class ClienteController{
 
 	@Autowired
 	private ClienteService clienteService;
@@ -84,14 +86,19 @@ public class ClienteController extends Controller{
 			cliente.setSenha(request.getSenha());
 		}
 
-		cliente = clienteService.update(cliente);
+		cliente = clienteService.atualizar(cliente);
 		return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
 	}
 
 	private void enviaEmail(Cliente cliente) {
+		Email email = new Email(cliente);
 		email.setUsuario(cliente);
+		try {
 		email.enviaConfirmaEmail();
-
+		}catch (MailNotSendException e) {
+			e.printStackTrace();
+			clienteService.deletar(cliente);
+		}
 	}
 
 }

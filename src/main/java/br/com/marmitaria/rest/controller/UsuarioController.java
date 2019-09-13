@@ -22,6 +22,7 @@ import br.com.marmitaria.persistence.model.Usuario;
 import br.com.marmitaria.persistence.service.RecuperacaoService;
 import br.com.marmitaria.persistence.service.UsuarioService;
 import br.com.marmitaria.rest.exception.DadosInvalidosException;
+import br.com.marmitaria.rest.exception.MailNotSendException;
 import br.com.marmitaria.rest.exception.UsuarioNaoEncontradoException;
 import br.com.marmitaria.rest.exception.notFound.RecuperacaoNaoEncontradaException;
 import br.com.marmitaria.rest.exception.usuario.EmailNaoCadastradoException;
@@ -32,6 +33,7 @@ import br.com.marmitaria.rest.reponse.UsuarioResponse;
 import br.com.marmitaria.rest.request.ConfirmacaoDeCodigoRequest;
 import br.com.marmitaria.rest.request.LoginRequest;
 import br.com.marmitaria.rest.request.RecuperacaoRequest;
+import br.com.marmitaria.rest.util.Email;
 import br.com.marmitaria.rest.util.GeradorCodigo;
 import br.com.marmitaria.rest.util.Validation;
 import io.jsonwebtoken.Jwts;
@@ -42,7 +44,7 @@ import io.swagger.annotations.ApiOperation;
 @Api("Responsável por atender requisições genericas de usuários")
 @RestController
 @RequestMapping("/usuario")
-public class UsuarioController extends Controller{
+public class UsuarioController{
 
 	@Autowired
 	private UsuarioService usuarioService;
@@ -95,23 +97,21 @@ public class UsuarioController extends Controller{
 		}
 		
 		usuario.setCadastroPendente(true);
-		usuario = usuarioService.update(usuario);
+		usuario = usuarioService.atualizar(usuario);
 		
 		String codigo = GeradorCodigo.gerarCodigoRecuperacaoSenha();
 		Recuperacao recuperacao = recuperacaoService.findByUsuario(usuario);
 		if(recuperacao != null) {
 			recuperacao.setCodigo(codigo);
 			recuperacao.setUsuario(usuario);
-			recuperacaoService.update(recuperacao);
+			recuperacaoService.atualizar(recuperacao);
 		}else {
 			recuperacao = new Recuperacao.Builder().setUsuario(usuario).setDataCriacao(new Date())
 				.setCodigo(codigo).build();
-			recuperacaoService.create(recuperacao);
+			recuperacaoService.salvar(recuperacao);
 		}
 		
-		email.setUsuario(usuario);
-		email.enviaCodigoRecuperacao(codigo);
-
+		enviaEmail(usuario,codigo);
 		return new ResponseEntity<String>("Email com código de verificação enviado", HttpStatus.OK);
 	}
 	
@@ -180,10 +180,21 @@ public class UsuarioController extends Controller{
 
 		usuario.setSenha(request.getSenha());
 		usuario.setCadastroPendente(false);
-		usuarioService.update(usuario);
+		usuarioService.atualizar(usuario);
 		
-		recuperacaoService.delete(recuperacao);
+		recuperacaoService.deletar(recuperacao);
 		return new ResponseEntity<String>("Senha alterada com sucesso",HttpStatus.OK);
+	}
+	
+	private void enviaEmail(Usuario usuario,String codigo) {
+		Email email = new Email(usuario);
+		email.setUsuario(usuario);
+		try {
+			email.enviaCodigoRecuperacao(codigo);
+		}catch (MailNotSendException e) {
+			e.printStackTrace();
+			usuarioService.deletar(usuario);
+		}
 	}
 
 }
