@@ -38,9 +38,7 @@ public class Cliente extends Usuario{
 		this.telefone = request.getTelefone();
 	}
 	
-	public Cliente() {
-		
-	}
+	public Cliente() {}
 
 	public String getEndereco() {
 		return endereco;
