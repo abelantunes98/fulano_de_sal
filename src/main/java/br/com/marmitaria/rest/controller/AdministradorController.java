@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.marmitaria.persistence.model.Administrador;
+import br.com.marmitaria.persistence.model.Usuario;
 import br.com.marmitaria.persistence.service.AdministradorService;
+import br.com.marmitaria.persistence.service.UsuarioService;
 import br.com.marmitaria.rest.exception.usuario.EmailJaCadastradoException;
 import br.com.marmitaria.rest.request.UsuarioRequest;
 import br.com.marmitaria.rest.util.Validation;
@@ -19,24 +21,26 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/administrador")
 public class AdministradorController {
-	
+
 	@Autowired
 	private AdministradorService administradorService;
-	
+
+	@Autowired
+	private UsuarioService usuarioService;
+
 	@ApiOperation("Cria um administrador")
 	@PostMapping("/")
 	@ResponseBody
 	public ResponseEntity<Administrador> create(@RequestBody UsuarioRequest usuarioRequest) {
 		Validation.validaUsuario(usuarioRequest);
 
-		Administrador administradorSave = administradorService.findByEmail(usuarioRequest.getEmail());
+		Usuario usuario = usuarioService.findByEmail(usuarioRequest.getEmail());
 
-		if (administradorSave != null) {
+		if (usuario != null) {
 			throw new EmailJaCadastradoException();
 		}
-		Administrador usuario = administradorService.salvar(new Administrador(usuarioRequest));
+		Administrador administrador = administradorService.salvar(new Administrador(usuarioRequest));
 
-
-		return new ResponseEntity<Administrador>(usuario, HttpStatus.OK);
+		return new ResponseEntity<Administrador>(administrador, HttpStatus.OK);
 	}
 }

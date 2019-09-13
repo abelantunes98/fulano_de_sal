@@ -1,7 +1,7 @@
 package br.com.marmitaria.rest.controller;
 
 import java.util.Date;
-
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -184,6 +184,14 @@ public class UsuarioController{
 		
 		recuperacaoService.deletar(recuperacao);
 		return new ResponseEntity<String>("Senha alterada com sucesso",HttpStatus.OK);
+	}
+	
+	@ApiOperation("Busca todos os usuários cadastrados no sistema")
+	@ResponseBody
+	@GetMapping("/usuarios")
+	public ResponseEntity<Set<Usuario>> usuariosCadastrados() {
+		Set<Usuario> usuarios = usuarioService.findAll();
+		return new ResponseEntity<Set<Usuario>>(usuarios,HttpStatus.OK);
 	}
 	
 	private void enviaEmail(Usuario usuario,String codigo) {

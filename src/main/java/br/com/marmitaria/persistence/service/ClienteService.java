@@ -15,4 +15,6 @@ public class ClienteService extends GenericService<Cliente>{
 	public Cliente findByEmail(String email) {
 		return dao.findByEmail(email);
 	}
+
+
 }

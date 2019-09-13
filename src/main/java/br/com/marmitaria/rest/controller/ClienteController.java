@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.marmitaria.persistence.model.Cliente;
+import br.com.marmitaria.persistence.model.Usuario;
 import br.com.marmitaria.persistence.service.ClienteService;
+import br.com.marmitaria.persistence.service.UsuarioService;
 import br.com.marmitaria.rest.exception.DadosInvalidosException;
 import br.com.marmitaria.rest.exception.MailNotSendException;
 import br.com.marmitaria.rest.exception.UsuarioNaoEncontradoException;
@@ -31,6 +33,9 @@ public class ClienteController{
 
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	@ApiOperation("Cria um cliente")
 	@PostMapping("/")
@@ -38,11 +43,12 @@ public class ClienteController{
 	public ResponseEntity<Cliente> create(@RequestBody ClienteRequest clienteRequest) {
 		Validation.validaCliente(clienteRequest);
 
-		Cliente clienteSave = clienteService.findByEmail(clienteRequest.getEmail());
-
-		if (clienteSave != null) {
+		Usuario usuario = usuarioService.findByEmail(clienteRequest.getEmail());
+		
+		if (usuario != null) {
 			throw new EmailJaCadastradoException();
 		}
+		
 		Cliente cliente = clienteService.salvar(new Cliente(clienteRequest));
 
 		enviaEmail(cliente);
