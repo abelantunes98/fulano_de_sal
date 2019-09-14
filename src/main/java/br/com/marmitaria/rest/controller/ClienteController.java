@@ -53,7 +53,7 @@ public class ClienteController{
 
 		enviaEmail(cliente);
 
-		return new ResponseEntity<Cliente>(cliente, HttpStatus.CREATED);
+		return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
 	}
 
 	@GetMapping("/confirmacao")
