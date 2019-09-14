@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,6 +35,19 @@ public class Cardapio {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DATA_CARDAPIO")
 	private Date data;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ID_MARMITA")
+	private Marmita marmita;
+	
+
+	public Marmita getMarmita() {
+		return marmita;
+	}
+
+	public void setMarmita(Marmita marmita) {
+		this.marmita = marmita;
+	}
 
 	public Long getIdCardapio() {
 		return idCardapio;
