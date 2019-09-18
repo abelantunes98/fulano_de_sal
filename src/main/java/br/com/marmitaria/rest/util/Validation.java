@@ -22,8 +22,7 @@ public abstract class Validation {
 			throw new DadosInvalidosException("Email não informado!");
 		}
 		Matcher matcher = pattern.matcher(login.getEmail());
-		
-		if(matcher.matches()) {
+		if(!matcher.matches()) {
 			throw new DadosInvalidosException("Email inválido!");
 		}
 		
@@ -50,7 +49,7 @@ public abstract class Validation {
 		}
 		Matcher matcher = pattern.matcher(request.getEmail());
 		
-		if(matcher.matches()) {
+		if(!matcher.matches()) {
 			throw new DadosInvalidosException("Email inválido!");
 		}
 		
