@@ -28,6 +28,11 @@ public class HandlerException {
 	public ResponseEntity<CustomError> notFound(NotFoundException e, WebRequest request){
 		return dispache(request, e, HttpStatus.NOT_FOUND);
 	}
+	
+	@ExceptionHandler(TokenException.class)
+	public ResponseEntity<CustomError> tokenInvalido(TokenException e, WebRequest request){
+		return dispache(request, e, HttpStatus.UNAUTHORIZED);
+	}
 
 	private ResponseEntity<CustomError> dispache(WebRequest request, RuntimeException e, HttpStatus status) {
 		CustomError customRestError = new CustomError(new Date(),e.getMessage());

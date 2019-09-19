@@ -9,10 +9,13 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Component;
 
+import br.com.marmitaria.rest.exception.TokenException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
 
+@Component
 public class TokenFilter extends GenericFilter {
 
 	/**
@@ -29,7 +32,7 @@ public class TokenFilter extends GenericFilter {
 		String header = req.getHeader("Authorization");
 
 		if (header == null || !header.startsWith("Bearer ")) {
-			throw new RuntimeException("Token inexistente ou mal formatado!");
+			throw new TokenException("Token inexistente ou mal formatado!");
 		}
 
 		String token = header.substring(7);
@@ -37,7 +40,7 @@ public class TokenFilter extends GenericFilter {
 		try {
 			Jwts.parser().setSigningKey(TokenKey.TOKEN_KEY.getValue()).parseClaimsJws(token).getBody();
 		} catch (SignatureException e) {
-			throw new RuntimeException("Token invalido ou expirado!");
+			throw new TokenException("Token invalido ou expirado!");
 		}
 
 		chain.doFilter(request, response);

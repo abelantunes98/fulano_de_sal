@@ -20,7 +20,7 @@ public class Email {
 
 	public String getHtmlConfirmarEmail() {
 		String hostname = System.getProperty("api.hostname");
-		String linkApi = String.format("http://%s/api/cliente/confirmacao?id=%d", hostname, usuario.getId());
+		String linkApi = String.format("http://%s/api/publico/cliente/confirmacao?id=%d", hostname, usuario.getId());
 
 		String mail = String.format("<!doctype html>\n" + "<html lang=\"pt-br\">\n" + "  <head>\n"
 				+ "    <meta charset=\"utf-8\">\n" + "  </head>\n" + "  <body>\n" + "    <div>\n" + "        <div >\n"

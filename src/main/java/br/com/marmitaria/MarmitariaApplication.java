@@ -18,6 +18,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import br.com.marmitaria.rest.login.TokenFilter;
+
 
 @SpringBootApplication
 @RestController
@@ -70,6 +72,14 @@ public class MarmitariaApplication {
 		FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(new CorsFilter(source));
 		bean.setOrder(0);
 		return bean;
+	}
+	
+	@Bean
+	public FilterRegistrationBean<TokenFilter> filterProducts() {
+		FilterRegistrationBean<TokenFilter> filterRb = new FilterRegistrationBean<TokenFilter>();
+		filterRb.setFilter(new TokenFilter());
+		filterRb.addUrlPatterns("/protegido/*");
+		return filterRb;
 	}
 
 }

@@ -42,4 +42,8 @@ public abstract class Validation {
 	public static boolean naoInformado(String valor) {
 		return valor==null || valor.isEmpty();
 	}
+
+	public static void validaEmail(String email) {
+		
+	}
 }
