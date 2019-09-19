@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.marmitaria.persistence.model.Cliente;
 import br.com.marmitaria.persistence.service.ClienteService;
-import br.com.marmitaria.rest.exception.DadosInvalidosException;
 import br.com.marmitaria.rest.exception.notFound.NotFoundException;
 import br.com.marmitaria.rest.request.ClienteRequest;
 import br.com.marmitaria.rest.util.Validation;
