@@ -91,14 +91,13 @@ public class PublicoCotroller {
 		return new ResponseEntity<String>(mensagem, HttpStatus.OK);
 	}
 
-	private void enviaEmail(Cliente cliente) {
-		Email email = new Email(cliente);
-		email.setUsuario(cliente);
+	private void enviaEmail(Usuario usuario) {
+		Email email = new Email(usuario);
+		email.setUsuario(usuario);
 		try {
 		email.enviaConfirmaEmail();
 		}catch (MailNotSendException e) {
 			e.printStackTrace();
-			clienteService.deletar(cliente);
 		}
 	}
 	
@@ -253,6 +252,15 @@ public class PublicoCotroller {
 			e.printStackTrace();
 			usuarioService.deletar(usuario);
 		}
+	}
+	@ApiOperation("Realiza o reenvio do email de confirmação")
+	@GetMapping("/usuario/reenviarEmail")
+	@ResponseBody
+	public ResponseEntity<String> reenviarEmailRecuperacao(@RequestParam("emailSender") String emailRequest) {
+		Validation.validaEmail(emailRequest);
+		Usuario usuario = usuarioService.findByEmail(emailRequest);
+		enviaEmail(usuario);
+		return new ResponseEntity<String>("Email enviado", HttpStatus.OK);
 	}
 	
 	
