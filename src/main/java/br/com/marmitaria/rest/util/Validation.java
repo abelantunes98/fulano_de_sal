@@ -4,8 +4,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import br.com.marmitaria.rest.exception.DadosInvalidosException;
+import br.com.marmitaria.rest.request.CategoriaRequest;
 import br.com.marmitaria.rest.request.ClienteRequest;
 import br.com.marmitaria.rest.request.LoginRequest;
+import br.com.marmitaria.rest.request.MarmitaRequest;
+import br.com.marmitaria.rest.request.RecuperacaoRequest;
 import br.com.marmitaria.rest.request.UsuarioRequest;
 
 public abstract class Validation {
@@ -57,6 +60,35 @@ public abstract class Validation {
 		
 		if(!matcher.matches()) {
 			throw new DadosInvalidosException("Email inválido!");
+		}
+	}
+
+	public static void valida(MarmitaRequest marmitaRequest) {
+		if(naoInformado(marmitaRequest.getValor())) {
+			throw new DadosInvalidosException("Valor não informado!");
+		}
+		if(marmitaRequest.getTipo()==null) {
+			throw new DadosInvalidosException("Tipo não informado!");
+		}
+	}
+
+	private static boolean naoInformado(float valor) {
+		return valor==0;
+	}
+
+	public static void valida(RecuperacaoRequest request) {
+		if (naoInformado(request.getEmail())) {
+			throw new DadosInvalidosException("Email não informado!");
+		}
+
+		if (naoInformado(request.getSenha())) {
+			throw new DadosInvalidosException("Senha não informada!");
+		}	
+	}
+
+	public static void valida(CategoriaRequest categoriaRequest) {
+		if(naoInformado(categoriaRequest.getDescricao())) {
+			throw new DadosInvalidosException("Descrição não informada!");
 		}
 	}
 }

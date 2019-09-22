@@ -1,6 +1,6 @@
 package br.com.marmitaria.rest.reponse;
 
-import br.com.marmitaria.persistence.model.Tipo;
+import br.com.marmitaria.persistence.model.TipoUsuario;
 import br.com.marmitaria.persistence.model.Usuario;
 
 public class UsuarioResponse {
@@ -9,7 +9,7 @@ public class UsuarioResponse {
 	
 	private String email;
 	
-	private Tipo tipo;
+	private TipoUsuario tipo;
 	
 	private String token;
 
@@ -20,11 +20,11 @@ public class UsuarioResponse {
 		this.tipo = usuario.getTipo();
 	}
 	
-	public Tipo getTipo() {
+	public TipoUsuario getTipo() {
 		return tipo;
 	}
 	
-	public void setTipo(Tipo tipo) {
+	public void setTipo(TipoUsuario tipo) {
 		this.tipo = tipo;
 	}
 

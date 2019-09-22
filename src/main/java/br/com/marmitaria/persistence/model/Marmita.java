@@ -17,8 +17,12 @@ public class Marmita {
 	private Long idMarmita;
 	
 	@NotNull
-	@Column(name = "VALOR",updatable = false,unique = true)
+	@Column(name = "VALOR",updatable = false)
 	private float valor;
+	
+	@NotNull
+	@Column(name = "TIPO_MARMITA")
+	private TipoMarmita tipoMarmita;
 	
 	public Long getIdMarmita() {
 		return idMarmita;
@@ -35,4 +39,20 @@ public class Marmita {
 	public void setValor(float valor) {
 		this.valor = valor;
 	}
+	
+	public TipoMarmita getTipoMarmita() {
+		return tipoMarmita;
+	}
+	
+	public void setTipoMarmita(TipoMarmita tipoMarmita) {
+		this.tipoMarmita = tipoMarmita;
+	}
+
+	public Marmita(float valor,TipoMarmita tipoMarmita) {
+		super();
+		this.valor = valor;
+		this.tipoMarmita = tipoMarmita;
+	}
+	
+	public Marmita() {}
 }

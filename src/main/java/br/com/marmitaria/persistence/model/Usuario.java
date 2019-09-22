@@ -45,7 +45,7 @@ public class Usuario implements Serializable{
 	
 	@NotNull
 	@Column(name = "TIPO")
-	private Tipo tipo;
+	private TipoUsuario tipo;
 	
 	@NotNull
 	@Column(name = "CADASTRO_PENDENTE")
@@ -85,11 +85,11 @@ public class Usuario implements Serializable{
 		this.senha = senha;
 	}
 	
-	public Tipo getTipo() {
+	public TipoUsuario getTipo() {
 		return tipo;
 	}
 	
-	public void setTipo(Tipo tipo) {
+	public void setTipo(TipoUsuario tipo) {
 		this.tipo = tipo;
 	}
 

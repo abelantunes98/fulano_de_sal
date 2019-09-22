@@ -20,7 +20,7 @@ public class Administrador extends Usuario{
 		setNome(request.getNome());
 		setEmail(request.getEmail());
 		setSenha(request.getSenha());
-		setTipo(Tipo.ADMINISTRADOR);
+		setTipo(TipoUsuario.ADMINISTRADOR);
 		setCadastroPendente(false);
 	}
 	

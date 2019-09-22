@@ -23,6 +23,11 @@ public class Categoria {
 	@Column(name = "CATEGORIA",unique = true)
 	private String descricao;
 
+	public Categoria(String descricao) {
+		this.descricao = descricao;
+	}
+	public Categoria() {}
+
 	public Long getId() {
 		return id;
 	}

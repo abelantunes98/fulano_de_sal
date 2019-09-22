@@ -1,0 +1,57 @@
+package br.com.marmitaria.rest.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.marmitaria.persistence.model.Marmita;
+import br.com.marmitaria.persistence.model.TipoMarmita;
+import br.com.marmitaria.persistence.service.MarmitaService;
+import br.com.marmitaria.rest.exception.DadosInvalidosException;
+import br.com.marmitaria.rest.exception.notFound.NotFoundException;
+import br.com.marmitaria.rest.request.MarmitaRequest;
+import br.com.marmitaria.rest.util.Validation;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api
+@RestController
+@RequestMapping("/protegido/marmita")
+public class MarmitaController {
+	
+	@Autowired
+	private MarmitaService marmitaService;
+	
+	@ApiOperation("Cadastra marmita")
+	@ResponseBody
+	@PostMapping("/")
+	public ResponseEntity<Marmita> cadastra(@RequestBody MarmitaRequest marmitaRequest) {
+		Validation.valida(marmitaRequest);
+		TipoMarmita tipoMarmita = TipoMarmita.valueOf(TipoMarmita.class,marmitaRequest.getTipo());
+		if(tipoMarmita==null) {
+			throw new DadosInvalidosException("Tipo inválido");
+		}
+		Marmita marmita = new Marmita(marmitaRequest.getValor(),tipoMarmita);
+		marmita = marmitaService.salvar(marmita);
+		return new ResponseEntity<Marmita>(marmita,HttpStatus.OK);
+	}
+	
+	@ApiOperation("Remove Marmita")
+	@DeleteMapping("/remove")
+	public ResponseEntity<Marmita> remove(@RequestParam("id") Long id) {
+		Marmita marmita = marmitaService.findById(id);
+		if(marmita==null) {
+			throw new NotFoundException("Marmita não encontrada!");
+		}
+		marmitaService.deletar(marmita);
+		return new ResponseEntity<Marmita>(HttpStatus.OK);
+	}
+
+}

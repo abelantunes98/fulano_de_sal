@@ -32,7 +32,7 @@ public class Cliente extends Usuario{
 		setNome(request.getNome());
 		setEmail(request.getEmail());
 		setSenha(request.getSenha());
-		setTipo(Tipo.CLIENTE);
+		setTipo(TipoUsuario.CLIENTE);
 		setCadastroPendente(true);
 		this.endereco = request.getEndereco();
 		this.telefone = request.getTelefone();

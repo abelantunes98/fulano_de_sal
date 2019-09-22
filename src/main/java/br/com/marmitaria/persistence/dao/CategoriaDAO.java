@@ -8,4 +8,6 @@ import br.com.marmitaria.persistence.model.Categoria;
 @Repository
 public interface CategoriaDAO extends JpaRepository<Categoria, Long>{
 
+	Categoria findByDescricao(String descricao);
+
 }

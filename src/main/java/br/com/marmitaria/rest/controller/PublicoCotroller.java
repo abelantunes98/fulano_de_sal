@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.marmitaria.persistence.model.Cliente;
 import br.com.marmitaria.persistence.model.Recuperacao;
-import br.com.marmitaria.persistence.model.Tipo;
+import br.com.marmitaria.persistence.model.TipoUsuario;
 import br.com.marmitaria.persistence.model.Usuario;
 import br.com.marmitaria.persistence.service.ClienteService;
 import br.com.marmitaria.persistence.service.RecuperacaoService;
@@ -120,7 +120,7 @@ public class PublicoCotroller {
 		headers.add("Access-Control-Allow-Origin", "*");
 
 		ResponseEntity<UsuarioResponse> responseEntity = null;
-		if (usuario.getTipo().equals(Tipo.CLIENTE)) {
+		if (usuario.getTipo().equals(TipoUsuario.CLIENTE)) {
 			responseEntity = new ResponseEntity<UsuarioResponse>(
 					new ClienteResponse((Cliente) usuario, "Bearer " + token), HttpStatus.OK);
 		} else {
@@ -134,11 +134,7 @@ public class PublicoCotroller {
 	@GetMapping("/usuario/solicitarRecuperacao")
 	@ResponseBody
 	public ResponseEntity<String> solicitarRecuperacao(@RequestParam("email") String emailRequest) {
-
-		if (Validation.naoInformado(emailRequest)) {
-			throw new DadosInvalidosException("Email não informado");
-		}
-
+		Validation.validaEmail(emailRequest);
 		Usuario usuario = usuarioService.findByEmail(emailRequest);
 		
 		if (usuario == null) {
@@ -202,15 +198,7 @@ public class PublicoCotroller {
 	@PostMapping("/usuario/recuperarSenha")
 	@ResponseBody
 	public ResponseEntity<String> recuperarSenha(@RequestBody RecuperacaoRequest request) {
-
-		if (Validation.naoInformado(request.getEmail())) {
-			throw new DadosInvalidosException("Email não informado");
-		}
-
-		if (Validation.naoInformado(request.getSenha())) {
-			throw new DadosInvalidosException("Senha não informada");
-		}
-
+		Validation.valida(request);
 		Usuario usuario = usuarioService.findByEmail(request.getEmail());
 		
 		if(usuario==null) {
