@@ -24,6 +24,9 @@ public class Marmita {
 	@Column(name = "TIPO_MARMITA")
 	private TipoMarmita tipoMarmita;
 	
+	@Column(name = "DESCRICAO")
+	private String descricao;
+	
 	public Long getIdMarmita() {
 		return idMarmita;
 	}
@@ -47,11 +50,20 @@ public class Marmita {
 	public void setTipoMarmita(TipoMarmita tipoMarmita) {
 		this.tipoMarmita = tipoMarmita;
 	}
+	
+	public String getDescricao() {
+		return descricao;
+	}
+	
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
-	public Marmita(float valor,TipoMarmita tipoMarmita) {
+	public Marmita(float valor,TipoMarmita tipoMarmita,String descricao) {
 		super();
 		this.valor = valor;
 		this.tipoMarmita = tipoMarmita;
+		this.descricao = descricao;
 	}
 	
 	public Marmita() {}

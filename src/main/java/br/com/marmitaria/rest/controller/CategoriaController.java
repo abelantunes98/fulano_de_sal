@@ -1,9 +1,12 @@
 package br.com.marmitaria.rest.controller;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,5 +55,13 @@ public class CategoriaController {
 		}
 		service.deletar(categoria);
 		return new ResponseEntity<Categoria>(HttpStatus.OK);
+	}
+	
+	@ApiOperation("Restorna lista de categorias")
+	@GetMapping("/lista")
+	@ResponseBody
+	public ResponseEntity<Set<Categoria>> list() {
+		Set<Categoria> categorias = service.findAll();
+		return new ResponseEntity<Set<Categoria>>(categorias,HttpStatus.OK);
 	}
 }

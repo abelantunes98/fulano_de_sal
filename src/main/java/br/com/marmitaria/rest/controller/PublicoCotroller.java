@@ -129,7 +129,7 @@ public class PublicoCotroller {
 		}
 		return responseEntity;
 	}
-	
+
 	@ApiOperation("Realiza a solicitação de um código para a recuperação de email")
 	@GetMapping("/usuario/solicitarRecuperacao")
 	@ResponseBody

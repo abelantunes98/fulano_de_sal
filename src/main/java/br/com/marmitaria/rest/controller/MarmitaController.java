@@ -1,9 +1,12 @@
 package br.com.marmitaria.rest.controller;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +41,7 @@ public class MarmitaController {
 		if(tipoMarmita==null) {
 			throw new DadosInvalidosException("Tipo inválido");
 		}
-		Marmita marmita = new Marmita(marmitaRequest.getValor(),tipoMarmita);
+		Marmita marmita = new Marmita(marmitaRequest.getValor(),tipoMarmita,marmitaRequest.getDescricao());
 		marmita = marmitaService.salvar(marmita);
 		return new ResponseEntity<Marmita>(marmita,HttpStatus.OK);
 	}
@@ -52,6 +55,14 @@ public class MarmitaController {
 		}
 		marmitaService.deletar(marmita);
 		return new ResponseEntity<Marmita>(HttpStatus.OK);
+	}
+	
+	@ApiOperation("Retorna lista de marmitas")
+	@GetMapping("/lista")
+	@ResponseBody
+	public ResponseEntity<Set<Marmita>> list(){
+		Set<Marmita> marmitas = marmitaService.findAll();
+		return new ResponseEntity<Set<Marmita>>(marmitas,HttpStatus.OK);
 	}
 
 }

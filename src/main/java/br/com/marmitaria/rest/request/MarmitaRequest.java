@@ -11,6 +11,14 @@ public class MarmitaRequest implements Serializable{
 	private static final long serialVersionUID = 7993846437279750939L;
 	private String tipo;
 	private float valor;
+	private String descricao;
+	
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 	
 	public String getTipo() {
 		return tipo;
