@@ -12,12 +12,15 @@ public class UsuarioResponse {
 	private TipoUsuario tipo;
 	
 	private String token;
+	
+	private String senha;
 
 	public UsuarioResponse(Usuario usuario, String token) {
 		this.token = token;
 		this.nome = usuario.getNome();
 		this.email = usuario.getEmail();
 		this.tipo = usuario.getTipo();
+		this.senha = usuario.getSenha();
 	}
 	
 	public TipoUsuario getTipo() {
@@ -50,6 +53,14 @@ public class UsuarioResponse {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getSenha() {
+		return senha;
+	}
+	
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 }
