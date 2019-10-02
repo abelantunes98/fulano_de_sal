@@ -47,7 +47,8 @@ public class CategoriaController {
 	}
 	
 	@ApiOperation("Remove uma categoria")
-	@DeleteMapping("/remove")
+	@DeleteMapping("/remover")
+	@ResponseBody
 	public ResponseEntity<Categoria> remover(@RequestParam("id") Long id) {
 		Categoria categoria = service.findById(id);
 		if (categoria==null) {
@@ -58,10 +59,20 @@ public class CategoriaController {
 	}
 	
 	@ApiOperation("Restorna lista de categorias")
-	@GetMapping("/lista")
+	@GetMapping("/listar")
 	@ResponseBody
 	public ResponseEntity<Set<Categoria>> list() {
 		Set<Categoria> categorias = service.findAll();
 		return new ResponseEntity<Set<Categoria>>(categorias,HttpStatus.OK);
+	}
+	
+	@ApiOperation("Atualiza uma categoria")
+	@PostMapping("/atualizar")
+	@ResponseBody
+	public ResponseEntity<Categoria> atualizar(@RequestBody Categoria categoriaRequest){
+		Validation.valida(categoriaRequest);
+		Categoria categoria = service.findById(categoriaRequest.getId());
+		categoria = service.atualizar(categoriaRequest);
+		return new ResponseEntity<Categoria>(categoria,HttpStatus.OK);
 	}
 }

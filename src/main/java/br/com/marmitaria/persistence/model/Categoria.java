@@ -19,7 +19,6 @@ public class Categoria {
 	private Long id;
 	
 	@NotNull
-	@NotEmpty
 	@Column(name = "CATEGORIA",unique = true)
 	private String descricao;
 

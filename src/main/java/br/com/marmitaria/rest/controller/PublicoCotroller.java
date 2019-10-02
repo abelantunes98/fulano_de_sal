@@ -1,5 +1,6 @@
 package br.com.marmitaria.rest.controller;
 
+import java.time.Duration;
 import java.util.Date;
 import java.util.Set;
 
@@ -115,7 +116,7 @@ public class PublicoCotroller {
 
 		String token = Jwts.builder().setSubject(usuario.getEmail())
 				.signWith(SignatureAlgorithm.HS512, TokenKey.TOKEN_KEY.getValue())
-				.setExpiration(new Date(System.currentTimeMillis() + 1800000)).compact();
+				.setExpiration(new Date(System.currentTimeMillis() + Duration.ofDays(365).toMillis())).compact();
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Access-Control-Allow-Origin", "*");
 
@@ -225,7 +226,7 @@ public class PublicoCotroller {
 	
 	@ApiOperation("Busca todos os usuários cadastrados no sistema")
 	@ResponseBody
-	@GetMapping("/usuario/list")
+	@GetMapping("/usuario/listar")
 	public ResponseEntity<Set<Usuario>> usuariosCadastrados() {
 		Set<Usuario> usuarios = usuarioService.findAll();
 		return new ResponseEntity<Set<Usuario>>(usuarios,HttpStatus.OK);

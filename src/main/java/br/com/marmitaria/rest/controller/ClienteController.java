@@ -27,31 +27,15 @@ public class ClienteController{
 	private ClienteService clienteService;
 	
 	@ApiOperation("Realiza a atualização do cadastro")
-	@PostMapping("/atualiza")
+	@PostMapping("/atualizar")
 	@ResponseBody
 	public ResponseEntity<Cliente> atualizaCliente(@RequestBody ClienteRequest request) {
-		
-		Validation.validaEmail(request.getEmail());
-		
+		Validation.validaCliente(request);
 		Cliente cliente = clienteService.findByEmail(request.getEmail());
 		
 		if(cliente==null) {
 			throw new NotFoundException("O Cliente informado não existe");
 		}
-		
-		if (!Validation.naoInformado(request.getEndereco())) {
-			cliente.setEndereco(request.getEndereco());
-		}
-		if (!Validation.naoInformado(request.getNome())) {
-			cliente.setNome(request.getNome());
-		}
-		if (!Validation.naoInformado(request.getTelefone())) {
-			cliente.setTelefone(request.getTelefone());
-		}
-		if (!Validation.naoInformado(request.getSenha())) {
-			cliente.setSenha(request.getSenha());
-		}
-
 		cliente = clienteService.atualizar(cliente);
 		return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
 	}

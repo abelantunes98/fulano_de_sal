@@ -22,12 +22,10 @@ public class Produto {
 	private Long idProduto;
 	
 	@NotNull
-	@NotEmpty
 	@Column(name = "NOME")
 	private String nome;
 	
 	@NotNull
-	@NotEmpty
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ID_CATEGORIA")
 	private Categoria categoria; 

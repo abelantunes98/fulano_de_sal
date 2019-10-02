@@ -3,11 +3,15 @@ package br.com.marmitaria.rest.util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import br.com.marmitaria.persistence.model.Categoria;
+import br.com.marmitaria.persistence.model.Marmita;
+import br.com.marmitaria.persistence.model.Produto;
 import br.com.marmitaria.rest.exception.DadosInvalidosException;
 import br.com.marmitaria.rest.request.CategoriaRequest;
 import br.com.marmitaria.rest.request.ClienteRequest;
 import br.com.marmitaria.rest.request.LoginRequest;
 import br.com.marmitaria.rest.request.MarmitaRequest;
+import br.com.marmitaria.rest.request.ProdutoRequest;
 import br.com.marmitaria.rest.request.RecuperacaoRequest;
 import br.com.marmitaria.rest.request.UsuarioRequest;
 
@@ -75,6 +79,10 @@ public abstract class Validation {
 	private static boolean naoInformado(float valor) {
 		return valor==0;
 	}
+	
+	private static boolean naoInformado(Long valor) {
+		return valor==null;
+	}
 
 	public static void valida(RecuperacaoRequest request) {
 		if (naoInformado(request.getEmail())) {
@@ -89,6 +97,48 @@ public abstract class Validation {
 	public static void valida(CategoriaRequest categoriaRequest) {
 		if(naoInformado(categoriaRequest.getDescricao())) {
 			throw new DadosInvalidosException("Descrição não informada!");
+		}
+	}
+
+	public static void valida(ProdutoRequest produtoRequest) {
+		if(naoInformado(produtoRequest.getIdCategoria())) {
+			throw new DadosInvalidosException("Categoria não informada!");
+		}
+		if(naoInformado(produtoRequest.getNome())) {
+			throw new DadosInvalidosException("Nome não informado!");
+		}
+		
+	}
+
+
+	public static void valida(Marmita marmita) {
+		if(naoInformado(marmita.getIdMarmita())) {
+			throw new DadosInvalidosException("Id não informado!");
+		}
+		if(naoInformado(marmita.getValor())) {
+			throw new DadosInvalidosException("Valor não informado!");
+		}
+		if(marmita.getTipoMarmita()==null) {
+			throw new DadosInvalidosException("Tipo da marmita não informado!");
+		}
+	}
+
+	public static void valida(Categoria categoriaRequest) {
+		if(naoInformado(categoriaRequest.getId())) {
+			throw new DadosInvalidosException("Id não informado!");
+		}
+		if(naoInformado(categoriaRequest.getDescricao())) {
+			throw new DadosInvalidosException("Descrição não informada!");
+		}
+		
+	}
+
+	public static void valida(Produto produtoRequest) {
+		if(naoInformado(produtoRequest.getIdProduto())) {
+			throw new DadosInvalidosException("Id não informado!");
+		}
+		if(naoInformado(produtoRequest.getNome())) {
+			throw new DadosInvalidosException("Nome não informado!");
 		}
 	}
 }

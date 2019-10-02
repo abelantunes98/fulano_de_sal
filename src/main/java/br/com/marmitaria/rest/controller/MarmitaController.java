@@ -47,7 +47,7 @@ public class MarmitaController {
 	}
 	
 	@ApiOperation("Remove Marmita")
-	@DeleteMapping("/remove")
+	@DeleteMapping("/remover")
 	public ResponseEntity<Marmita> remove(@RequestParam("id") Long id) {
 		Marmita marmita = marmitaService.findById(id);
 		if(marmita==null) {
@@ -58,11 +58,24 @@ public class MarmitaController {
 	}
 	
 	@ApiOperation("Retorna lista de marmitas")
-	@GetMapping("/lista")
+	@GetMapping("/listar")
 	@ResponseBody
 	public ResponseEntity<Set<Marmita>> list(){
 		Set<Marmita> marmitas = marmitaService.findAll();
 		return new ResponseEntity<Set<Marmita>>(marmitas,HttpStatus.OK);
+	}
+	
+	@ApiOperation("Atualiza uma marmita")
+	@PostMapping("/atualizar")
+	@ResponseBody
+	public ResponseEntity<Marmita> atualizar(@RequestBody Marmita marmitaRequest) {
+		Validation.valida(marmitaRequest);
+		Marmita marmita = marmitaService.findById(marmitaRequest.getIdMarmita());
+		if(marmita==null) {
+			throw new NotFoundException("Marmita não cadastrada!");
+		}
+		marmita = marmitaService.atualizar(marmitaRequest);
+		return new ResponseEntity<Marmita>(marmita,HttpStatus.OK);
 	}
 
 }
