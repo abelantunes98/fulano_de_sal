@@ -7,8 +7,6 @@ public class ClienteRequest extends UsuarioRequest{
 	 * 
 	 */
 	private static final long serialVersionUID = -2560992207941608841L;
-
-	
 	
 	private String endereco;
 

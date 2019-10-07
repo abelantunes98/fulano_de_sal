@@ -7,6 +7,8 @@ import br.com.marmitaria.persistence.model.Categoria;
 import br.com.marmitaria.persistence.model.Marmita;
 import br.com.marmitaria.persistence.model.Produto;
 import br.com.marmitaria.rest.exception.DadosInvalidosException;
+import br.com.marmitaria.rest.request.AdministradorRequest;
+import br.com.marmitaria.rest.request.CardapioRequest;
 import br.com.marmitaria.rest.request.CategoriaRequest;
 import br.com.marmitaria.rest.request.ClienteRequest;
 import br.com.marmitaria.rest.request.LoginRequest;
@@ -139,6 +141,19 @@ public abstract class Validation {
 		}
 		if(naoInformado(produtoRequest.getNome())) {
 			throw new DadosInvalidosException("Nome não informado!");
+		}
+	}
+
+	public static void validaAdministrador(AdministradorRequest request) {
+		validaUsuario(request);
+	}
+
+	public static void valida(CardapioRequest request) {
+		if(naoInformado(request.getIdMarmita())){
+			throw new DadosInvalidosException("Marmita não informada!");
+		}
+		if(request.getIdProdutos()==null || request.getIdProdutos().isEmpty()){
+			throw new DadosInvalidosException("Cardapio sem produtos!");
 		}
 	}
 }

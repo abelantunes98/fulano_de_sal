@@ -10,16 +10,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.marmitaria.persistence.model.Administrador;
+import br.com.marmitaria.persistence.model.Cliente;
 import br.com.marmitaria.persistence.model.Usuario;
 import br.com.marmitaria.persistence.service.AdministradorService;
 import br.com.marmitaria.persistence.service.UsuarioService;
+import br.com.marmitaria.rest.exception.notFound.NotFoundException;
 import br.com.marmitaria.rest.exception.usuario.EmailJaCadastradoException;
+import br.com.marmitaria.rest.request.AdministradorRequest;
+import br.com.marmitaria.rest.request.ClienteRequest;
 import br.com.marmitaria.rest.request.UsuarioRequest;
 import br.com.marmitaria.rest.util.Validation;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/administrador")
+@RequestMapping("/protegido/administrador")
 public class AdministradorController {
 
 	@Autowired
@@ -41,6 +45,23 @@ public class AdministradorController {
 		}
 		Administrador administrador = administradorService.salvar(new Administrador(usuarioRequest));
 
+		return new ResponseEntity<Administrador>(administrador, HttpStatus.OK);
+	}
+	
+	@ApiOperation("Realiza a atualização do cadastro")
+	@PostMapping("/atualizar")
+	@ResponseBody
+	public ResponseEntity<Administrador> atualizaAdministrador(@RequestBody AdministradorRequest request) {
+		Validation.validaAdministrador(request);
+		Administrador administrador = administradorService.findByEmail(request.getEmail());
+		
+		if(administrador==null) {
+			throw new NotFoundException("O Administrador informado não existe");
+		}
+		administrador.setNome(request.getNome());
+		administrador.setSenha(request.getSenha());
+		
+		administrador = administradorService.atualizar(administrador);
 		return new ResponseEntity<Administrador>(administrador, HttpStatus.OK);
 	}
 }

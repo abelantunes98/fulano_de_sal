@@ -32,10 +32,13 @@ public class ClienteController{
 	public ResponseEntity<Cliente> atualizaCliente(@RequestBody ClienteRequest request) {
 		Validation.validaCliente(request);
 		Cliente cliente = clienteService.findByEmail(request.getEmail());
-		
 		if(cliente==null) {
 			throw new NotFoundException("O Cliente informado não existe");
 		}
+		cliente.setNome(request.getNome());
+		cliente.setEndereco(request.getEndereco());
+		cliente.setTelefone(request.getTelefone());
+		cliente.setSenha(request.getSenha());
 		cliente = clienteService.atualizar(cliente);
 		return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
 	}
