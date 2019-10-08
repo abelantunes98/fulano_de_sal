@@ -1,5 +1,6 @@
 package br.com.marmitaria.persistence.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -20,7 +21,15 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "CARDAPIO")
-public class Cardapio {
+public class Cardapio implements Serializable, Comparable<Cardapio>{
+
+	
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5966910549929051635L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,4 +82,57 @@ public class Cardapio {
 		this.data = data;
 	}
 
+	@Override
+	public int compareTo(Cardapio o) {
+		return (int) (o.getIdCardapio() - this.getIdCardapio());
+	}
+
+	@Override
+	public String toString() {
+		return "Cardapio [idCardapio=" + idCardapio + ", produtos=" + produtos + ", data=" + data + ", marmita="
+				+ marmita + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((data == null) ? 0 : data.hashCode());
+		result = prime * result + ((idCardapio == null) ? 0 : idCardapio.hashCode());
+		result = prime * result + ((marmita == null) ? 0 : marmita.hashCode());
+		result = prime * result + ((produtos == null) ? 0 : produtos.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cardapio other = (Cardapio) obj;
+		if (data == null) {
+			if (other.data != null)
+				return false;
+		} else if (!data.equals(other.data))
+			return false;
+		if (idCardapio == null) {
+			if (other.idCardapio != null)
+				return false;
+		} else if (!idCardapio.equals(other.idCardapio))
+			return false;
+		if (marmita == null) {
+			if (other.marmita != null)
+				return false;
+		} else if (!marmita.equals(other.marmita))
+			return false;
+		if (produtos == null) {
+			if (other.produtos != null)
+				return false;
+		} else if (!produtos.equals(other.produtos))
+			return false;
+		return true;
+	}
 }

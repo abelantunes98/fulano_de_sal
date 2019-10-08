@@ -1,5 +1,6 @@
 package br.com.marmitaria.rest.controller;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -64,6 +65,7 @@ public class CategoriaController {
 	@ResponseBody
 	public ResponseEntity<List<Categoria>> list() {
 		List<Categoria> categorias = service.findAll();
+		Collections.sort(categorias);
 		return new ResponseEntity<List<Categoria>>(categorias,HttpStatus.OK);
 	}
 	

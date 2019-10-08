@@ -1,6 +1,7 @@
 package br.com.marmitaria.rest.controller;
 
 import java.time.Duration;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -230,6 +231,7 @@ public class PublicoCotroller {
 	@GetMapping("/usuario/listar")
 	public ResponseEntity<List<Usuario>> usuariosCadastrados() {
 		List<Usuario> usuarios = usuarioService.findAll();
+		Collections.sort(usuarios);
 		return new ResponseEntity<List<Usuario>>(usuarios,HttpStatus.OK);
 	}
 	

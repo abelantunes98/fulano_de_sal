@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 @Table(name = "USUARIO")
-public class Usuario implements Serializable{
+public class Usuario implements Serializable,Comparable<Usuario>{
 
 	/**
 	 * 
@@ -104,6 +104,11 @@ public class Usuario implements Serializable{
 	@Override
 	public String toString() {
 		return String.format("{nome:%s, email: %s}", this.nome,this.email);
+	}
+
+	@Override
+	public int compareTo(Usuario o) {
+		return (int) (o.getId() - this.getId());
 	}
 
 }
