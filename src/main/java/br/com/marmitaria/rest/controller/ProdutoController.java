@@ -1,5 +1,6 @@
 package br.com.marmitaria.rest.controller;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,9 +71,9 @@ public class ProdutoController {
 	@ApiOperation("Retorna lista de produtos")
 	@GetMapping("/listar")
 	@ResponseBody
-	public ResponseEntity<Set<Produto>> lista(){
-		Set<Produto> produtos = produtoService.findAll();
-		return new ResponseEntity<Set<Produto>>(produtos,HttpStatus.OK);
+	public ResponseEntity<List<Produto>> lista(){
+		List<Produto> produtos = produtoService.findAll();
+		return new ResponseEntity<List<Produto>>(produtos,HttpStatus.OK);
 	}
 	
 	@ApiOperation("Retorna lista de produtos da categoria informada")

@@ -1,6 +1,7 @@
 package br.com.marmitaria.persistence.service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,8 @@ public class GenericService<T> {
 		return dao.findById(id).get();
 	}
 	
-	public Set<T> findAll() {
-		return new HashSet<T>(dao.findAll());
+	public List<T> findAll() {
+		return dao.findAll();
 	}
 
 }

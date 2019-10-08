@@ -1,5 +1,6 @@
 package br.com.marmitaria.rest.controller;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,9 +62,9 @@ public class CategoriaController {
 	@ApiOperation("Restorna lista de categorias")
 	@GetMapping("/listar")
 	@ResponseBody
-	public ResponseEntity<Set<Categoria>> list() {
-		Set<Categoria> categorias = service.findAll();
-		return new ResponseEntity<Set<Categoria>>(categorias,HttpStatus.OK);
+	public ResponseEntity<List<Categoria>> list() {
+		List<Categoria> categorias = service.findAll();
+		return new ResponseEntity<List<Categoria>>(categorias,HttpStatus.OK);
 	}
 	
 	@ApiOperation("Atualiza uma categoria")

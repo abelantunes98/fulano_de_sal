@@ -1,5 +1,7 @@
 package br.com.marmitaria.persistence.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +12,13 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "MARMITA")
-public class Marmita {
+public class Marmita implements Serializable, Comparable<Marmita>{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3141095153121936116L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idMarmita;
@@ -67,4 +74,16 @@ public class Marmita {
 	}
 	
 	public Marmita() {}
+
+	@Override
+	public int compareTo(Marmita o) {
+		return (int) (o.getIdMarmita() - this.getIdMarmita());
+	}
+
+	@Override
+	public String toString() {
+		return "Marmita [idMarmita=" + idMarmita + ", valor=" + valor + ", tipoMarmita=" + tipoMarmita + ", descricao="
+				+ descricao + "]";
+	}
+
 }

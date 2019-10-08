@@ -1,5 +1,7 @@
 package br.com.marmitaria.rest.controller;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,7 @@ public class MarmitaController {
 		}
 		Marmita marmita = new Marmita(marmitaRequest.getValor(),tipoMarmita,marmitaRequest.getDescricao());
 		marmita = marmitaService.salvar(marmita);
+		System.out.println("INSERT -> " + marmita);
 		return new ResponseEntity<Marmita>(marmita,HttpStatus.OK);
 	}
 	
@@ -53,6 +56,7 @@ public class MarmitaController {
 		if(marmita==null) {
 			throw new NotFoundException("Marmita não encontrada!");
 		}
+		System.out.println("DELETE -> " + marmita);
 		marmitaService.deletar(marmita);
 		return new ResponseEntity<Marmita>(HttpStatus.OK);
 	}
@@ -60,9 +64,10 @@ public class MarmitaController {
 	@ApiOperation("Retorna lista de marmitas")
 	@GetMapping("/listar")
 	@ResponseBody
-	public ResponseEntity<Set<Marmita>> list(){
-		Set<Marmita> marmitas = marmitaService.findAll();
-		return new ResponseEntity<Set<Marmita>>(marmitas,HttpStatus.OK);
+	public ResponseEntity<List<Marmita>> list(){
+		List<Marmita> marmitas = marmitaService.findAll();
+		Collections.sort(marmitas);
+		return new ResponseEntity<List<Marmita>>(marmitas,HttpStatus.OK);
 	}
 	
 	@ApiOperation("Atualiza uma marmita")
@@ -74,7 +79,9 @@ public class MarmitaController {
 		if(marmita==null) {
 			throw new NotFoundException("Marmita não cadastrada!");
 		}
+		System.out.println("UPDADE BEFORE -> " + marmita);
 		marmita = marmitaService.atualizar(marmitaRequest);
+		System.out.println("UPDADE AFTER -> " + marmita);
 		return new ResponseEntity<Marmita>(marmita,HttpStatus.OK);
 	}
 

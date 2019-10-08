@@ -2,6 +2,7 @@ package br.com.marmitaria.rest.controller;
 
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -227,9 +228,9 @@ public class PublicoCotroller {
 	@ApiOperation("Busca todos os usuários cadastrados no sistema")
 	@ResponseBody
 	@GetMapping("/usuario/listar")
-	public ResponseEntity<Set<Usuario>> usuariosCadastrados() {
-		Set<Usuario> usuarios = usuarioService.findAll();
-		return new ResponseEntity<Set<Usuario>>(usuarios,HttpStatus.OK);
+	public ResponseEntity<List<Usuario>> usuariosCadastrados() {
+		List<Usuario> usuarios = usuarioService.findAll();
+		return new ResponseEntity<List<Usuario>>(usuarios,HttpStatus.OK);
 	}
 	
 	private void enviaEmail(Usuario usuario,String codigo) {
