@@ -10,14 +10,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.marmitaria.persistence.model.Administrador;
-import br.com.marmitaria.persistence.model.Cliente;
 import br.com.marmitaria.persistence.model.Usuario;
 import br.com.marmitaria.persistence.service.AdministradorService;
 import br.com.marmitaria.persistence.service.UsuarioService;
 import br.com.marmitaria.rest.exception.notFound.NotFoundException;
 import br.com.marmitaria.rest.exception.usuario.EmailJaCadastradoException;
 import br.com.marmitaria.rest.request.AdministradorRequest;
-import br.com.marmitaria.rest.request.ClienteRequest;
 import br.com.marmitaria.rest.request.UsuarioRequest;
 import br.com.marmitaria.rest.util.Validation;
 import io.swagger.annotations.ApiOperation;
