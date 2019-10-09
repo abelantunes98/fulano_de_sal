@@ -16,7 +16,7 @@ public class ClienteResponse extends UsuarioResponse{
 		super(cliente,cliente.isCadastroPendente()?null:token);
 		this.endereco = cliente.getEndereco();
 		this.cadastroPendente = cliente.isCadastroPendente();
-		this.senha = cliente.getSenha();
+		this.senha = "ola";
 		this.telefone = cliente.getTelefone();
 	}
 
