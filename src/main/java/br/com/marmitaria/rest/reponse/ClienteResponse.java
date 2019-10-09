@@ -48,7 +48,7 @@ public class ClienteResponse extends UsuarioResponse{
 		return telefone;
 	}
 
-	public String setTelefone(String newTelefone) {
+	public void setTelefone(String newTelefone) {
 		this.telefone = newTelefone;
 	}
 	
