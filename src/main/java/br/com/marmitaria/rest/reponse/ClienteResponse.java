@@ -10,11 +10,14 @@ public class ClienteResponse extends UsuarioResponse{
 	
 	private String senha;
 
+	private String telefone;
+
 	public ClienteResponse(Cliente cliente, String token) {
 		super(cliente,cliente.isCadastroPendente()?null:token);
 		this.endereco = cliente.getEndereco();
 		this.cadastroPendente = cliente.isCadastroPendente();
 		this.senha = cliente.getSenha();
+		this.telefone = cliente.getTelefone();
 	}
 
 
@@ -39,6 +42,14 @@ public class ClienteResponse extends UsuarioResponse{
 	
 	public String getSenha() {
 		return senha;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public String setTelefone(String newTelefone) {
+		this.telefone = newTelefone;
 	}
 	
 	public void setSenha(String senha) {
