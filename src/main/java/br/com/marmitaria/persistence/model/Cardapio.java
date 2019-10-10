@@ -2,7 +2,7 @@ package br.com.marmitaria.persistence.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,10 +36,10 @@ public class Cardapio implements Serializable, Comparable<Cardapio>{
 	@Column(name = "ID_CARDAPIO")
 	private Long idCardapio;
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "CARDAPIO_PRODUTO", joinColumns = { @JoinColumn(name = "ID_CARDAPIO") }, inverseJoinColumns = {
 			@JoinColumn(name = "ID_PRODUTO") })
-	private Set<Produto> produtos;
+	private List<Produto> produtos;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DATA_CARDAPIO")
@@ -66,11 +66,11 @@ public class Cardapio implements Serializable, Comparable<Cardapio>{
 		this.idCardapio = idCardapio;
 	}
 
-	public Set<Produto> getProdutos() {
+	public List<Produto> getProdutos() {
 		return produtos;
 	}
 
-	public void setProdutos(Set<Produto> produtos) {
+	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
 
