@@ -2,6 +2,7 @@ package br.com.marmitaria.rest.controller;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -74,6 +75,7 @@ public class CardapioController {
 		Cardapio retorno = null;
 		List<Cardapio> cardapios = cardapioService.findAll();
 		if(cardapios != null && !cardapios.isEmpty()) {
+			Collections.sort(cardapios);
 			retorno = cardapios.get(cardapios.size()-1);
 		}
 		return new ResponseEntity<Cardapio>(retorno, HttpStatus.OK);
