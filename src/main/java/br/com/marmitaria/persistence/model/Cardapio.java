@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,9 +21,6 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "CARDAPIO")
 public class Cardapio implements Serializable, Comparable<Cardapio>{
-
-	
-
 
 	/**
 	 * 
@@ -45,18 +41,18 @@ public class Cardapio implements Serializable, Comparable<Cardapio>{
 	@Column(name = "DATA_CARDAPIO")
 	private Date data;
 	
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ID_MARMITA")
-	private Marmita marmita;
+//	@OneToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "ID_MARMITA")
+//	private Marmita marmita;
 	
 
-	public Marmita getMarmita() {
-		return marmita;
-	}
-
-	public void setMarmita(Marmita marmita) {
-		this.marmita = marmita;
-	}
+//	public Marmita getMarmita() {
+//		return marmita;
+//	}
+//
+//	public void setMarmita(Marmita marmita) {
+//		this.marmita = marmita;
+//	}
 
 	public Long getIdCardapio() {
 		return idCardapio;
@@ -89,8 +85,7 @@ public class Cardapio implements Serializable, Comparable<Cardapio>{
 
 	@Override
 	public String toString() {
-		return "Cardapio [idCardapio=" + idCardapio + ", produtos=" + produtos + ", data=" + data + ", marmita="
-				+ marmita + "]";
+		return "Cardapio [idCardapio=" + idCardapio + ", produtos=" + produtos + ", data=" + data + "]";
 	}
 
 	@Override
@@ -99,7 +94,6 @@ public class Cardapio implements Serializable, Comparable<Cardapio>{
 		int result = 1;
 		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + ((idCardapio == null) ? 0 : idCardapio.hashCode());
-		result = prime * result + ((marmita == null) ? 0 : marmita.hashCode());
 		result = prime * result + ((produtos == null) ? 0 : produtos.hashCode());
 		return result;
 	}
@@ -123,11 +117,6 @@ public class Cardapio implements Serializable, Comparable<Cardapio>{
 				return false;
 		} else if (!idCardapio.equals(other.idCardapio))
 			return false;
-		if (marmita == null) {
-			if (other.marmita != null)
-				return false;
-		} else if (!marmita.equals(other.marmita))
-			return false;
 		if (produtos == null) {
 			if (other.produtos != null)
 				return false;
@@ -135,4 +124,5 @@ public class Cardapio implements Serializable, Comparable<Cardapio>{
 			return false;
 		return true;
 	}
+
 }

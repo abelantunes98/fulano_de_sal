@@ -17,10 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.marmitaria.persistence.model.Cardapio;
-import br.com.marmitaria.persistence.model.Marmita;
 import br.com.marmitaria.persistence.model.Produto;
 import br.com.marmitaria.persistence.service.CardapioService;
-import br.com.marmitaria.persistence.service.MarmitaService;
 import br.com.marmitaria.persistence.service.ProdutoService;
 import br.com.marmitaria.rest.exception.notFound.NotFoundException;
 import br.com.marmitaria.rest.request.CardapioRequest;
@@ -37,9 +35,6 @@ public class CardapioController {
 	private CardapioService cardapioService;
 	
 	@Autowired
-	private MarmitaService marmitaService;
-	
-	@Autowired
 	private ProdutoService produtoService;
 	
 	@ApiOperation("Cadastra um cardápio")
@@ -48,9 +43,6 @@ public class CardapioController {
 	public ResponseEntity<Cardapio> cadastrar(@RequestBody CardapioRequest request){
 		Validation.valida(request);	
 		Cardapio cardapio = new Cardapio();
-		
-		Marmita marmita = marmitaService.findById(request.getIdMarmita());
-		if(marmita==null) throw new NotFoundException("O cardápio possui marmita inválida!");
 		
 		cardapio.setProdutos(new ArrayList<Produto>());
 		

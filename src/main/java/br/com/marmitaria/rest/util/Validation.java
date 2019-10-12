@@ -149,9 +149,6 @@ public abstract class Validation {
 	}
 
 	public static void valida(CardapioRequest request) {
-		if(naoInformado(request.getIdMarmita())){
-			throw new DadosInvalidosException("Marmita não informada!");
-		}
 		if(request.getIdProdutos()==null || request.getIdProdutos().isEmpty()){
 			throw new DadosInvalidosException("Cardapio sem produtos!");
 		}

@@ -11,8 +11,6 @@ public class CardapioRequest implements Serializable{
 	private static final long serialVersionUID = 318940916330669090L;
 	
 	private Set<Long> idProdutos;
-	
-	private Long  idMarmita;
 
 	public Set<Long> getIdProdutos() {
 		return idProdutos;
@@ -21,14 +19,5 @@ public class CardapioRequest implements Serializable{
 	public void setIdProdutos(Set<Long> idProdutos) {
 		this.idProdutos = idProdutos;
 	}
-
-	public Long getIdMarmita() {
-		return idMarmita;
-	}
-
-	public void setIdMarmita(Long idMarmita) {
-		this.idMarmita = idMarmita;
-	}
-
 	
 }

@@ -19,9 +19,4 @@ public class UsuarioController{
 	@Autowired
 	private RecuperacaoService recuperacaoService;
 	
-
-	
-	
-	
-
 }
