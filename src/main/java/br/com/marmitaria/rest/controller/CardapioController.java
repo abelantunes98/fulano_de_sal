@@ -21,6 +21,7 @@ import br.com.marmitaria.persistence.model.Produto;
 import br.com.marmitaria.persistence.service.CardapioService;
 import br.com.marmitaria.persistence.service.ProdutoService;
 import br.com.marmitaria.rest.exception.notFound.NotFoundException;
+import br.com.marmitaria.rest.reponse.CardapioRespose;
 import br.com.marmitaria.rest.request.CardapioRequest;
 import br.com.marmitaria.rest.util.Validation;
 import io.swagger.annotations.Api;
@@ -63,14 +64,15 @@ public class CardapioController {
 	@ApiOperation("Retorna o último cardápio")
 	@ResponseBody
 	@GetMapping("/ultimo")
-	public ResponseEntity<Cardapio> cardapioDoDia() {
+	public ResponseEntity<CardapioRespose> cardapioDoDia() {
 		Cardapio retorno = null;
 		List<Cardapio> cardapios = cardapioService.findAll();
 		if(cardapios != null && !cardapios.isEmpty()) {
 			Collections.sort(cardapios);
 			retorno = cardapios.get(cardapios.size()-1);
 		}
-		return new ResponseEntity<Cardapio>(retorno, HttpStatus.OK);
+		CardapioRespose cardapioRespose = new CardapioRespose(retorno);
+		return new ResponseEntity<CardapioRespose>(cardapioRespose, HttpStatus.OK);
 	}
 
 }
