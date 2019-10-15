@@ -44,6 +44,11 @@ public class CardapioController {
 	public ResponseEntity<Cardapio> cadastrar(@RequestBody CardapioRequest request){
 		Validation.valida(request);	
 		Cardapio cardapio = new Cardapio();
+		List<Cardapio> cardapios = cardapioService.findAll();
+		
+		if(cardapios!=null && !cardapios.isEmpty()) {
+			cardapio = cardapios.get(0);
+		}
 		
 		cardapio.setProdutos(new ArrayList<Produto>());
 		
@@ -66,12 +71,12 @@ public class CardapioController {
 	@GetMapping("/ultimo")
 	public ResponseEntity<CardapioRespose> cardapioDoDia() {
 		Cardapio retorno = null;
+		CardapioRespose cardapioRespose = null;
 		List<Cardapio> cardapios = cardapioService.findAll();
 		if(cardapios != null && !cardapios.isEmpty()) {
-			Collections.sort(cardapios);
-			retorno = cardapios.get(cardapios.size()-1);
+			retorno = cardapios.get(0);
+			cardapioRespose = new CardapioRespose(retorno);
 		}
-		CardapioRespose cardapioRespose = new CardapioRespose(retorno);
 		return new ResponseEntity<CardapioRespose>(cardapioRespose, HttpStatus.OK);
 	}
 
