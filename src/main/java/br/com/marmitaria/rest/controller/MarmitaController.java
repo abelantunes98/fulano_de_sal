@@ -42,7 +42,7 @@ public class MarmitaController {
 		if(tipoMarmita==null) {
 			throw new DadosInvalidosException("Tipo inválido");
 		}
-		Marmita marmita = new Marmita(marmitaRequest.getValor(),tipoMarmita,marmitaRequest.getDescricao());
+		Marmita marmita = new Marmita(marmitaRequest.getValor(),tipoMarmita,marmitaRequest.getDescricao(),marmitaRequest.getCarnes());
 		marmita = marmitaService.salvar(marmita);
 		System.out.println("INSERT -> " + marmita);
 		return new ResponseEntity<Marmita>(marmita,HttpStatus.OK);

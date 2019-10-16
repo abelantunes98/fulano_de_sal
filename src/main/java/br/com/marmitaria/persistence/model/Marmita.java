@@ -34,6 +34,10 @@ public class Marmita implements Serializable, Comparable<Marmita>{
 	@Column(name = "DESCRICAO")
 	private String descricao;
 	
+	@NotNull
+	@Column(name = "CARNES")
+	private int carnes;
+	
 	public Long getIdMarmita() {
 		return idMarmita;
 	}
@@ -65,12 +69,21 @@ public class Marmita implements Serializable, Comparable<Marmita>{
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
+	public int getCarnes() {
+		return carnes;
+	}
 
-	public Marmita(float valor,TipoMarmita tipoMarmita,String descricao) {
+	public void setCarnes(int carnes) {
+		this.carnes = carnes;
+	}
+
+	public Marmita(float valor,TipoMarmita tipoMarmita,String descricao, int carnes) {
 		super();
 		this.valor = valor;
 		this.tipoMarmita = tipoMarmita;
 		this.descricao = descricao;
+		this.carnes = carnes;
 	}
 	
 	public Marmita() {}
@@ -80,16 +93,19 @@ public class Marmita implements Serializable, Comparable<Marmita>{
 		return (int) (o.getIdMarmita() - this.getIdMarmita());
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "Marmita [idMarmita=" + idMarmita + ", valor=" + valor + ", tipoMarmita=" + tipoMarmita + ", descricao="
-				+ descricao + "]";
+				+ descricao + ", carnes=" + carnes + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + carnes;
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((idMarmita == null) ? 0 : idMarmita.hashCode());
 		result = prime * result + ((tipoMarmita == null) ? 0 : tipoMarmita.hashCode());
@@ -106,6 +122,8 @@ public class Marmita implements Serializable, Comparable<Marmita>{
 		if (getClass() != obj.getClass())
 			return false;
 		Marmita other = (Marmita) obj;
+		if (carnes != other.carnes)
+			return false;
 		if (descricao == null) {
 			if (other.descricao != null)
 				return false;
@@ -122,4 +140,6 @@ public class Marmita implements Serializable, Comparable<Marmita>{
 			return false;
 		return true;
 	}
+
+	
 }

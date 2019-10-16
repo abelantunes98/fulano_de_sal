@@ -13,6 +13,15 @@ public class MarmitaRequest implements Serializable{
 	private String tipo;
 	private float valor;
 	private String descricao;
+	private int carnes;
+	
+	public int getCarnes() {
+		return carnes;
+	}
+	
+	public void setCarnes(int carnes) {
+		this.carnes = carnes;
+	}
 	
 	public Long getId() {
 		return id;
