@@ -55,7 +55,11 @@ public class CategoriaController {
 		if (categoria==null) {
 			throw new NotFoundException("Categoria não encontrada!");
 		}
-		service.deletar(categoria);
+		try {
+			service.deletar(categoria);
+		}catch (Exception e) {
+			throw new DadosInvalidosException("A categoria não pode ser removida!");
+		}
 		return new ResponseEntity<Categoria>(HttpStatus.OK);
 	}
 	

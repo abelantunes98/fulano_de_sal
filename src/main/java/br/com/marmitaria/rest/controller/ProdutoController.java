@@ -64,7 +64,11 @@ public class ProdutoController {
 		if(produto==null) {
 			throw new NotFoundException("Produto não cadastrado!");
 		}
-		produtoService.deletar(produto);
+		try {
+			produtoService.deletar(produto);
+		}catch (Exception e) {
+			throw new DadosInvalidosException("O produto não pode ser removido!");
+		}
 		return new ResponseEntity<Produto>(HttpStatus.OK);
 	}
 	

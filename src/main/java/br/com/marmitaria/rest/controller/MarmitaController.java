@@ -56,7 +56,11 @@ public class MarmitaController {
 			throw new NotFoundException("Marmita não encontrada!");
 		}
 		System.out.println("DELETE -> " + marmita);
-		marmitaService.deletar(marmita);
+		try {
+			marmitaService.deletar(marmita);
+		}catch (Exception e) {
+			throw new DadosInvalidosException("A marmita não pode ser removida!");
+		}
 		return new ResponseEntity<Marmita>(HttpStatus.OK);
 	}
 	
