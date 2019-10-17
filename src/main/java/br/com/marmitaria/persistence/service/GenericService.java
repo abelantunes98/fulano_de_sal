@@ -1,6 +1,7 @@
 package br.com.marmitaria.persistence.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -25,7 +26,10 @@ public class GenericService<T> {
 	}
 	
 	public T findById(Long id) {
-		return dao.findById(id).get();
+		T retorno = null;
+		Optional<T> op= dao.findById(id);
+		if(op.isPresent()) retorno = op.get();
+		return retorno;
 	}
 	
 	public List<T> findAll() {

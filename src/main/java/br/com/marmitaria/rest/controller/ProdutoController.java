@@ -2,7 +2,6 @@ package br.com.marmitaria.rest.controller;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -81,13 +80,14 @@ public class ProdutoController {
 	@ApiOperation("Retorna lista de produtos da categoria informada")
 	@GetMapping("/listarPorCategoria")
 	@ResponseBody
-	public ResponseEntity<Set<Produto>> listaPorCategoria(@RequestParam("idCategoria") Long idCategoria) {
+	public ResponseEntity<List<Produto>> listaPorCategoria(@RequestParam("idCategoria") Long idCategoria) {
 		Categoria categoria = categoriaService.findById(idCategoria);
 		if(categoria==null) {
 			throw new DadosInvalidosException("Categoria não encontrada!");
 		}
-		Set<Produto> produtos = produtoService.findByCategoria(categoria);
-		return new ResponseEntity<Set<Produto>>(produtos,HttpStatus.OK);
+		List<Produto> produtos = produtoService.findByCategoria(categoria);
+		Collections.sort(produtos);
+		return new ResponseEntity<List<Produto>>(produtos,HttpStatus.OK);
 	}
 	
 	@ApiOperation("Atualiza um produto")

@@ -13,6 +13,7 @@ import br.com.marmitaria.rest.request.CategoriaRequest;
 import br.com.marmitaria.rest.request.ClienteRequest;
 import br.com.marmitaria.rest.request.LoginRequest;
 import br.com.marmitaria.rest.request.MarmitaRequest;
+import br.com.marmitaria.rest.request.PedidoRequest;
 import br.com.marmitaria.rest.request.ProdutoRequest;
 import br.com.marmitaria.rest.request.RecuperacaoRequest;
 import br.com.marmitaria.rest.request.UsuarioRequest;
@@ -82,7 +83,7 @@ public abstract class Validation {
 		return valor==0;
 	}
 	
-	private static boolean naoInformado(Long valor) {
+	public static boolean naoInformado(Long valor) {
 		return valor==null;
 	}
 
@@ -151,6 +152,19 @@ public abstract class Validation {
 	public static void valida(CardapioRequest request) {
 		if(request.getIdProdutos()==null || request.getIdProdutos().isEmpty()){
 			throw new DadosInvalidosException("Cardapio sem produtos!");
+		}
+	}
+
+	public static void valida(PedidoRequest pedidoRequest) {
+		validaEmail(pedidoRequest.getEmail());
+		if(naoInformado(pedidoRequest.getIdMarmita())){
+			throw new DadosInvalidosException("Marmita não selecionada!");
+		}
+		if(pedidoRequest.getIdProdutos() == null || pedidoRequest.getIdProdutos().isEmpty()){
+			throw new DadosInvalidosException("Pedido sem produtos!");
+		}
+		if(pedidoRequest.getTipoPagamento()==null){
+			throw new DadosInvalidosException("Tipo de pagamento não informado!");
 		}
 	}
 }

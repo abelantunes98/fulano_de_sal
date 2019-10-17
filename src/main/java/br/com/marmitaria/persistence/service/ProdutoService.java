@@ -1,7 +1,6 @@
 package br.com.marmitaria.persistence.service;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +19,8 @@ public class ProdutoService extends GenericService<Produto>{
 		return dao.findByNome(nome);
 	}
 
-	public Set<Produto> findByCategoria(Categoria categoria) {
-		return new HashSet<Produto>(dao.findByCategoria(categoria));
+	public List<Produto> findByCategoria(Categoria categoria) {
+		return dao.findByCategoria(categoria);
 	}
 
 }
