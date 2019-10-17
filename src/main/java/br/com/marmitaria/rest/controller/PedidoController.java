@@ -108,7 +108,7 @@ public class PedidoController {
 	@ApiOperation("Lista os pedidos de um determinado cliente")
 	@ResponseBody
 	@GetMapping("/listarCliente")
-	private ResponseEntity<PedidosResponse> listarPorCliente(@RequestParam("email") String email){
+	public ResponseEntity<PedidosResponse> listarPorCliente(@RequestParam("email") String email){
 		Validation.validaEmail(email);
 		Cliente cliente = clienteService.findByEmail(email);
 		if(cliente==null) throw new NotFoundException("Cliente não cadastrado!");
@@ -117,6 +117,17 @@ public class PedidoController {
 		PedidosResponse pedidosResponse = new PedidosResponse(pedidos);
 		return new ResponseEntity<PedidosResponse>(pedidosResponse,HttpStatus.OK);
 	}
+	
+	@ApiOperation("Apagar pedidos confirmados do dia")
+	@GetMapping("/limparDia")
+	public ResponseEntity<Pedido> apagarPedidos(){
+		List<Pedido> pedidos = pedidoService.findAll();
+		for(Pedido pedido : pedidos){
+			if(pedido.getConfirmado())pedidoService.deletar(pedido);
+		}
+		return new ResponseEntity<Pedido>(HttpStatus.OK);
+	}
+	
 }
 
 
