@@ -25,7 +25,6 @@ public class CardapioRespose implements Serializable{
 	public CardapioRespose(Cardapio cardapio) {
 		this.data = cardapio.getData();
 		Map<String, List<ProdutoResponse>> produtos  = new HashMap<String, List<ProdutoResponse>>();
-		
 		categorias = new ArrayList<>();
 		for(Produto produto:cardapio.getProdutos()) {
 			Categoria categoria = produto.getCategoria();
