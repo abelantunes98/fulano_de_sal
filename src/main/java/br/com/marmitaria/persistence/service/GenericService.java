@@ -35,5 +35,8 @@ public class GenericService<T> {
 	public List<T> findAll() {
 		return dao.findAll();
 	}
-
+	
+	public void deleteAll(){
+		dao.deleteAll();
+	}
 }
