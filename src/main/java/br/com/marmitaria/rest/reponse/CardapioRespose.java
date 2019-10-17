@@ -35,7 +35,7 @@ public class CardapioRespose implements Serializable{
 		}
 		
 		for(String key: produtos.keySet()){
-			categorias.add(new CategoriaResponse(produtos.get(key)));
+			categorias.add(new CategoriaResponse(key,produtos.get(key)));
 		}
 	}
 

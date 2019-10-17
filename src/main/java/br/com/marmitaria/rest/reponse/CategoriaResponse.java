@@ -14,7 +14,8 @@ public class CategoriaResponse implements Serializable{
 	
 	private List<ProdutoResponse> produtos;
 
-	public CategoriaResponse(List<ProdutoResponse> list) {
+	public CategoriaResponse(String nome,List<ProdutoResponse> list) {
+		this.nome = nome;
 		this.produtos = list;
 	}
 
