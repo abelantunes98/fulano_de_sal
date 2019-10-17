@@ -19,17 +19,24 @@ public class CardapioRespose implements Serializable{
 	private static final long serialVersionUID = 2402454664555277237L;
 	
 	private Date data;
-	private Map<String, List<ProdutoResponse>> produtos;
+	private List<CategoriaResponse> categorias;
+	
 	
 	public CardapioRespose(Cardapio cardapio) {
 		this.data = cardapio.getData();
-		produtos  = new HashMap<String, List<ProdutoResponse>>();
+		Map<String, List<ProdutoResponse>> produtos  = new HashMap<String, List<ProdutoResponse>>();
+		
+		categorias = new ArrayList<>();
 		for(Produto produto:cardapio.getProdutos()) {
 			Categoria categoria = produto.getCategoria();
 			if(produtos.get(categoria.getDescricao())==null) {
 				produtos.put(categoria.getDescricao(), new ArrayList<ProdutoResponse>());
 			}
 			produtos.get(categoria.getDescricao()).add(new ProdutoResponse(produto));
+		}
+		
+		for(String key: produtos.keySet()){
+			categorias.add(new CategoriaResponse(produtos.get(key)));
 		}
 	}
 
@@ -41,14 +48,12 @@ public class CardapioRespose implements Serializable{
 		this.data = data;
 	}
 
-	public Map<String, List<ProdutoResponse>> getProdutos() {
-		return produtos;
-	}
-
-	public void setProdutos(Map<String, List<ProdutoResponse>> produtos) {
-		this.produtos = produtos;
+	public List<CategoriaResponse> getCategorias() {
+		return categorias;
 	}
 	
-	
+	public void setCategorias(List<CategoriaResponse> categorias) {
+		this.categorias = categorias;
+	}
 
 }
