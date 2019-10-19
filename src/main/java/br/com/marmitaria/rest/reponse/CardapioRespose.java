@@ -1,8 +1,8 @@
 package br.com.marmitaria.rest.reponse;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,12 +18,13 @@ public class CardapioRespose implements Serializable{
 	 */
 	private static final long serialVersionUID = 2402454664555277237L;
 	
-	private Date data;
+	private String data;
 	private List<CategoriaResponse> categorias;
 	
 	
 	public CardapioRespose(Cardapio cardapio) {
-		this.data = cardapio.getData();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		this.data = dateFormat.format(cardapio.getData());
 		Map<String, List<ProdutoResponse>> produtos  = new HashMap<String, List<ProdutoResponse>>();
 		categorias = new ArrayList<>();
 		for(Produto produto:cardapio.getProdutos()) {
@@ -39,11 +40,11 @@ public class CardapioRespose implements Serializable{
 		}
 	}
 
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
-
-	public void setData(Date data) {
+	
+	public void setData(String data) {
 		this.data = data;
 	}
 
