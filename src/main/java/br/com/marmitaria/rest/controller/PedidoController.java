@@ -2,6 +2,7 @@ package br.com.marmitaria.rest.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,7 @@ public class PedidoController {
 	public ResponseEntity<PedidoResponse> cadastrar(@RequestBody PedidoRequest pedidoRequest){
 		Validation.valida(pedidoRequest);
 		Pedido pedido = new Pedido();
+		pedido.setData(new Date());
 		pedido.setConfirmado(false);
 		pedido.setTipoPagamento(pedidoRequest.getTipoPagamento());
 		pedido.setObsvacoes(pedidoRequest.getObservacoes());

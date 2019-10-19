@@ -1,11 +1,13 @@
 package br.com.marmitaria.rest.reponse;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import br.com.marmitaria.persistence.model.Cliente;
 import br.com.marmitaria.persistence.model.Marmita;
 import br.com.marmitaria.persistence.model.Pedido;
 import br.com.marmitaria.persistence.model.Produto;
@@ -29,6 +31,10 @@ public class PedidoResponse implements Serializable {
 	private String observacoes;
 
 	private TipoPagamento tipoPagamento;
+	
+	private Cliente cliente;
+	
+	private String data;
 
 	public PedidoResponse(Pedido pedido) {
 		this.marmita = pedido.getMarmita();
@@ -36,6 +42,9 @@ public class PedidoResponse implements Serializable {
 		this.idPedido = pedido.getIdPedido();
 		this.observacoes = pedido.getObsvacoes();
 		this.tipoPagamento = pedido.getTipoPagamento();
+		this.cliente = pedido.getCliente();
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		this.data = format.format(pedido.getData());
 		produtos = new HashMap<>();
 		for (Produto produto : pedido.getProdutos()) {
 			if (produtos.get(produto.getCategoria().getDescricao()) == null) {
@@ -44,6 +53,22 @@ public class PedidoResponse implements Serializable {
 
 			produtos.get(produto.getCategoria().getDescricao()).add(new ProdutoResponse(produto));
 		}
+	}
+	
+	public String getData() {
+		return data;
+	}
+	
+	public void setData(String data) {
+		this.data = data;
+	}
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+	
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public String getObservacoes() {

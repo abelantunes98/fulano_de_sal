@@ -37,7 +37,7 @@ public class Cardapio implements Serializable, Comparable<Cardapio>{
 			@JoinColumn(name = "ID_PRODUTO") })
 	private List<Produto> produtos;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "DATA_CARDAPIO")
 	private Date data;
 	

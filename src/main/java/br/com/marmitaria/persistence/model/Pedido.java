@@ -1,6 +1,7 @@
 package br.com.marmitaria.persistence.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,6 +15,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -52,6 +55,17 @@ public class Pedido implements Serializable,Comparable<Pedido>{
 	@Column(name = "TIPO_PAGAMENTO")
 	private TipoPagamento tipoPagamento;
 	
+	@Column(name = "DATA")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date  data;
+	
+	public Date getData() {
+		return data;
+	}
+	
+	public void setData(Date data) {
+		this.data = data;
+	}
 	
 	public void setTipoPagamento(TipoPagamento tipoPagamento) {
 		this.tipoPagamento = tipoPagamento;
@@ -119,6 +133,7 @@ public class Pedido implements Serializable,Comparable<Pedido>{
 		int result = 1;
 		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
 		result = prime * result + ((confirmado == null) ? 0 : confirmado.hashCode());
+		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + ((idPedido == null) ? 0 : idPedido.hashCode());
 		result = prime * result + ((marmita == null) ? 0 : marmita.hashCode());
 		result = prime * result + ((obsvacoes == null) ? 0 : obsvacoes.hashCode());
@@ -145,6 +160,11 @@ public class Pedido implements Serializable,Comparable<Pedido>{
 			if (other.confirmado != null)
 				return false;
 		} else if (!confirmado.equals(other.confirmado))
+			return false;
+		if (data == null) {
+			if (other.data != null)
+				return false;
+		} else if (!data.equals(other.data))
 			return false;
 		if (idPedido == null) {
 			if (other.idPedido != null)
@@ -175,7 +195,7 @@ public class Pedido implements Serializable,Comparable<Pedido>{
 	public String toString() {
 		return "Pedido [idPedido=" + idPedido + ", marmita=" + marmita + ", produtos=" + produtos + ", cliente="
 				+ cliente + ", confirmado=" + confirmado + ", obsvacoes=" + obsvacoes + ", tipoPagamento="
-				+ tipoPagamento + "]";
+				+ tipoPagamento + ", data=" + data + "]";
 	}
 	
 }
