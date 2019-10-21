@@ -143,7 +143,6 @@ public class PublicoCotroller {
 			throw new EmailNaoCadastradoException();
 		}
 		
-		usuario.setCadastroPendente(true);
 		usuario = usuarioService.atualizar(usuario);
 		
 		String codigo = GeradorCodigo.gerarCodigoRecuperacaoSenha();
@@ -179,10 +178,6 @@ public class PublicoCotroller {
 			throw new UsuarioNaoEncontradoException();
 		}
 		
-		if (!usuario.isCadastroPendente()) {
-			throw new DadosInvalidosException("Usuário não solicitou recuperação de senha.");
-		}
-		
 		Recuperacao recuperacao = recuperacaoService.findByUsuario(usuario);
 
 		if (recuperacao == null) {
@@ -207,10 +202,6 @@ public class PublicoCotroller {
 			throw new UsuarioNaoEncontradoException();
 		}
 		
-		if (!usuario.isCadastroPendente()) {
-			throw new DadosInvalidosException("Usuário não solicitou recuperação de senha.");
-		}
-		
 		Recuperacao recuperacao = recuperacaoService.findByUsuario(usuario);
 
 		if (recuperacao == null) {
@@ -218,7 +209,6 @@ public class PublicoCotroller {
 		}
 
 		usuario.setSenha(request.getSenha());
-		usuario.setCadastroPendente(false);
 		usuarioService.atualizar(usuario);
 		
 		recuperacaoService.deletar(recuperacao);
