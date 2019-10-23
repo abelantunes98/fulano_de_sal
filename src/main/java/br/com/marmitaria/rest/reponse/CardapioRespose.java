@@ -25,17 +25,17 @@ public class CardapioRespose implements Serializable{
 	public CardapioRespose(Cardapio cardapio) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		this.data = dateFormat.format(cardapio.getData());
-		Map<String, List<ProdutoResponse>> produtos  = new HashMap<String, List<ProdutoResponse>>();
+		Map<Categoria, List<ProdutoResponse>> produtos  = new HashMap<Categoria, List<ProdutoResponse>>();
 		categorias = new ArrayList<>();
 		for(Produto produto:cardapio.getProdutos()) {
 			Categoria categoria = produto.getCategoria();
-			if(produtos.get(categoria.getDescricao())==null) {
-				produtos.put(categoria.getDescricao(), new ArrayList<ProdutoResponse>());
+			if(produtos.get(categoria)==null) {
+				produtos.put(categoria, new ArrayList<ProdutoResponse>());
 			}
 			produtos.get(categoria.getDescricao()).add(new ProdutoResponse(produto));
 		}
 		
-		for(String key: produtos.keySet()){
+		for(Categoria key: produtos.keySet()){
 			categorias.add(new CategoriaResponse(key,produtos.get(key)));
 		}
 	}
