@@ -32,7 +32,7 @@ public class CardapioRespose implements Serializable{
 			if(produtos.get(categoria)==null) {
 				produtos.put(categoria, new ArrayList<ProdutoResponse>());
 			}
-			produtos.get(categoria.getDescricao()).add(new ProdutoResponse(produto));
+			produtos.get(categoria).add(new ProdutoResponse(produto));
 		}
 		
 		for(Categoria key: produtos.keySet()){
