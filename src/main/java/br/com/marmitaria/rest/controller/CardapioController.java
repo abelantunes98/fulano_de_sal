@@ -25,6 +25,7 @@ import br.com.marmitaria.persistence.service.CategoriaService;
 import br.com.marmitaria.persistence.service.ProdutoService;
 import br.com.marmitaria.rest.exception.notFound.NotFoundException;
 import br.com.marmitaria.rest.reponse.CardapioRespose;
+import br.com.marmitaria.rest.reponse.ProdutoResponse;
 import br.com.marmitaria.rest.request.CardapioRequest;
 import br.com.marmitaria.rest.util.Validation;
 import io.swagger.annotations.Api;
@@ -89,21 +90,21 @@ public class CardapioController {
 	@ApiOperation("Retorna o último cardápio por categoria")
 	@ResponseBody
 	@GetMapping("/ultimoPorCategoria")
-	public ResponseEntity<List<Produto>> ultimoPorCategoria(@RequestParam("idCategoria") Long id) {
+	public ResponseEntity<List<ProdutoResponse>> ultimoPorCategoria(@RequestParam("idCategoria") Long id) {
 		Cardapio cardapio = null;
 		List<Cardapio> cardapios = cardapioService.findAll();
-		List<Produto> produtos = new ArrayList<>();
+		List<ProdutoResponse> produtos = new ArrayList<>();
 		Categoria categoria = categoriaService.findById(id);
 		if(categoria==null) throw new NotFoundException("Categoria não cadastrada!");
 		if(cardapios != null && !cardapios.isEmpty()) {
 			cardapio = cardapios.get(0);
 			for(Produto produto: cardapio.getProdutos()){
 				if(produto.getCategoria().equals(categoria)){
-					produtos.add(produto);
+					produtos.add(new ProdutoResponse(produto));
 				}
 			}
 		}
-		return new ResponseEntity<List<Produto>>(produtos, HttpStatus.OK);
+		return new ResponseEntity<List<ProdutoResponse>>(produtos, HttpStatus.OK);
 	}
 	
 	
