@@ -1,0 +1,20 @@
+[MASTER] 14:53:48.415 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /home/rickecr/Documentos/fulano-de-sal/.evosuite/evosuite-seeds/br.com.marmitaria.persistence.service.AdministradorService.seed
+[MASTER] 14:53:50.523 [pool-2-thread-1] WARN  TestFactory - Bounded variable issue when calling createVariable()
+[MASTER] 14:53:50.524 [pool-2-thread-1] WARN  TestChromosome - Functional mock problem: org.evosuite.ga.ConstructionFailedException: No objects and generators for type class br.com.marmitaria.persistence.service.AdministradorService
+[MASTER] 14:53:50.892 [pool-2-thread-1] WARN  TestChromosome - Functional mock problem: org.evosuite.ga.ConstructionFailedException: Have no generator for java.util.Optional<java.lang.Object> canUseFunctionalMocks=true, canBeMocked: false
+[MASTER] 14:53:50.946 [pool-2-thread-1] WARN  TestChromosome - Functional mock problem: org.evosuite.ga.ConstructionFailedException: Error: VariableReference: Statement 8, type java.util.function.Function<java.lang.Object, java.util.Optional<java.lang.Integer>> is not assignable to java.util.function.Function<? super java.lang.Object, ? extends java.util.Optional<java.lang.Object>>
+[MASTER] 14:53:53.721 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Administrador.<init>(Lbr/com/marmitaria/rest/request/UsuarioRequest;)V" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/persistence/service/AdministradorService_4_tmp__ESTest, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Administrador, have different Class objects for the type br/com/marmitaria/rest/request/UsuarioRequest used in the signature
+[MASTER] 14:53:53.722 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ AdministradorService administradorService0 = new AdministradorService();
+UsuarioRequest usuarioRequest0 = new UsuarioRequest();
+Administrador administrador0 = new Administrador(usuarioRequest0);
+AdministradorDAO administradorDAO0 = mock(AdministradorDAO.class, new ViolatedAssumptionAnswer());
+doReturn(administrador0).when(administradorDAO0).findByEmail(anyString());
+Injector.inject(administradorService0, (Class<?>) AdministradorService.class, "dao", (Object) administradorDAO0);
+JpaRepository<Object, Administrador> jpaRepository0 = (JpaRepository<Object, Administrador>) mock(JpaRepository.class, new ViolatedAssumptionAnswer());
+Injector.inject(administradorService0, (Class<?>) GenericService.class, "dao", (Object) jpaRepository0);
+Injector.validateBean(administradorService0, (Class<?>) AdministradorService.class);
+Administrador administrador1 = administradorService0.findByEmail("");
+assertNull(administrador1.getNome());
+
+

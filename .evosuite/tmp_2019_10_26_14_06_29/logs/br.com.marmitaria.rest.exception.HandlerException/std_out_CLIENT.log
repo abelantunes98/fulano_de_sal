@@ -1,0 +1,18 @@
+[MASTER] 14:54:16.172 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: javax.faces.context.FacesContext
+[MASTER] 14:54:16.253 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: javax.faces.context.ExceptionHandler
+[MASTER] 14:54:16.255 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: javax.faces.context.ResponseStream
+[MASTER] 14:54:16.255 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: javax.faces.context.ResponseWriter
+[MASTER] 14:54:16.370 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: javax.faces.component.behavior.ClientBehavior
+[MASTER] 14:54:16.371 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: javax.faces.component.UIComponent
+[MASTER] 14:54:16.374 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: javax.faces.event.FacesEvent
+[MASTER] 14:54:16.377 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: javax.faces.component.ContextCallback
+[MASTER] 14:54:16.378 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: javax.faces.event.ComponentSystemEvent
+[MASTER] 14:54:16.384 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: javax.faces.el.ValueBinding
+[MASTER] 14:54:16.389 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: javax.faces.event.ComponentSystemEventListener
+[MASTER] 14:54:16.390 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: javax.faces.event.SystemEventListener
+[MASTER] 14:54:16.392 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: javax.faces.component.visit.VisitContext
+[MASTER] 14:54:16.393 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: javax.faces.component.visit.VisitCallback
+[MASTER] 14:54:16.651 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: javax.faces.lifecycle.Lifecycle
+[MASTER] 14:54:16.938 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /home/rickecr/Documentos/fulano-de-sal/.evosuite/evosuite-seeds/br.com.marmitaria.rest.exception.HandlerException.seed
+[MASTER] 14:54:20.003 [pool-2-thread-1] WARN  TestChromosome - Functional mock problem: org.evosuite.ga.ConstructionFailedException: Have no generator for class org.springframework.web.context.request.FacesWebRequest canUseFunctionalMocks=false, canBeMocked: true
+[MASTER] 14:54:20.348 [pool-2-thread-1] WARN  TestChromosome - Functional mock problem: org.evosuite.ga.ConstructionFailedException: Have no generator for class javax.servlet.http.HttpServletRequestWrapper canUseFunctionalMocks=false, canBeMocked: true

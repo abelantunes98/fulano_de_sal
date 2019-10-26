@@ -1,0 +1,7 @@
+[MASTER] 14:37:05.687 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /home/rickecr/Documentos/fulano-de-sal/.evosuite/evosuite-seeds/br.com.marmitaria.rest.util.GeradorCodigo.seed
+[MASTER] 14:38:53.045 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class org.junit.ComparisonFailure: expected:<[1259x]> but was:<[L0v07]>
+[MASTER] 14:38:53.046 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ String string0 = GeradorCodigo.gerarCodigoRecuperacaoSenha();
+assertEquals("1259x", string0);
+
+

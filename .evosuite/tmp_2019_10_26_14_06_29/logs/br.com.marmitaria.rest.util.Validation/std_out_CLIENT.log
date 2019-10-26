@@ -1,0 +1,21 @@
+[MASTER] 14:06:35.874 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /home/rickecr/Documentos/fulano-de-sal/.evosuite/evosuite-seeds/br.com.marmitaria.rest.util.Validation.seed
+[MASTER] 14:21:09.191 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Marmita.getTipoMarmita()Lbr/com/marmitaria/persistence/model/TipoMarmita;" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/rest/util/Validation, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Marmita, have different Class objects for the type br/com/marmitaria/persistence/model/TipoMarmita used in the signature
+[MASTER] 14:21:09.191 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ Marmita marmita0 = new Marmita();
+Long long0 = new Long(449L);
+marmita0.setIdMarmita(long0);
+marmita0.setValor(720.0F);
+Validation.valida(marmita0);
+
+[MASTER] 14:21:09.277 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Marmita.setTipoMarmita(Lbr/com/marmitaria/persistence/model/TipoMarmita;)V" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/rest/util/Validation_83_tmp__ESTest, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Marmita, have different Class objects for the type br/com/marmitaria/persistence/model/TipoMarmita used in the signature
+[MASTER] 14:21:09.277 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ Marmita marmita0 = new Marmita();
+Long long0 = new Long(449L);
+marmita0.setIdMarmita(long0);
+marmita0.setValor(720.0F);
+TipoMarmita tipoMarmita0 = TipoMarmita.TRADICIONAL;
+marmita0.setTipoMarmita(tipoMarmita0);
+Validation.valida(marmita0);
+assertEquals(0, marmita0.getCarnes());
+
+

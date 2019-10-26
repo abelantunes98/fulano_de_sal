@@ -1,0 +1,19 @@
+[MASTER] 14:52:02.392 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /home/rickecr/Documentos/fulano-de-sal/.evosuite/evosuite-seeds/br.com.marmitaria.persistence.service.UsuarioService.seed
+[MASTER] 14:52:04.354 [pool-2-thread-1] WARN  TestFactory - Bounded variable issue when calling createVariable()
+[MASTER] 14:52:04.354 [pool-2-thread-1] WARN  TestChromosome - Functional mock problem: org.evosuite.ga.ConstructionFailedException: No objects and generators for type class br.com.marmitaria.persistence.service.UsuarioService
+[MASTER] 14:52:04.642 [pool-2-thread-1] WARN  TestChromosome - Functional mock problem: org.evosuite.ga.ConstructionFailedException: Have no generator for java.util.function.UnaryOperator<java.lang.Object> canUseFunctionalMocks=false, canBeMocked: true
+[MASTER] 14:52:18.721 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Usuario.getTipo()Lbr/com/marmitaria/persistence/model/TipoUsuario;" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/persistence/service/UsuarioService_4_tmp__ESTest, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Usuario, have different Class objects for the type br/com/marmitaria/persistence/model/TipoUsuario used in the signature
+[MASTER] 14:52:18.722 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ UsuarioService usuarioService0 = new UsuarioService();
+Usuario usuario0 = new Usuario();
+usuario0.setCadastroPendente(true);
+UsuarioDAO usuarioDAO0 = mock(UsuarioDAO.class, new ViolatedAssumptionAnswer());
+doReturn(usuario0).when(usuarioDAO0).findByEmail(anyString());
+Injector.inject(usuarioService0, (Class<?>) UsuarioService.class, "dao", (Object) usuarioDAO0);
+JpaRepository<Integer, String> jpaRepository0 = (JpaRepository<Integer, String>) mock(JpaRepository.class, new ViolatedAssumptionAnswer());
+Injector.inject(usuarioService0, (Class<?>) GenericService.class, "dao", (Object) jpaRepository0);
+Injector.validateBean(usuarioService0, (Class<?>) UsuarioService.class);
+Usuario usuario1 = usuarioService0.findByEmail("h`");
+assertNull(usuario1.getTipo());
+
+

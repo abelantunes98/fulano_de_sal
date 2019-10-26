@@ -1,0 +1,105 @@
+[MASTER] 14:48:50.226 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /home/rickecr/Documentos/fulano-de-sal/.evosuite/evosuite-seeds/br.com.marmitaria.rest.reponse.ClienteResponse.seed
+[MASTER] 14:48:57.576 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Usuario.getTipo()Lbr/com/marmitaria/persistence/model/TipoUsuario;" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/rest/reponse/UsuarioResponse, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Usuario, have different Class objects for the type br/com/marmitaria/persistence/model/TipoUsuario used in the signature
+[MASTER] 14:48:57.576 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ Cliente cliente0 = new Cliente();
+ClienteResponse clienteResponse0 = new ClienteResponse(cliente0, "N^aPyh;'Vv");
+clienteResponse0.setTelefone("");
+String string0 = clienteResponse0.getTelefone();
+assertEquals("", string0);
+
+
+[MASTER] 14:48:57.662 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Usuario.getTipo()Lbr/com/marmitaria/persistence/model/TipoUsuario;" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/rest/reponse/UsuarioResponse, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Usuario, have different Class objects for the type br/com/marmitaria/persistence/model/TipoUsuario used in the signature
+[MASTER] 14:48:57.663 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ Cliente cliente0 = new Cliente();
+ClienteResponse clienteResponse0 = new ClienteResponse(cliente0, ",t8/");
+boolean boolean0 = clienteResponse0.isCadastroPendente();
+assertFalse(boolean0);
+
+
+[MASTER] 14:48:57.733 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Usuario.getTipo()Lbr/com/marmitaria/persistence/model/TipoUsuario;" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/rest/reponse/UsuarioResponse, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Usuario, have different Class objects for the type br/com/marmitaria/persistence/model/TipoUsuario used in the signature
+[MASTER] 14:48:57.733 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ Cliente cliente0 = new Cliente();
+ClienteResponse clienteResponse0 = new ClienteResponse(cliente0, ",t8/");
+String string0 = clienteResponse0.getSenha();
+assertNull(string0);
+
+
+[MASTER] 14:48:57.807 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Usuario.getTipo()Lbr/com/marmitaria/persistence/model/TipoUsuario;" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/rest/reponse/UsuarioResponse, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Usuario, have different Class objects for the type br/com/marmitaria/persistence/model/TipoUsuario used in the signature
+[MASTER] 14:48:57.808 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ Cliente cliente0 = new Cliente();
+ClienteResponse clienteResponse0 = new ClienteResponse(cliente0, ",t8/");
+String string0 = clienteResponse0.getTelefone();
+assertNull(string0);
+
+
+[MASTER] 14:48:57.878 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Usuario.getTipo()Lbr/com/marmitaria/persistence/model/TipoUsuario;" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/rest/reponse/UsuarioResponse, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Usuario, have different Class objects for the type br/com/marmitaria/persistence/model/TipoUsuario used in the signature
+[MASTER] 14:48:57.879 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ Cliente cliente0 = new Cliente();
+ClienteResponse clienteResponse0 = new ClienteResponse(cliente0, ",t8/");
+String string0 = clienteResponse0.getEndereco();
+assertNull(string0);
+
+
+[MASTER] 14:48:57.953 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Usuario.getTipo()Lbr/com/marmitaria/persistence/model/TipoUsuario;" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/rest/reponse/UsuarioResponse, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Usuario, have different Class objects for the type br/com/marmitaria/persistence/model/TipoUsuario used in the signature
+[MASTER] 14:48:57.953 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ Cliente cliente0 = new Cliente();
+ClienteResponse clienteResponse0 = new ClienteResponse(cliente0, ",t8/");
+clienteResponse0.setCadastroPendente(true);
+assertTrue(clienteResponse0.isCadastroPendente());
+
+
+[MASTER] 14:48:58.021 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Usuario.getTipo()Lbr/com/marmitaria/persistence/model/TipoUsuario;" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/rest/reponse/UsuarioResponse, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Usuario, have different Class objects for the type br/com/marmitaria/persistence/model/TipoUsuario used in the signature
+[MASTER] 14:48:58.021 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ Cliente cliente0 = new Cliente();
+ClienteResponse clienteResponse0 = new ClienteResponse(cliente0, ",t8/");
+clienteResponse0.setEndereco("XMwF}D&<a");
+String string0 = clienteResponse0.getEndereco();
+assertEquals("XMwF}D&<a", string0);
+
+
+[MASTER] 14:48:58.096 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Cliente.<init>(Lbr/com/marmitaria/rest/request/ClienteRequest;)V" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/rest/reponse/ClienteResponse_20_tmp__ESTest, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Cliente, have different Class objects for the type br/com/marmitaria/rest/request/ClienteRequest used in the signature
+[MASTER] 14:48:58.096 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ ClienteRequest clienteRequest0 = new ClienteRequest();
+Cliente cliente0 = new Cliente(clienteRequest0);
+ClienteResponse clienteResponse0 = new ClienteResponse(cliente0, "");
+boolean boolean0 = clienteResponse0.isCadastroPendente();
+assertTrue(boolean0);
+
+
+[MASTER] 14:48:58.229 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Usuario.getTipo()Lbr/com/marmitaria/persistence/model/TipoUsuario;" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/rest/reponse/UsuarioResponse, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Usuario, have different Class objects for the type br/com/marmitaria/persistence/model/TipoUsuario used in the signature
+[MASTER] 14:48:58.230 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ Cliente cliente0 = new Cliente();
+ClienteResponse clienteResponse0 = new ClienteResponse(cliente0, "N^aPyh;'Vv");
+clienteResponse0.setEndereco("");
+String string0 = clienteResponse0.getEndereco();
+assertEquals("", string0);
+
+
+[MASTER] 14:48:58.297 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Usuario.getTipo()Lbr/com/marmitaria/persistence/model/TipoUsuario;" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/rest/reponse/UsuarioResponse, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Usuario, have different Class objects for the type br/com/marmitaria/persistence/model/TipoUsuario used in the signature
+[MASTER] 14:48:58.297 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ Cliente cliente0 = new Cliente();
+ClienteResponse clienteResponse0 = new ClienteResponse(cliente0, ",t8/");
+clienteResponse0.setSenha("");
+String string0 = clienteResponse0.getSenha();
+assertEquals("", string0);
+
+
+[MASTER] 14:48:58.367 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Cliente.<init>(Lbr/com/marmitaria/rest/request/ClienteRequest;)V" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/rest/reponse/ClienteResponse_24_tmp__ESTest, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Cliente, have different Class objects for the type br/com/marmitaria/rest/request/ClienteRequest used in the signature
+[MASTER] 14:48:58.367 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ ClienteRequest clienteRequest0 = new ClienteRequest();
+Cliente cliente0 = new Cliente(clienteRequest0);
+ClienteResponse clienteResponse0 = new ClienteResponse(cliente0, "$VALUES");
+clienteResponse0.setSenha("Y7fZRu___$$tPW`dg\"");
+String string0 = clienteResponse0.getSenha();
+assertEquals("Y7fZRu___$$tPW`dg\"", string0);
+
+
+[MASTER] 14:48:58.435 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Usuario.getTipo()Lbr/com/marmitaria/persistence/model/TipoUsuario;" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/rest/reponse/UsuarioResponse, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Usuario, have different Class objects for the type br/com/marmitaria/persistence/model/TipoUsuario used in the signature
+[MASTER] 14:48:58.435 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ Cliente cliente0 = new Cliente();
+ClienteResponse clienteResponse0 = new ClienteResponse(cliente0, "+r/F0~=K9v.bMn BD");
+clienteResponse0.setTelefone("+r/F0~=K9v.bMn BD");
+String string0 = clienteResponse0.getTelefone();
+assertEquals("+r/F0~=K9v.bMn BD", string0);
+
+

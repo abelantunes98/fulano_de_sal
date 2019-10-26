@@ -1,0 +1,7 @@
+[MASTER] 14:45:18.829 [pool-2-thread-1] WARN  CheapPurityAnalyzer - kotlin.reflect.jvm.ReflectJvmMapping was not found in the inheritance tree. Using DEFAULT value for cheap-purity analysis
+[MASTER] 14:45:18.829 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: kotlin.reflect.jvm.ReflectJvmMapping
+[MASTER] 14:45:21.701 [pool-2-thread-1] WARN  CheapPurityAnalyzer - joptsimple.OptionSet was not found in the inheritance tree. Using DEFAULT value for cheap-purity analysis
+[MASTER] 14:45:21.701 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: joptsimple.OptionSet
+[MASTER] 14:45:23.709 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /home/rickecr/Documentos/fulano-de-sal/.evosuite/evosuite-seeds/br.com.marmitaria.rest.login.TokenFilter.seed
+[MASTER] 14:45:32.662 [pool-2-thread-1] WARN  TestFactory - Failed environment insertion: org.evosuite.ga.ConstructionFailedException: Error: VariableReference: Statement 10, type java.lang.Class<java.util.concurrent.ForkJoinTask> is not assignable to java.lang.Class<java.util.concurrent.ForkJoinTask<java.lang.Integer>>
+[MASTER] 14:45:52.609 [pool-2-thread-1] WARN  TestFactory - Failed environment insertion: org.evosuite.ga.ConstructionFailedException: Failed to add constructor for org.h2.engine.Database due to org.evosuite.ga.ConstructionFailedException: Failed to add constructor for org.h2.engine.ConnectionInfo due to org.evosuite.ga.ConstructionFailedException: Max recursion depth reached

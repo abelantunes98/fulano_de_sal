@@ -1,0 +1,1 @@
+[MASTER] 14:49:19.495 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /home/rickecr/Documentos/fulano-de-sal/.evosuite/evosuite-seeds/br.com.marmitaria.rest.exception.CustomError.seed

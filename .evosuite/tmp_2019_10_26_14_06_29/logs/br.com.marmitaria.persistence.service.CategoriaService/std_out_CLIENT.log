@@ -1,0 +1,4 @@
+[MASTER] 14:49:28.089 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /home/rickecr/Documentos/fulano-de-sal/.evosuite/evosuite-seeds/br.com.marmitaria.persistence.service.CategoriaService.seed
+[MASTER] 14:49:30.362 [pool-2-thread-1] WARN  TestFactory - Bounded variable issue when calling createVariable()
+[MASTER] 14:49:30.363 [pool-2-thread-1] WARN  TestChromosome - Functional mock problem: org.evosuite.ga.ConstructionFailedException: No objects and generators for type class br.com.marmitaria.persistence.service.CategoriaService
+[MASTER] 14:49:30.434 [pool-2-thread-1] WARN  TestChromosome - Functional mock problem: org.evosuite.ga.ConstructionFailedException: Have no generator for java.util.Optional<java.lang.String> canUseFunctionalMocks=false, canBeMocked: false

@@ -1,0 +1,24 @@
+[MASTER] 15:00:36.209 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /home/rickecr/Documentos/fulano-de-sal/.evosuite/evosuite-seeds/br.com.marmitaria.persistence.service.PedidoService.seed
+[MASTER] 15:00:38.471 [pool-2-thread-1] WARN  TestFactory - Bounded variable issue when calling createVariable()
+[MASTER] 15:00:38.471 [pool-2-thread-1] WARN  TestChromosome - Functional mock problem: org.evosuite.ga.ConstructionFailedException: No objects and generators for type class br.com.marmitaria.persistence.service.PedidoService
+[MASTER] 15:00:39.275 [pool-2-thread-1] WARN  TestChromosome - Functional mock problem: org.evosuite.ga.ConstructionFailedException: Failed to add constructor for java.util.ArrayList due to org.evosuite.ga.ConstructionFailedException: No objects and generators for type class br.com.marmitaria.persistence.service.PedidoService
+[MASTER] 15:00:39.311 [pool-2-thread-1] WARN  TestChromosome - Functional mock problem: org.evosuite.ga.ConstructionFailedException: Error: VariableReference: Statement 11, type java.util.function.Function<java.lang.Object, org.springframework.data.util.Lazy<java.lang.String>> is not assignable to java.util.function.Function<? super java.lang.String, org.springframework.data.util.Lazy<? extends java.lang.String>>
+[MASTER] 15:00:39.387 [pool-2-thread-1] WARN  TestChromosome - Functional mock problem: org.evosuite.ga.ConstructionFailedException: Failed to add constructor for java.util.Vector due to org.evosuite.ga.ConstructionFailedException: No objects and generators for type class br.com.marmitaria.persistence.service.PedidoService
+[MASTER] 15:00:39.978 [pool-2-thread-1] WARN  TestChromosome - Functional mock problem: org.evosuite.ga.ConstructionFailedException: Error: VariableReference: Statement 10, type java.util.function.Function<java.lang.Object, org.springframework.data.util.Lazy<java.lang.String>> is not assignable to java.util.function.Function<? super java.lang.String, org.springframework.data.util.Lazy<? extends java.lang.String>>
+[MASTER] 15:00:40.045 [pool-2-thread-1] WARN  TestChromosome - Functional mock problem: org.evosuite.ga.ConstructionFailedException: Error: VariableReference: Statement 8, type java.util.function.Function<java.lang.Object, org.springframework.data.util.Lazy<java.lang.String>> is not assignable to java.util.function.Function<? super java.lang.String, org.springframework.data.util.Lazy<? extends java.lang.String>>
+[MASTER] 15:01:09.876 [pool-2-thread-1] WARN  JUnitAnalyzer - Found unstable test named test0 -> class java.lang.LinkageError: loader constraint violation: when resolving method "br.com.marmitaria.persistence.model.Cliente.<init>(Lbr/com/marmitaria/rest/request/ClienteRequest;)V" the class loader (instance of org/evosuite/instrumentation/NonInstrumentingClassLoader) of the current class, br/com/marmitaria/persistence/service/PedidoService_4_tmp__ESTest, and the class loader (instance of org/evosuite/instrumentation/InstrumentingClassLoader) for the method's defining class, br/com/marmitaria/persistence/model/Cliente, have different Class objects for the type br/com/marmitaria/rest/request/ClienteRequest used in the signature
+[MASTER] 15:01:09.877 [pool-2-thread-1] WARN  JUnitAnalyzer - Failing test:
+ PedidoService pedidoService0 = new PedidoService();
+Vector<Pedido> vector0 = new Vector<Pedido>();
+PedidoDAO pedidoDAO0 = mock(PedidoDAO.class, new ViolatedAssumptionAnswer());
+doReturn(vector0).when(pedidoDAO0).findAllByCliente(any(br.com.marmitaria.persistence.model.Cliente.class));
+Injector.inject(pedidoService0, (Class<?>) PedidoService.class, "dao", (Object) pedidoDAO0);
+JpaRepository<String, String> jpaRepository0 = (JpaRepository<String, String>) mock(JpaRepository.class, new ViolatedAssumptionAnswer());
+Injector.inject(pedidoService0, (Class<?>) GenericService.class, "dao", (Object) jpaRepository0);
+Injector.validateBean(pedidoService0, (Class<?>) PedidoService.class);
+ClienteRequest clienteRequest0 = new ClienteRequest();
+Cliente cliente0 = new Cliente(clienteRequest0);
+List<Pedido> list0 = pedidoService0.findByCliente(cliente0);
+assertEquals(0, list0.size());
+
+
