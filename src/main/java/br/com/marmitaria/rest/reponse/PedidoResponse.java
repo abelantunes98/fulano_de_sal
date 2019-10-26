@@ -12,6 +12,7 @@ import br.com.marmitaria.persistence.model.Marmita;
 import br.com.marmitaria.persistence.model.Pedido;
 import br.com.marmitaria.persistence.model.Produto;
 import br.com.marmitaria.persistence.model.TipoPagamento;
+import br.com.marmitaria.rest.util.DateUtils;
 
 public class PedidoResponse implements Serializable {
 
@@ -43,8 +44,7 @@ public class PedidoResponse implements Serializable {
 		this.observacoes = pedido.getObsvacoes();
 		this.tipoPagamento = pedido.getTipoPagamento();
 		this.cliente = pedido.getCliente();
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		this.data = format.format(pedido.getData());
+		this.data = DateUtils.newDate(pedido.getData());
 		produtos = new HashMap<>();
 		for (Produto produto : pedido.getProdutos()) {
 			if (produtos.get(produto.getCategoria().getDescricao()) == null) {

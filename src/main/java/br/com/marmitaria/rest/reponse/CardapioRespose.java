@@ -10,6 +10,7 @@ import java.util.Map;
 import br.com.marmitaria.persistence.model.Cardapio;
 import br.com.marmitaria.persistence.model.Categoria;
 import br.com.marmitaria.persistence.model.Produto;
+import br.com.marmitaria.rest.util.DateUtils;
 
 public class CardapioRespose implements Serializable{
 	
@@ -23,8 +24,7 @@ public class CardapioRespose implements Serializable{
 	
 	
 	public CardapioRespose(Cardapio cardapio) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		this.data = dateFormat.format(cardapio.getData());
+		this.data = DateUtils.newDate(cardapio.getData());
 		Map<Categoria, List<ProdutoResponse>> produtos  = new HashMap<Categoria, List<ProdutoResponse>>();
 		categorias = new ArrayList<>();
 		for(Produto produto:cardapio.getProdutos()) {

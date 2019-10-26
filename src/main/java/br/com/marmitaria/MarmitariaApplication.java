@@ -19,6 +19,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import br.com.marmitaria.rest.login.TokenFilter;
+import br.com.marmitaria.rest.util.DateUtils;
 
 
 @SpringBootApplication
@@ -32,9 +33,7 @@ public class MarmitariaApplication {
 
 	@GetMapping("/")
 	public String despert() {
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		format.setTimeZone(TimeZone.getTimeZone("America/Recife"));
-		return format.format(new Date());
+		return DateUtils.newDate();
 	}
 
 	@Bean
