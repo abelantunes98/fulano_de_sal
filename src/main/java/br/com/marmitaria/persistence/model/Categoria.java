@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -25,6 +26,7 @@ public class Categoria implements Serializable,Comparable<Categoria>{
 	private Long id;
 	
 	@NotNull
+	@NotEmpty
 	@Column(name = "CATEGORIA",unique = true)
 	private String descricao;
 
