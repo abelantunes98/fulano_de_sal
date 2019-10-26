@@ -1,0 +1,455 @@
+[21611][environment] CWD = /home/samuel/Documentos/repositories/fulano-de-sal/src/main/java/br/com/marmitaria/rest/controller
+[21611][environment] No .inferconfig file found
+[21611][environment] Project root = /home/samuel/Documentos/repositories/fulano-de-sal/src/main/java/br/com/marmitaria/rest/controller
+[21611][environment] INFER_ARGS =   
+[21611][environment] command line arguments:   infer -- javac ProdutoController.java
+[21611][environment] Available memory at startup: 2036 MB
+[21611][environment] Active checkers: biabduction (C/C++/ObjC, Java), fragment retains view (Java), inefficient keyset iterator (Java), liveness (C/C++/ObjC), RacerD (C/C++/ObjC, Java), SIOF (C/C++/ObjC), uninitialized variables (C/C++/ObjC), Starvation analysis (C/C++/ObjC, Java)
+[21611][environment] Infer log identifier is 
+Infer version v0.17.0-0f1187a3a
+[21611][environment] Copyright 2009 - present Facebook. All Rights Reserved.
+[21611][environment] 
+[21611][   progress] Capturing in javac mode...
+[21611][      debug] Current working directory: '/home/samuel/Documentos/repositories/fulano-de-sal/src/main/java/br/com/marmitaria/rest/controller'
+[21611][      debug] Trying to execute: javac '-J-Duser.language=en' '@/tmp/args_.tmp.027a50' 2>'/tmp/javac.tmp.4c6c3b.out'
+[21611][      debug] *** Failed: exited with code 1!
+[21611][      debug] 
+[21611][      debug] Trying to execute: javac '@/tmp/args_.tmp.027a50' 2>'/tmp/javac.tmp.4c6c3b.out'
+[21611][   user err] 
+*** Failed to execute compilation command: exited with code 1
+*** Command: javac '@/tmp/args_.tmp.027a50'
+*** Output:
+[parsing started RegularFileObject[ProdutoController.java]]
+[parsing completed 17ms]
+[search path for source files: .]
+[search path for class files: /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/classes,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunpkcs11.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/dnsns.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunjce_provider.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunec.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/cldrdata.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/localedata.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/zipfs.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/icedtea-sound.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/nashorn.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/jaccess.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/java-atk-wrapper.jar,.]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/util/Collections.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/util/List.class)]]
+ProdutoController.java:6: error: package org.springframework.beans.factory.annotation does not exist
+import org.springframework.beans.factory.annotation.Autowired;
+                                                   ^
+ProdutoController.java:7: error: package org.springframework.http does not exist
+import org.springframework.http.HttpStatus;
+                               ^
+ProdutoController.java:8: error: package org.springframework.http does not exist
+import org.springframework.http.ResponseEntity;
+                               ^
+ProdutoController.java:9: error: package org.springframework.web.bind.annotation does not exist
+import org.springframework.web.bind.annotation.DeleteMapping;
+                                              ^
+ProdutoController.java:10: error: package org.springframework.web.bind.annotation does not exist
+import org.springframework.web.bind.annotation.GetMapping;
+                                              ^
+ProdutoController.java:11: error: package org.springframework.web.bind.annotation does not exist
+import org.springframework.web.bind.annotation.PostMapping;
+                                              ^
+ProdutoController.java:12: error: package org.springframework.web.bind.annotation does not exist
+import org.springframework.web.bind.annotation.RequestBody;
+                                              ^
+ProdutoController.java:13: error: package org.springframework.web.bind.annotation does not exist
+import org.springframework.web.bind.annotation.RequestMapping;
+                                              ^
+ProdutoController.java:14: error: package org.springframework.web.bind.annotation does not exist
+import org.springframework.web.bind.annotation.RequestParam;
+                                              ^
+ProdutoController.java:15: error: package org.springframework.web.bind.annotation does not exist
+import org.springframework.web.bind.annotation.ResponseBody;
+                                              ^
+ProdutoController.java:16: error: package org.springframework.web.bind.annotation does not exist
+import org.springframework.web.bind.annotation.RestController;
+                                              ^
+ProdutoController.java:18: error: package br.com.marmitaria.persistence.model does not exist
+import br.com.marmitaria.persistence.model.Categoria;
+                                          ^
+ProdutoController.java:19: error: package br.com.marmitaria.persistence.model does not exist
+import br.com.marmitaria.persistence.model.Produto;
+                                          ^
+ProdutoController.java:20: error: package br.com.marmitaria.persistence.service does not exist
+import br.com.marmitaria.persistence.service.CategoriaService;
+                                            ^
+ProdutoController.java:21: error: package br.com.marmitaria.persistence.service does not exist
+import br.com.marmitaria.persistence.service.ProdutoService;
+                                            ^
+ProdutoController.java:22: error: package br.com.marmitaria.rest.exception does not exist
+import br.com.marmitaria.rest.exception.DadosInvalidosException;
+                                       ^
+ProdutoController.java:23: error: package br.com.marmitaria.rest.exception.notFound does not exist
+import br.com.marmitaria.rest.exception.notFound.NotFoundException;
+                                                ^
+ProdutoController.java:24: error: package br.com.marmitaria.rest.request does not exist
+import br.com.marmitaria.rest.request.ProdutoRequest;
+                                     ^
+ProdutoController.java:25: error: package br.com.marmitaria.rest.util does not exist
+import br.com.marmitaria.rest.util.Validation;
+                                  ^
+ProdutoController.java:26: error: package io.swagger.annotations does not exist
+import io.swagger.annotations.Api;
+                             ^
+ProdutoController.java:27: error: package io.swagger.annotations does not exist
+import io.swagger.annotations.ApiOperation;
+                             ^
+ProdutoController.java:29: error: cannot find symbol
+@Api
+ ^
+  symbol: class Api
+ProdutoController.java:30: error: cannot find symbol
+@RestController
+ ^
+  symbol: class RestController
+ProdutoController.java:31: error: cannot find symbol
+@RequestMapping("protegido/produto")
+ ^
+  symbol: class RequestMapping
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Object.class)]]
+ProdutoController.java:35: error: cannot find symbol
+	private ProdutoService produtoService;
+	        ^
+  symbol:   class ProdutoService
+  location: class ProdutoController
+ProdutoController.java:38: error: cannot find symbol
+	private CategoriaService categoriaService;
+	        ^
+  symbol:   class CategoriaService
+  location: class ProdutoController
+ProdutoController.java:43: error: cannot find symbol
+	public ResponseEntity<Produto> cadastra(@RequestBody ProdutoRequest produtoRequest) {
+	                                                     ^
+  symbol:   class ProdutoRequest
+  location: class ProdutoController
+ProdutoController.java:43: error: cannot find symbol
+	public ResponseEntity<Produto> cadastra(@RequestBody ProdutoRequest produtoRequest) {
+	       ^
+  symbol:   class ResponseEntity
+  location: class ProdutoController
+ProdutoController.java:43: error: cannot find symbol
+	public ResponseEntity<Produto> cadastra(@RequestBody ProdutoRequest produtoRequest) {
+	                      ^
+  symbol:   class Produto
+  location: class ProdutoController
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Long.class)]]
+ProdutoController.java:62: error: cannot find symbol
+	public ResponseEntity<Produto> remover(@RequestParam("id") Long id) {
+	       ^
+  symbol:   class ResponseEntity
+  location: class ProdutoController
+ProdutoController.java:62: error: cannot find symbol
+	public ResponseEntity<Produto> remover(@RequestParam("id") Long id) {
+	                      ^
+  symbol:   class Produto
+  location: class ProdutoController
+ProdutoController.java:78: error: cannot find symbol
+	public ResponseEntity<List<Produto>> lista(){
+	       ^
+  symbol:   class ResponseEntity
+  location: class ProdutoController
+ProdutoController.java:78: error: cannot find symbol
+	public ResponseEntity<List<Produto>> lista(){
+	                           ^
+  symbol:   class Produto
+  location: class ProdutoController
+ProdutoController.java:87: error: cannot find symbol
+	public ResponseEntity<List<Produto>> listaPorCategoria(@RequestParam("idCategoria") Long idCategoria) {
+	       ^
+  symbol:   class ResponseEntity
+  location: class ProdutoController
+ProdutoController.java:87: error: cannot find symbol
+	public ResponseEntity<List<Produto>> listaPorCategoria(@RequestParam("idCategoria") Long idCategoria) {
+	                           ^
+  symbol:   class Produto
+  location: class ProdutoController
+ProdutoController.java:100: error: cannot find symbol
+	public ResponseEntity<Produto> atualizar(@RequestBody Produto produtoRequest) {
+	                                                      ^
+  symbol:   class Produto
+  location: class ProdutoController
+ProdutoController.java:100: error: cannot find symbol
+	public ResponseEntity<Produto> atualizar(@RequestBody Produto produtoRequest) {
+	       ^
+  symbol:   class ResponseEntity
+  location: class ProdutoController
+ProdutoController.java:100: error: cannot find symbol
+	public ResponseEntity<Produto> atualizar(@RequestBody Produto produtoRequest) {
+	                      ^
+  symbol:   class Produto
+  location: class ProdutoController
+ProdutoController.java:34: error: cannot find symbol
+	@Autowired
+	 ^
+  symbol:   class Autowired
+  location: class ProdutoController
+ProdutoController.java:37: error: cannot find symbol
+	@Autowired
+	 ^
+  symbol:   class Autowired
+  location: class ProdutoController
+ProdutoController.java:43: error: cannot find symbol
+	public ResponseEntity<Produto> cadastra(@RequestBody ProdutoRequest produtoRequest) {
+	                                         ^
+  symbol:   class RequestBody
+  location: class ProdutoController
+ProdutoController.java:40: error: cannot find symbol
+	@ApiOperation("Cadastra um Produto")
+	 ^
+  symbol:   class ApiOperation
+  location: class ProdutoController
+ProdutoController.java:41: error: cannot find symbol
+	@PostMapping("/")
+	 ^
+  symbol:   class PostMapping
+  location: class ProdutoController
+ProdutoController.java:42: error: cannot find symbol
+	@ResponseBody
+	 ^
+  symbol:   class ResponseBody
+  location: class ProdutoController
+ProdutoController.java:62: error: cannot find symbol
+	public ResponseEntity<Produto> remover(@RequestParam("id") Long id) {
+	                                        ^
+  symbol:   class RequestParam
+  location: class ProdutoController
+ProdutoController.java:59: error: cannot find symbol
+	@ApiOperation("Remove um produto")
+	 ^
+  symbol:   class ApiOperation
+  location: class ProdutoController
+ProdutoController.java:60: error: cannot find symbol
+	@DeleteMapping("/remover")
+	 ^
+  symbol:   class DeleteMapping
+  location: class ProdutoController
+ProdutoController.java:61: error: cannot find symbol
+	@ResponseBody
+	 ^
+  symbol:   class ResponseBody
+  location: class ProdutoController
+ProdutoController.java:75: error: cannot find symbol
+	@ApiOperation("Retorna lista de produtos")
+	 ^
+  symbol:   class ApiOperation
+  location: class ProdutoController
+ProdutoController.java:76: error: cannot find symbol
+	@GetMapping("/listar")
+	 ^
+  symbol:   class GetMapping
+  location: class ProdutoController
+ProdutoController.java:77: error: cannot find symbol
+	@ResponseBody
+	 ^
+  symbol:   class ResponseBody
+  location: class ProdutoController
+ProdutoController.java:87: error: cannot find symbol
+	public ResponseEntity<List<Produto>> listaPorCategoria(@RequestParam("idCategoria") Long idCategoria) {
+	                                                        ^
+  symbol:   class RequestParam
+  location: class ProdutoController
+ProdutoController.java:84: error: cannot find symbol
+	@ApiOperation("Retorna lista de produtos da categoria informada")
+	 ^
+  symbol:   class ApiOperation
+  location: class ProdutoController
+ProdutoController.java:85: error: cannot find symbol
+	@GetMapping("/listarPorCategoria")
+	 ^
+  symbol:   class GetMapping
+  location: class ProdutoController
+ProdutoController.java:86: error: cannot find symbol
+	@ResponseBody
+	 ^
+  symbol:   class ResponseBody
+  location: class ProdutoController
+ProdutoController.java:100: error: cannot find symbol
+	public ResponseEntity<Produto> atualizar(@RequestBody Produto produtoRequest) {
+	                                          ^
+  symbol:   class RequestBody
+  location: class ProdutoController
+ProdutoController.java:97: error: cannot find symbol
+	@ApiOperation("Atualiza um produto")
+	 ^
+  symbol:   class ApiOperation
+  location: class ProdutoController
+ProdutoController.java:98: error: cannot find symbol
+	@PostMapping("/atualizar")
+	 ^
+  symbol:   class PostMapping
+  location: class ProdutoController
+ProdutoController.java:99: error: cannot find symbol
+	@ResponseBody
+	 ^
+  symbol:   class ResponseBody
+  location: class ProdutoController
+[checking br.com.marmitaria.rest.controller.ProdutoController]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/io/Serializable.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/AutoCloseable.class)]]
+ProdutoController.java:44: error: cannot find symbol
+		Validation.valida(produtoRequest);
+		^
+  symbol:   variable Validation
+  location: class ProdutoController
+ProdutoController.java:46: error: cannot find symbol
+		Categoria categoria = categoriaService.findById(produtoRequest.getIdCategoria());
+		^
+  symbol:   class Categoria
+  location: class ProdutoController
+ProdutoController.java:47: error: cannot find symbol
+		Produto produto = produtoService.findByNome(produtoRequest.getNome());
+		^
+  symbol:   class Produto
+  location: class ProdutoController
+ProdutoController.java:49: error: cannot find symbol
+			throw new DadosInvalidosException(String.format("Produto: %s já cadastrado.", produto.getNome()));
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class ProdutoController
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/String.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Comparable.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/CharSequence.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Byte.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Character.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Short.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Float.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Integer.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Double.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Boolean.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Void.class)]]
+ProdutoController.java:51: error: cannot find symbol
+		produto = new Produto();
+		              ^
+  symbol:   class Produto
+  location: class ProdutoController
+ProdutoController.java:56: error: cannot find symbol
+		return new ResponseEntity<Produto>(produto,HttpStatus.OK);
+		           ^
+  symbol:   class ResponseEntity
+  location: class ProdutoController
+ProdutoController.java:56: error: cannot find symbol
+		return new ResponseEntity<Produto>(produto,HttpStatus.OK);
+		                          ^
+  symbol:   class Produto
+  location: class ProdutoController
+ProdutoController.java:56: error: cannot find symbol
+		return new ResponseEntity<Produto>(produto,HttpStatus.OK);
+		                                           ^
+  symbol:   variable HttpStatus
+  location: class ProdutoController
+ProdutoController.java:63: error: cannot find symbol
+		Produto produto = produtoService.findById(id);
+		^
+  symbol:   class Produto
+  location: class ProdutoController
+ProdutoController.java:65: error: cannot find symbol
+			throw new NotFoundException("Produto não cadastrado!");
+			          ^
+  symbol:   class NotFoundException
+  location: class ProdutoController
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Exception.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Throwable.class)]]
+ProdutoController.java:70: error: cannot find symbol
+			throw new DadosInvalidosException("O produto não pode ser removido!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class ProdutoController
+ProdutoController.java:72: error: cannot find symbol
+		return new ResponseEntity<Produto>(HttpStatus.OK);
+		           ^
+  symbol:   class ResponseEntity
+  location: class ProdutoController
+ProdutoController.java:72: error: cannot find symbol
+		return new ResponseEntity<Produto>(HttpStatus.OK);
+		                          ^
+  symbol:   class Produto
+  location: class ProdutoController
+ProdutoController.java:72: error: cannot find symbol
+		return new ResponseEntity<Produto>(HttpStatus.OK);
+		                                   ^
+  symbol:   variable HttpStatus
+  location: class ProdutoController
+ProdutoController.java:79: error: cannot find symbol
+		List<Produto> produtos = produtoService.findAll();
+		     ^
+  symbol:   class Produto
+  location: class ProdutoController
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/util/Comparator.class)]]
+ProdutoController.java:81: error: cannot find symbol
+		return new ResponseEntity<List<Produto>>(produtos,HttpStatus.OK);
+		           ^
+  symbol:   class ResponseEntity
+  location: class ProdutoController
+ProdutoController.java:81: error: cannot find symbol
+		return new ResponseEntity<List<Produto>>(produtos,HttpStatus.OK);
+		                               ^
+  symbol:   class Produto
+  location: class ProdutoController
+ProdutoController.java:81: error: cannot find symbol
+		return new ResponseEntity<List<Produto>>(produtos,HttpStatus.OK);
+		                                                  ^
+  symbol:   variable HttpStatus
+  location: class ProdutoController
+ProdutoController.java:88: error: cannot find symbol
+		Categoria categoria = categoriaService.findById(idCategoria);
+		^
+  symbol:   class Categoria
+  location: class ProdutoController
+ProdutoController.java:90: error: cannot find symbol
+			throw new DadosInvalidosException("Categoria não encontrada!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class ProdutoController
+ProdutoController.java:92: error: cannot find symbol
+		List<Produto> produtos = produtoService.findByCategoria(categoria);
+		     ^
+  symbol:   class Produto
+  location: class ProdutoController
+ProdutoController.java:94: error: cannot find symbol
+		return new ResponseEntity<List<Produto>>(produtos,HttpStatus.OK);
+		           ^
+  symbol:   class ResponseEntity
+  location: class ProdutoController
+ProdutoController.java:94: error: cannot find symbol
+		return new ResponseEntity<List<Produto>>(produtos,HttpStatus.OK);
+		                               ^
+  symbol:   class Produto
+  location: class ProdutoController
+ProdutoController.java:94: error: cannot find symbol
+		return new ResponseEntity<List<Produto>>(produtos,HttpStatus.OK);
+		                                                  ^
+  symbol:   variable HttpStatus
+  location: class ProdutoController
+ProdutoController.java:101: error: cannot find symbol
+		Validation.valida(produtoRequest);
+		^
+  symbol:   variable Validation
+  location: class ProdutoController
+ProdutoController.java:102: error: cannot find symbol
+		Produto produto = produtoService.findById(produtoRequest.getIdProduto());
+		^
+  symbol:   class Produto
+  location: class ProdutoController
+ProdutoController.java:104: error: cannot find symbol
+			throw new NotFoundException("Produto não encontrado!");
+			          ^
+  symbol:   class NotFoundException
+  location: class ProdutoController
+ProdutoController.java:107: error: cannot find symbol
+		return new ResponseEntity<Produto>(produto,HttpStatus.OK);
+		           ^
+  symbol:   class ResponseEntity
+  location: class ProdutoController
+ProdutoController.java:107: error: cannot find symbol
+		return new ResponseEntity<Produto>(produto,HttpStatus.OK);
+		                          ^
+  symbol:   class Produto
+  location: class ProdutoController
+ProdutoController.java:107: error: cannot find symbol
+		return new ResponseEntity<Produto>(produto,HttpStatus.OK);
+		                                           ^
+  symbol:   variable HttpStatus
+  location: class ProdutoController
+[total 212ms]
+89 errors
+
+*** Infer needs a working compilation command to run.
+
+[21611][   user err] Raised at file "stdlib.ml", line 441, characters 14-31
+Called from file "src/in_channel.ml" (inlined), line 72, characters 13-30
+Called from file "base/Utils.ml", line 233, characters 11-44
+

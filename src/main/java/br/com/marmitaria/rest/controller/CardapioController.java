@@ -13,15 +13,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.marmitaria.persistence.model.Cardapio;
+import br.com.marmitaria.persistence.model.Categoria;
 import br.com.marmitaria.persistence.model.Produto;
 import br.com.marmitaria.persistence.service.CardapioService;
+import br.com.marmitaria.persistence.service.CategoriaService;
 import br.com.marmitaria.persistence.service.ProdutoService;
 import br.com.marmitaria.rest.exception.notFound.NotFoundException;
 import br.com.marmitaria.rest.reponse.CardapioRespose;
+import br.com.marmitaria.rest.reponse.ProdutoResponse;
 import br.com.marmitaria.rest.request.CardapioRequest;
 import br.com.marmitaria.rest.util.Validation;
 import io.swagger.annotations.Api;
@@ -37,6 +41,9 @@ public class CardapioController {
 	
 	@Autowired
 	private ProdutoService produtoService;
+	
+	@Autowired
+	private CategoriaService  categoriaService;
 	
 	@ApiOperation("Cadastra um cardápio")
 	@ResponseBody
@@ -79,6 +86,28 @@ public class CardapioController {
 		}
 		return new ResponseEntity<CardapioRespose>(cardapioRespose, HttpStatus.OK);
 	}
+	
+	@ApiOperation("Retorna o último cardápio por categoria")
+	@ResponseBody
+	@GetMapping("/ultimoPorCategoria")
+	public ResponseEntity<List<ProdutoResponse>> ultimoPorCategoria(@RequestParam("idCategoria") Long id) {
+		Cardapio cardapio = null;
+		List<Cardapio> cardapios = cardapioService.findAll();
+		List<ProdutoResponse> produtos = new ArrayList<>();
+		Categoria categoria = categoriaService.findById(id);
+		if(categoria==null) throw new NotFoundException("Categoria não cadastrada!");
+		if(cardapios != null && !cardapios.isEmpty()) {
+			cardapio = cardapios.get(0);
+			for(Produto produto: cardapio.getProdutos()){
+				if(produto.getCategoria().equals(categoria)){
+					produtos.add(new ProdutoResponse(produto));
+				}
+			}
+		}
+		return new ResponseEntity<List<ProdutoResponse>>(produtos, HttpStatus.OK);
+	}
+	
+	
 	
 	@ApiOperation("Remove o cardapio do dia")
 	@DeleteMapping("/remover")

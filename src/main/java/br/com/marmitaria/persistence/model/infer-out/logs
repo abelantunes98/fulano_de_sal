@@ -1,0 +1,116 @@
+[21664][environment] CWD = /home/samuel/Documentos/repositories/fulano-de-sal/src/main/java/br/com/marmitaria/persistence/model
+[21664][environment] No .inferconfig file found
+[21664][environment] Project root = /home/samuel/Documentos/repositories/fulano-de-sal/src/main/java/br/com/marmitaria/persistence/model
+[21664][environment] INFER_ARGS =   
+[21664][environment] command line arguments:   infer -- javac Cliente.java
+[21664][environment] Available memory at startup: 2076 MB
+[21664][environment] Active checkers: biabduction (C/C++/ObjC, Java), fragment retains view (Java), inefficient keyset iterator (Java), liveness (C/C++/ObjC), RacerD (C/C++/ObjC, Java), SIOF (C/C++/ObjC), uninitialized variables (C/C++/ObjC), Starvation analysis (C/C++/ObjC, Java)
+[21664][environment] Infer log identifier is 
+Infer version v0.17.0-0f1187a3a
+[21664][environment] Copyright 2009 - present Facebook. All Rights Reserved.
+[21664][environment] 
+[21664][   progress] Capturing in javac mode...
+[21664][      debug] Current working directory: '/home/samuel/Documentos/repositories/fulano-de-sal/src/main/java/br/com/marmitaria/persistence/model'
+[21664][      debug] Trying to execute: javac '-J-Duser.language=en' '@/tmp/args_.tmp.1c6e30' 2>'/tmp/javac.tmp.61cfc6.out'
+[21664][      debug] *** Failed: exited with code 1!
+[21664][      debug] 
+[21664][      debug] Trying to execute: javac '@/tmp/args_.tmp.1c6e30' 2>'/tmp/javac.tmp.61cfc6.out'
+[21664][   user err] 
+*** Failed to execute compilation command: exited with code 1
+*** Command: javac '@/tmp/args_.tmp.1c6e30'
+*** Output:
+[parsing started RegularFileObject[Cliente.java]]
+[parsing completed 18ms]
+[search path for source files: .]
+[search path for class files: /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/classes,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunpkcs11.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/dnsns.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunjce_provider.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunec.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/cldrdata.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/localedata.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/zipfs.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/icedtea-sound.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/nashorn.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/jaccess.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/java-atk-wrapper.jar,.]
+Cliente.java:4: error: package javax.persistence does not exist
+import javax.persistence.Column;
+                        ^
+Cliente.java:5: error: package javax.persistence does not exist
+import javax.persistence.Entity;
+                        ^
+Cliente.java:6: error: package javax.persistence does not exist
+import javax.persistence.Table;
+                        ^
+Cliente.java:7: error: package javax.validation.constraints does not exist
+import javax.validation.constraints.NotNull;
+                                   ^
+Cliente.java:10: error: package br.com.marmitaria.rest.request does not exist
+import br.com.marmitaria.rest.request.ClienteRequest;
+                                     ^
+Cliente.java:14: error: cannot find symbol
+public class Cliente extends Usuario{
+                             ^
+  symbol: class Usuario
+Cliente.java:12: error: cannot find symbol
+@Entity
+ ^
+  symbol: class Entity
+Cliente.java:13: error: cannot find symbol
+@Table(name = "CLIENTE")
+ ^
+  symbol: class Table
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/String.class)]]
+Cliente.java:31: error: cannot find symbol
+	public Cliente(ClienteRequest request) {
+	               ^
+  symbol:   class ClienteRequest
+  location: class Cliente
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Object.class)]]
+Cliente.java:22: error: cannot find symbol
+	@Column(name = "ENDERECO")
+	 ^
+  symbol:   class Column
+  location: class Cliente
+Cliente.java:23: error: cannot find symbol
+	@NotNull
+	 ^
+  symbol:   class NotNull
+  location: class Cliente
+Cliente.java:26: error: cannot find symbol
+	@Column(name = "TELEFONE")
+	 ^
+  symbol:   class Column
+  location: class Cliente
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Override.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/annotation/Annotation.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/annotation/Target.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/annotation/ElementType.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/annotation/Retention.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/annotation/RetentionPolicy.class)]]
+[checking br.com.marmitaria.persistence.model.Cliente]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/io/Serializable.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/AutoCloseable.class)]]
+Cliente.java:35: error: cannot find symbol
+		setTipo(TipoUsuario.CLIENTE);
+		        ^
+  symbol:   variable TipoUsuario
+  location: class Cliente
+Cliente.java:36: error: cannot find symbol
+		setCadastroPendente(true);
+		^
+  symbol:   method setCadastroPendente(boolean)
+  location: class Cliente
+Cliente.java:58: error: method does not override or implement a method from a supertype
+	@Override
+	^
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Comparable.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/CharSequence.class)]]
+Cliente.java:66: error: method does not override or implement a method from a supertype
+	@Override
+	^
+Cliente.java:72: error: cannot find symbol
+		if (getClass() != obj.getClass())
+		    ^
+  symbol:   method getClass()
+  location: class Cliente
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Class.class)]]
+[total 164ms]
+17 errors
+
+*** Infer needs a working compilation command to run.
+
+[21664][   user err] Raised at file "stdlib.ml", line 441, characters 14-31
+Called from file "src/in_channel.ml" (inlined), line 72, characters 13-30
+Called from file "base/Utils.ml", line 233, characters 11-44
+

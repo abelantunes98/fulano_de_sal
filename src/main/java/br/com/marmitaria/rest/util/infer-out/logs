@@ -1,0 +1,281 @@
+[21758][environment] CWD = /home/samuel/Documentos/repositories/fulano-de-sal/src/main/java/br/com/marmitaria/rest/util
+[21758][environment] No .inferconfig file found
+[21758][environment] Project root = /home/samuel/Documentos/repositories/fulano-de-sal/src/main/java/br/com/marmitaria/rest/util
+[21758][environment] INFER_ARGS =   
+[21758][environment] command line arguments:   infer -- javac Validation.java
+[21758][environment] Available memory at startup: 2076 MB
+[21758][environment] Active checkers: biabduction (C/C++/ObjC, Java), fragment retains view (Java), inefficient keyset iterator (Java), liveness (C/C++/ObjC), RacerD (C/C++/ObjC, Java), SIOF (C/C++/ObjC), uninitialized variables (C/C++/ObjC), Starvation analysis (C/C++/ObjC, Java)
+[21758][environment] Infer log identifier is 
+Infer version v0.17.0-0f1187a3a
+[21758][environment] Copyright 2009 - present Facebook. All Rights Reserved.
+[21758][environment] 
+[21758][   progress] Capturing in javac mode...
+[21758][      debug] Current working directory: '/home/samuel/Documentos/repositories/fulano-de-sal/src/main/java/br/com/marmitaria/rest/util'
+[21758][      debug] Trying to execute: javac '-J-Duser.language=en' '@/tmp/args_.tmp.2814ca' 2>'/tmp/javac.tmp.df55d3.out'
+[21758][      debug] *** Failed: exited with code 1!
+[21758][      debug] 
+[21758][      debug] Trying to execute: javac '@/tmp/args_.tmp.2814ca' 2>'/tmp/javac.tmp.df55d3.out'
+[21758][   user err] 
+*** Failed to execute compilation command: exited with code 1
+*** Command: javac '@/tmp/args_.tmp.2814ca'
+*** Output:
+[parsing started RegularFileObject[Validation.java]]
+[parsing completed 17ms]
+[search path for source files: .]
+[search path for class files: /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/classes,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunpkcs11.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/dnsns.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunjce_provider.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/sunec.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/cldrdata.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/localedata.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/zipfs.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/icedtea-sound.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/nashorn.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/jaccess.jar,/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/java-atk-wrapper.jar,.]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/util/regex/Matcher.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/util/regex/Pattern.class)]]
+Validation.java:6: error: package br.com.marmitaria.persistence.model does not exist
+import br.com.marmitaria.persistence.model.Categoria;
+                                          ^
+Validation.java:7: error: package br.com.marmitaria.persistence.model does not exist
+import br.com.marmitaria.persistence.model.Marmita;
+                                          ^
+Validation.java:8: error: package br.com.marmitaria.persistence.model does not exist
+import br.com.marmitaria.persistence.model.Produto;
+                                          ^
+Validation.java:9: error: package br.com.marmitaria.rest.exception does not exist
+import br.com.marmitaria.rest.exception.DadosInvalidosException;
+                                       ^
+Validation.java:10: error: package br.com.marmitaria.rest.request does not exist
+import br.com.marmitaria.rest.request.AdministradorRequest;
+                                     ^
+Validation.java:11: error: package br.com.marmitaria.rest.request does not exist
+import br.com.marmitaria.rest.request.CardapioRequest;
+                                     ^
+Validation.java:12: error: package br.com.marmitaria.rest.request does not exist
+import br.com.marmitaria.rest.request.CategoriaRequest;
+                                     ^
+Validation.java:13: error: package br.com.marmitaria.rest.request does not exist
+import br.com.marmitaria.rest.request.ClienteRequest;
+                                     ^
+Validation.java:14: error: package br.com.marmitaria.rest.request does not exist
+import br.com.marmitaria.rest.request.LoginRequest;
+                                     ^
+Validation.java:15: error: package br.com.marmitaria.rest.request does not exist
+import br.com.marmitaria.rest.request.MarmitaRequest;
+                                     ^
+Validation.java:16: error: package br.com.marmitaria.rest.request does not exist
+import br.com.marmitaria.rest.request.PedidoRequest;
+                                     ^
+Validation.java:17: error: package br.com.marmitaria.rest.request does not exist
+import br.com.marmitaria.rest.request.ProdutoRequest;
+                                     ^
+Validation.java:18: error: package br.com.marmitaria.rest.request does not exist
+import br.com.marmitaria.rest.request.RecuperacaoRequest;
+                                     ^
+Validation.java:19: error: package br.com.marmitaria.rest.request does not exist
+import br.com.marmitaria.rest.request.UsuarioRequest;
+                                     ^
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Object.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/String.class)]]
+Validation.java:29: error: cannot find symbol
+	public static void validaLogin(LoginRequest login) {
+	                               ^
+  symbol:   class LoginRequest
+  location: class Validation
+Validation.java:39: error: cannot find symbol
+	public static void validaCliente(ClienteRequest cliente) {
+	                                 ^
+  symbol:   class ClienteRequest
+  location: class Validation
+Validation.java:47: error: cannot find symbol
+	public static void validaUsuario(UsuarioRequest request) {
+	                                 ^
+  symbol:   class UsuarioRequest
+  location: class Validation
+Validation.java:73: error: cannot find symbol
+	public static void valida(MarmitaRequest marmitaRequest) {
+	                          ^
+  symbol:   class MarmitaRequest
+  location: class Validation
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Long.class)]]
+Validation.java:90: error: cannot find symbol
+	public static void valida(RecuperacaoRequest request) {
+	                          ^
+  symbol:   class RecuperacaoRequest
+  location: class Validation
+Validation.java:100: error: cannot find symbol
+	public static void valida(CategoriaRequest categoriaRequest) {
+	                          ^
+  symbol:   class CategoriaRequest
+  location: class Validation
+Validation.java:106: error: cannot find symbol
+	public static void valida(ProdutoRequest produtoRequest) {
+	                          ^
+  symbol:   class ProdutoRequest
+  location: class Validation
+Validation.java:117: error: cannot find symbol
+	public static void valida(Marmita marmita) {
+	                          ^
+  symbol:   class Marmita
+  location: class Validation
+Validation.java:129: error: cannot find symbol
+	public static void valida(Categoria categoriaRequest) {
+	                          ^
+  symbol:   class Categoria
+  location: class Validation
+Validation.java:139: error: cannot find symbol
+	public static void valida(Produto produtoRequest) {
+	                          ^
+  symbol:   class Produto
+  location: class Validation
+Validation.java:148: error: cannot find symbol
+	public static void validaAdministrador(AdministradorRequest request) {
+	                                       ^
+  symbol:   class AdministradorRequest
+  location: class Validation
+Validation.java:152: error: cannot find symbol
+	public static void valida(CardapioRequest request) {
+	                          ^
+  symbol:   class CardapioRequest
+  location: class Validation
+Validation.java:158: error: cannot find symbol
+	public static void valida(PedidoRequest pedidoRequest) {
+	                          ^
+  symbol:   class PedidoRequest
+  location: class Validation
+[checking br.com.marmitaria.rest.util.Validation]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/io/Serializable.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/AutoCloseable.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Comparable.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Number.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/CharSequence.class)]]
+Validation.java:34: error: cannot find symbol
+			throw new DadosInvalidosException("Senha não informada!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Byte.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Character.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Short.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Float.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Integer.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Double.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Boolean.class)]]
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/lang/Void.class)]]
+Validation.java:42: error: cannot find symbol
+			throw new DadosInvalidosException("Endereço não informado!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:49: error: cannot find symbol
+			throw new DadosInvalidosException("Nome não informado!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:54: error: cannot find symbol
+			throw new DadosInvalidosException("Senha não informada!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:64: error: cannot find symbol
+			throw new DadosInvalidosException("Email não informado!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+[loading ZipFileIndexFileObject[/usr/lib/jvm/java-8-openjdk-amd64/lib/ct.sym(META-INF/sym/rt.jar/java/util/regex/MatchResult.class)]]
+Validation.java:69: error: cannot find symbol
+			throw new DadosInvalidosException("Email inválido!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:75: error: cannot find symbol
+			throw new DadosInvalidosException("Valor não informado!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:78: error: cannot find symbol
+			throw new DadosInvalidosException("Tipo não informado!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:92: error: cannot find symbol
+			throw new DadosInvalidosException("Email não informado!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:96: error: cannot find symbol
+			throw new DadosInvalidosException("Senha não informada!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:102: error: cannot find symbol
+			throw new DadosInvalidosException("Descrição não informada!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:108: error: cannot find symbol
+			throw new DadosInvalidosException("Categoria não informada!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:111: error: cannot find symbol
+			throw new DadosInvalidosException("Nome não informado!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:119: error: cannot find symbol
+			throw new DadosInvalidosException("Id não informado!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:122: error: cannot find symbol
+			throw new DadosInvalidosException("Valor não informado!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:125: error: cannot find symbol
+			throw new DadosInvalidosException("Tipo da marmita não informado!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:131: error: cannot find symbol
+			throw new DadosInvalidosException("Id não informado!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:134: error: cannot find symbol
+			throw new DadosInvalidosException("Descrição não informada!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:141: error: cannot find symbol
+			throw new DadosInvalidosException("Id não informado!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:144: error: cannot find symbol
+			throw new DadosInvalidosException("Nome não informado!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:154: error: cannot find symbol
+			throw new DadosInvalidosException("Cardapio sem produtos!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:161: error: cannot find symbol
+			throw new DadosInvalidosException("Marmita não selecionada!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:164: error: cannot find symbol
+			throw new DadosInvalidosException("Pedido sem produtos!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+Validation.java:167: error: cannot find symbol
+			throw new DadosInvalidosException("Tipo de pagamento não informado!");
+			          ^
+  symbol:   class DadosInvalidosException
+  location: class Validation
+[total 192ms]
+51 errors
+
+*** Infer needs a working compilation command to run.
+
+[21758][   user err] Raised at file "stdlib.ml", line 441, characters 14-31
+Called from file "src/in_channel.ml" (inlined), line 72, characters 13-30
+Called from file "base/Utils.ml", line 233, characters 11-44
+
