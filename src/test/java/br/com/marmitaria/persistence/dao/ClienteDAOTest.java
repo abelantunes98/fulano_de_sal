@@ -1,5 +1,7 @@
 package br.com.marmitaria.persistence.dao;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import javax.validation.ConstraintViolationException;
 
 import org.junit.Before;
@@ -43,14 +45,15 @@ public class ClienteDAOTest {
 	public void criarClienteTest() {
 		Cliente cliente = new Cliente(user);
 		repo.save(cliente);
-
+		assertThat(repo.findByEmail("paulo@gmail.com").getSenha()).isEqualTo("fulano");
+		assertThat(repo.count()).isEqualTo(1);
 	}
 
 	/**
 	 * Testa criar um cliente com endereço nulo
 	 */
 	@Test(expected = ConstraintViolationException.class)
-	public void criarClienteEnderecoNulo() {
+	public void criarClienteEnderecoNuloTest() {
 		user.setEndereco(null);
 		Cliente cliente = new Cliente(user);
 		repo.save(cliente);
@@ -61,7 +64,17 @@ public class ClienteDAOTest {
 	 * Testa criar um cliente com endereço vazio
 	 */
 	@Test(expected = ConstraintViolationException.class)
-	public void criarClienteEnderecoVazio() {
+	public void criarClienteEnderecoVazioTest() {
+		user.setEndereco("");
+		Cliente cliente = new Cliente(user);
+		repo.save(cliente);
+
+	}
+	/**
+	 * Testa atualizar endereço de um cliente
+	 */
+	@Test(expected = ConstraintViolationException.class)
+	public void atualizarEnderecoClienteTest() {
 		user.setEndereco("");
 		Cliente cliente = new Cliente(user);
 		repo.save(cliente);

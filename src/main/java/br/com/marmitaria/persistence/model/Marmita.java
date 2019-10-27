@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 
 @Entity
 @Table(name = "MARMITA")
@@ -25,16 +27,19 @@ public class Marmita implements Serializable, Comparable<Marmita>{
 	
 	@NotNull
 	@Column(name = "VALOR")
+	@PositiveOrZero
 	private float valor;
 	
 	@NotNull
 	@Column(name = "TIPO_MARMITA")
 	private TipoMarmita tipoMarmita;
 	
+	@NotNull
 	@Column(name = "DESCRICAO")
 	private String descricao;
 	
 	@NotNull
+	@Positive
 	@Column(name = "CARNES")
 	private int carnes;
 	
