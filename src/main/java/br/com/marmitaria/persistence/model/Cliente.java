@@ -4,6 +4,7 @@ package br.com.marmitaria.persistence.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 
@@ -21,6 +22,7 @@ public class Cliente extends Usuario{
 	
 	@Column(name = "ENDERECO")
 	@NotNull
+	@NotEmpty
 	private String endereco;
 	
 	@Column(name = "TELEFONE")

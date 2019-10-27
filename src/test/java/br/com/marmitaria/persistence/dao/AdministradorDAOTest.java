@@ -1,7 +1,5 @@
 package br.com.marmitaria.persistence.dao;
 
-import javax.validation.ConstraintViolationException;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,17 +8,17 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.marmitaria.persistence.model.Cliente;
+import br.com.marmitaria.persistence.model.Administrador;
 
 import br.com.marmitaria.rest.request.ClienteRequest;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @TestPropertySource(locations = "classpath:test.properties")
-public class ClienteDAOTest {
+public class AdministradorDAOTest {
 
 	@Autowired
-	private ClienteDAO repo;
+	private AdministradorDAO repo;
 
 	private ClienteRequest user;
 
@@ -36,34 +34,13 @@ public class ClienteDAOTest {
 		user.setSenha("fulano");
 		user.setEndereco("Rua da esquina");
 	}
+
 	/**
-	 * Testa criar um cliente 
+	 * Testa criar um administrador
 	 */
 	@Test
-	public void criarClienteTest() {
-		Cliente cliente = new Cliente(user);
-		repo.save(cliente);
-
-	}
-
-	/**
-	 * Testa criar um cliente com endereço nulo
-	 */
-	@Test(expected = ConstraintViolationException.class)
-	public void criarClienteEnderecoNulo() {
-		user.setEndereco(null);
-		Cliente cliente = new Cliente(user);
-		repo.save(cliente);
-
-	}
-	
-	/**
-	 * Testa criar um cliente com endereço vazio
-	 */
-	@Test(expected = ConstraintViolationException.class)
-	public void criarClienteEnderecoVazio() {
-		user.setEndereco("");
-		Cliente cliente = new Cliente(user);
+	public void criarAdministradorTest() {
+		Administrador cliente = new Administrador(user);
 		repo.save(cliente);
 
 	}
