@@ -66,6 +66,17 @@ public class MarmitaDAOTest {
 		repo.save(marmita);
 
 	}
+	
+	/**
+	 * Testa criar marmita com valor zero
+	 */
+	@Test(expected = ConstraintViolationException.class)
+	public void criarMarmitaValorZeroTest() {
+		marmita.setValor(0);
+		repo.save(marmita);
+
+	}
+	
 
 	/**
 	 * Testa criar marmita com tipo nulo
@@ -83,6 +94,15 @@ public class MarmitaDAOTest {
 	@Test(expected = ConstraintViolationException.class)
 	public void criarMarmitaQuantidadeDeCarnesNegativaTest() {
 		marmita.setCarnes(-1);
+		repo.save(marmita);
+	}
+	
+	/**
+	 * Testa criar marmita com quantidade de carnes zero
+	 */
+	@Test(expected = ConstraintViolationException.class)
+	public void criarMarmitaQuantidadeDeCarnesZeroTest() {
+		marmita.setCarnes(0);
 		repo.save(marmita);
 	}
 

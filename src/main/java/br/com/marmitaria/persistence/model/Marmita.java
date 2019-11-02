@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
+
 
 @Entity
 @Table(name = "MARMITA")
@@ -27,7 +27,7 @@ public class Marmita implements Serializable, Comparable<Marmita>{
 	
 	@NotNull
 	@Column(name = "VALOR")
-	@PositiveOrZero
+	@Positive
 	private float valor;
 	
 	@NotNull

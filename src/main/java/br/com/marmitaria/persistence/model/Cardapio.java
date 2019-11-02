@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -32,11 +33,13 @@ public class Cardapio implements Serializable, Comparable<Cardapio>{
 	@Column(name = "ID_CARDAPIO")
 	private Long idCardapio;
 
+	@NotNull
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "CARDAPIO_PRODUTO", joinColumns = { @JoinColumn(name = "ID_CARDAPIO") }, inverseJoinColumns = {
 			@JoinColumn(name = "ID_PRODUTO") })
 	private List<Produto> produtos;
 	
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "DATA_CARDAPIO")
 	private Date data;

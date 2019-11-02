@@ -51,6 +51,19 @@ public class ProdutoDAOTest {
 		assertThat(repo.count()).isEqualTo(1);
 		assertThat(repo.findByNome("Feijão Branco")).isNotNull();
 	}
+	
+//	/**
+//	 * Testa criar um produto com um nome já existente
+//	 */
+//	@Test(expected = DataIntegrityViolationException.class)
+//	public void criarProdutoNomeExisteTest() {
+//		repo.save(produto);
+//		Produto produto1 = new Produto();
+//		produto1.setCategoria(categoria);
+//		produto1.setNome("Feijão Branco");
+//		repo.save(produto1);
+//		
+//	}
 
 	/**
 	 * Testa criar um produto com categoria nula
