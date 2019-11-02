@@ -33,21 +33,26 @@ public class Pedido implements Serializable,Comparable<Pedido>{
 	@Column(name = "ID_PEDIDO")
 	private Long idPedido;
 	
+	@NotNull
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ID_MARMITA")
 	private Marmita marmita;
 	
+	@NotNull
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "PEDIDO_PRODUTO",joinColumns = {@JoinColumn(name="ID_PEDIDO")},inverseJoinColumns = {@JoinColumn(name="ID_PRODUTO")})
 	private List<Produto> produtos;
 	
+	@NotNull
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ID_USUARIO")
 	private Cliente cliente;
 	
+	@NotNull
 	@Column(name = "CONFIRMADO")
 	private Boolean confirmado;
 	
+	@NotNull
 	@Column(name = "OBSERVACOES")
 	private String obsvacoes;
 
@@ -55,6 +60,7 @@ public class Pedido implements Serializable,Comparable<Pedido>{
 	@Column(name = "TIPO_PAGAMENTO")
 	private TipoPagamento tipoPagamento;
 	
+	@NotNull
 	@Column(name = "DATA")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date  data;
