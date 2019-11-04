@@ -86,10 +86,38 @@ public class PedidoController {
 	@ResponseBody
 	@GetMapping("/listarAdmin")
 	public ResponseEntity<PedidosResponse> listar(){
-		List<Pedido> pedidos = pedidoService.findAll();
+		List<Pedido> retorno = new ArrayList<Pedido>();
 		ComparatorPedido comparatorPedido =new ComparatorPedido();
-		Collections.sort(pedidos,comparatorPedido);
-		PedidosResponse pedidosResponse = new PedidosResponse(pedidos);
+		
+		List<Pedido> pedidosNaoConfirmados = pedidoService.findByConfirmado(false);
+		List<Pedido> pedidosConfirmados = pedidoService.findByConfirmado(true);
+		
+		Collections.sort(pedidosNaoConfirmados,comparatorPedido);
+		Collections.sort(pedidosConfirmados,comparatorPedido);
+		
+		boolean finalizar = false;
+		
+		int index = 0;
+		
+		while(!finalizar && retorno.size()<10) {
+			
+			if(index >= pedidosConfirmados.size() && index >= pedidosNaoConfirmados.size()) {
+				finalizar = true;
+			}else {
+				if(index < pedidosNaoConfirmados.size()){
+					retorno.add(pedidosNaoConfirmados.get(index));
+				}
+				
+				if(index < pedidosConfirmados.size()) {
+					retorno.add(pedidosConfirmados.get(index));
+				}
+			}
+			
+			index++;
+		}
+		Collections.sort(retorno,comparatorPedido);
+		
+		PedidosResponse pedidosResponse = new PedidosResponse(retorno);
 		return new ResponseEntity<PedidosResponse>(pedidosResponse,HttpStatus.OK);
 	} 
 	

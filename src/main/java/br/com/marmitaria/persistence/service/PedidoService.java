@@ -19,4 +19,8 @@ public class PedidoService extends GenericService<Pedido>{
 		return dao.findAllByCliente(cliente);
 	}
 
+	public List<Pedido> findByConfirmado(boolean b) {
+		return dao.findByConfirmado(b);
+	}
+
 }

@@ -13,4 +13,6 @@ public interface PedidoDAO extends JpaRepository<Pedido, Long>{
 
 	List<Pedido> findAllByCliente(Cliente cliente);
 
+	List<Pedido> findByConfirmado(boolean b);
+
 }
