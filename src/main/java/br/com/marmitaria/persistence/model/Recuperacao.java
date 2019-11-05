@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -36,6 +37,7 @@ public class Recuperacao implements Serializable{
 	private Usuario usuario;
 	
 	@NotNull
+	@NotEmpty
 	@Column(name = "CODIGO")
 	private String codigo;
 	

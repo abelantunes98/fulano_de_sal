@@ -26,17 +26,17 @@ import br.com.marmitaria.persistence.model.Produto;
 public class CardapioDAOTest {
 
 	@Autowired
-	private CardapioDAO repo;
+	private CardapioDAO repositorioCardapios;
 
 	@Autowired
-	private CategoriaDAO categ;
+	private CategoriaDAO repositorioCategorias;
 
 	@Autowired
-	private ProdutoDAO prod;
+	private ProdutoDAO repositorioProdutos;
 
 	private Categoria categoria;
 
-	private List<Produto> lista;
+	private List<Produto> listaProdutos;
 	
 	private Cardapio cardapio;
 
@@ -49,16 +49,16 @@ public class CardapioDAOTest {
 		Produto produto1 = new Produto();
 		Produto produto2 = new Produto();
 		categoria = new Categoria("Feijões");
-		categ.save(categoria);
+		repositorioCategorias.save(categoria);
 		produto1.setNome("Feijão Branco");
 		produto1.setCategoria(categoria);
 		produto2.setNome("Feijão Preto");
 		produto2.setCategoria(categoria);
-		lista = new ArrayList<Produto>();
-		prod.save(produto1);
-		prod.save(produto2);
-		lista.add(produto1);
-		lista.add(produto2);
+		listaProdutos = new ArrayList<Produto>();
+		repositorioProdutos.save(produto1);
+		repositorioProdutos.save(produto2);
+		listaProdutos.add(produto1);
+		listaProdutos.add(produto2);
 
 	}
 
@@ -68,11 +68,11 @@ public class CardapioDAOTest {
 	@Test
 	public void criarCardapioTest() {
 		cardapio = new Cardapio();
-		cardapio.setProdutos(lista);
+		cardapio.setProdutos(listaProdutos);
 		cardapio.setData(new Date());
-		repo.save(cardapio);
-		assertThat(repo.count()).isEqualTo(1);
-		assertThat(repo.getOne(1L)).isEqualTo(cardapio);
+		repositorioCardapios.save(cardapio);
+		assertThat(repositorioCardapios.count()).isEqualTo(1);
+		assertThat(repositorioCardapios.getOne(1L)).isEqualTo(cardapio);
 
 	}
 
@@ -84,7 +84,7 @@ public class CardapioDAOTest {
 		cardapio = new Cardapio();
 		cardapio.setProdutos(null);
 		cardapio.setData(new Date());
-		repo.save(cardapio);
+		repositorioCardapios.save(cardapio);
 
 	}
 
@@ -94,9 +94,9 @@ public class CardapioDAOTest {
 	@Test(expected = ConstraintViolationException.class)
 	public void criarCardapioDataNulaTest() {
 		cardapio = new Cardapio();
-		cardapio.setProdutos(lista);
+		cardapio.setProdutos(listaProdutos);
 		cardapio.setData(null);
-		repo.save(cardapio);
+		repositorioCardapios.save(cardapio);
 
 	}
 

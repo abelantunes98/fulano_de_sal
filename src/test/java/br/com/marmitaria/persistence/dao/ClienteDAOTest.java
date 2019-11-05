@@ -22,31 +22,31 @@ import br.com.marmitaria.rest.request.ClienteRequest;
 public class ClienteDAOTest {
 
 	@Autowired
-	private ClienteDAO repo;
+	private ClienteDAO repositorioClientes;
 
-	private ClienteRequest user;
+	private ClienteRequest clienteRequest;
 
 	/**
 	 * Inicia variáveis para os testes
 	 */
 	@Before
 	public void init() {
-		user = new ClienteRequest();
-		user.setNome("Paulo");
-		user.setTelefone("98555555");
-		user.setEmail("paulo@gmail.com");
-		user.setSenha("fulano");
-		user.setEndereco("Rua da esquina");
+		clienteRequest = new ClienteRequest();
+		clienteRequest.setNome("Paulo");
+		clienteRequest.setTelefone("98555555");
+		clienteRequest.setEmail("paulo@gmail.com");
+		clienteRequest.setSenha("fulano");
+		clienteRequest.setEndereco("Rua da esquina");
 	}
 	/**
 	 * Testa criar um cliente 
 	 */
 	@Test
 	public void criarClienteTest() {
-		Cliente cliente = new Cliente(user);
-		repo.save(cliente);
-		assertThat(repo.findByEmail("paulo@gmail.com").getSenha()).isEqualTo("fulano");
-		assertThat(repo.count()).isEqualTo(1);
+		Cliente cliente = new Cliente(clienteRequest);
+		repositorioClientes.save(cliente);
+		assertThat(repositorioClientes.findByEmail("paulo@gmail.com").getSenha()).isEqualTo("fulano");
+		assertThat(repositorioClientes.count()).isEqualTo(1);
 	}
 
 	/**
@@ -54,9 +54,9 @@ public class ClienteDAOTest {
 	 */
 	@Test(expected = ConstraintViolationException.class)
 	public void criarClienteEnderecoNuloTest() {
-		user.setEndereco(null);
-		Cliente cliente = new Cliente(user);
-		repo.save(cliente);
+		clienteRequest.setEndereco(null);
+		Cliente cliente = new Cliente(clienteRequest);
+		repositorioClientes.save(cliente);
 
 	}
 	
@@ -65,9 +65,9 @@ public class ClienteDAOTest {
 	 */
 	@Test(expected = ConstraintViolationException.class)
 	public void criarClienteEnderecoVazioTest() {
-		user.setEndereco("");
-		Cliente cliente = new Cliente(user);
-		repo.save(cliente);
+		clienteRequest.setEndereco("");
+		Cliente cliente = new Cliente(clienteRequest);
+		repositorioClientes.save(cliente);
 
 	}
 	/**
@@ -75,9 +75,9 @@ public class ClienteDAOTest {
 	 */
 	@Test(expected = ConstraintViolationException.class)
 	public void atualizarEnderecoClienteTest() {
-		user.setEndereco("");
-		Cliente cliente = new Cliente(user);
-		repo.save(cliente);
+		clienteRequest.setEndereco("");
+		Cliente cliente = new Cliente(clienteRequest);
+		repositorioClientes.save(cliente);
 
 	}
 

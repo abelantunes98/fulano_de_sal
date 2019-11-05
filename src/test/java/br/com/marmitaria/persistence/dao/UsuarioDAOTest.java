@@ -20,22 +20,22 @@ import br.com.marmitaria.persistence.model.Usuario;
 public class UsuarioDAOTest {
 
 	@Autowired
-	private UsuarioDAO repo;
+	private UsuarioDAO repositorioUsuarios;
 
-	private Usuario user;
+	private Usuario usuario;
 
 	/**
 	 * Inicia variáveis para os testes
 	 */
 	@Before
 	public void init() {
-		user = new Usuario();
-		user.setTipo(TipoUsuario.CLIENTE);
-		user.setNome("Paulo");
-		user.setCadastroPendente(true);
-		user.setEmail("paulo@gmail.com");
-		user.setSenha("fulano");
-		repo.save(user);
+		usuario = new Usuario();
+		usuario.setTipo(TipoUsuario.CLIENTE);
+		usuario.setNome("Paulo");
+		usuario.setCadastroPendente(true);
+		usuario.setEmail("paulo@gmail.com");
+		usuario.setSenha("fulano");
+		repositorioUsuarios.save(usuario);
 
 	}
 
@@ -50,9 +50,9 @@ public class UsuarioDAOTest {
 		u.setCadastroPendente(true);
 		u.setEmail("edu@gmail.com");
 		u.setSenha("123456");
-		repo.save(u);
-		assertThat(repo.count()).isEqualTo(2);
-		assertThat(repo.findByEmail("edu@gmail.com").getNome()).isEqualTo("Eduardo");
+		repositorioUsuarios.save(u);
+		assertThat(repositorioUsuarios.count()).isEqualTo(2);
+		assertThat(repositorioUsuarios.findByEmail("edu@gmail.com").getNome()).isEqualTo("Eduardo");
 	}
 
 	/**
@@ -66,9 +66,9 @@ public class UsuarioDAOTest {
 		u.setCadastroPendente(true);
 		u.setEmail("edu@gmail.com");
 		u.setSenha("123456");
-		repo.save(u);
-		assertThat(repo.count()).isEqualTo(2);
-		assertThat(repo.findByEmail("edu@gmail.com").getNome()).isEqualTo("Eduardo");
+		repositorioUsuarios.save(u);
+		assertThat(repositorioUsuarios.count()).isEqualTo(2);
+		assertThat(repositorioUsuarios.findByEmail("edu@gmail.com").getNome()).isEqualTo("Eduardo");
 	}
 
 	/**
@@ -82,9 +82,9 @@ public class UsuarioDAOTest {
 		u.setCadastroPendente(true);
 		u.setEmail("edu@gmail.com");
 		u.setSenha("123456");
-		repo.save(u);
-		assertThat(repo.count()).isEqualTo(1);
-		assertThat(repo.findByEmail("edu@gmail.com").getNome()).isEqualTo("Eduardo");
+		repositorioUsuarios.save(u);
+		assertThat(repositorioUsuarios.count()).isEqualTo(1);
+		assertThat(repositorioUsuarios.findByEmail("edu@gmail.com").getNome()).isEqualTo("Eduardo");
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class UsuarioDAOTest {
 		u.setCadastroPendente(true);
 		u.setEmail("edu@gmail.com");
 		u.setSenha("123456");
-		repo.save(u);
+		repositorioUsuarios.save(u);
 
 	}
 
@@ -113,7 +113,7 @@ public class UsuarioDAOTest {
 		u.setCadastroPendente(true);
 		u.setEmail("edu@gmail.com");
 		u.setSenha("123456");
-		repo.save(u);
+		repositorioUsuarios.save(u);
 
 	}
 
@@ -128,7 +128,7 @@ public class UsuarioDAOTest {
 		u.setCadastroPendente(true);
 		u.setEmail(null);
 		u.setSenha("123456");
-		repo.save(u);
+		repositorioUsuarios.save(u);
 
 	}
 
@@ -143,7 +143,7 @@ public class UsuarioDAOTest {
 		u.setCadastroPendente(true);
 		u.setEmail("");
 		u.setSenha("123456");
-		repo.save(u);
+		repositorioUsuarios.save(u);
 
 	}
 
@@ -158,7 +158,7 @@ public class UsuarioDAOTest {
 		u.setCadastroPendente(true);
 		u.setEmail("edu@gmail.com");
 		u.setSenha(null);
-		repo.save(u);
+		repositorioUsuarios.save(u);
 
 	}
 
@@ -173,7 +173,7 @@ public class UsuarioDAOTest {
 		u.setCadastroPendente(true);
 		u.setEmail("edu@gmail.com");
 		u.setSenha("");
-		repo.save(u);
+		repositorioUsuarios.save(u);
 	}
 
 	/**
@@ -181,10 +181,10 @@ public class UsuarioDAOTest {
 	 */
 	@Test
 	public void atualizarEmailTest() {
-		user.setEmail("edu@gmail.com");
-		repo.save(user);
-		assertThat(repo.findByEmail("paulo@gmail.com")).isNotNull();
-		assertThat(repo.findByEmail("edu@gmail.com")).isNull();
+		usuario.setEmail("edu@gmail.com");
+		repositorioUsuarios.save(usuario);
+		assertThat(repositorioUsuarios.findByEmail("paulo@gmail.com")).isNotNull();
+		assertThat(repositorioUsuarios.findByEmail("edu@gmail.com")).isNull();
 	}
 
 	/**
@@ -192,10 +192,10 @@ public class UsuarioDAOTest {
 	 */
 	@Test
 	public void atualizarSenhaTest() {
-		assertThat(repo.findByEmail("paulo@gmail.com").getSenha()).isEqualTo("fulano");
-		user.setSenha("753951");
-		repo.save(user);
-		assertThat(repo.findByEmail("paulo@gmail.com").getSenha()).isEqualTo("753951");
+		assertThat(repositorioUsuarios.findByEmail("paulo@gmail.com").getSenha()).isEqualTo("fulano");
+		usuario.setSenha("753951");
+		repositorioUsuarios.save(usuario);
+		assertThat(repositorioUsuarios.findByEmail("paulo@gmail.com").getSenha()).isEqualTo("753951");
 	}
 
 	/**
@@ -204,10 +204,10 @@ public class UsuarioDAOTest {
 
 	@Test
 	public void atualizarNomeTest() {
-		assertThat(repo.findByEmail("paulo@gmail.com").getNome()).isEqualTo("Paulo");
-		user.setNome("Edu");
-		repo.save(user);
-		assertThat(repo.findByEmail("paulo@gmail.com").getNome()).isEqualTo("Edu");
+		assertThat(repositorioUsuarios.findByEmail("paulo@gmail.com").getNome()).isEqualTo("Paulo");
+		usuario.setNome("Edu");
+		repositorioUsuarios.save(usuario);
+		assertThat(repositorioUsuarios.findByEmail("paulo@gmail.com").getNome()).isEqualTo("Edu");
 	}
 
 }

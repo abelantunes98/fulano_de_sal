@@ -30,31 +30,31 @@ import br.com.marmitaria.rest.request.ClienteRequest;
 public class PedidoDAOTest {
 	
 	@Autowired
-	private PedidoDAO repo;
+	private PedidoDAO repositorioPedidos;
 	
 	@Autowired
-	private CategoriaDAO categ;
+	private CategoriaDAO repositorioCategorias;
 	
 	@Autowired
-	private ClienteDAO clien;
+	private ClienteDAO repositorioClientes;
 
 	@Autowired
-	private ProdutoDAO prod;
+	private ProdutoDAO repositorioProdutos;
 	
 	@Autowired
-	private MarmitaDAO marmit;
+	private MarmitaDAO repositorioMarmitas;
 
 	private Categoria categoria;
 	
 	private Pedido pedido;
 
-	private List<Produto> lista;
+	private List<Produto> listaProdutos;
 	
 	private Marmita marmita;
 	
 	private Cliente cliente;
 	
-	private ClienteRequest user;
+	private ClienteRequest clienteRequest;
 	
 	/**
 	 * Inicia variáveis para os testes
@@ -65,26 +65,26 @@ public class PedidoDAOTest {
 		Produto produto1 = new Produto();
 		Produto produto2 = new Produto();
 		categoria = new Categoria("Feijões");
-		categ.save(categoria);
+		repositorioCategorias.save(categoria);
 		produto1.setNome("Feijão Branco");
 		produto1.setCategoria(categoria);
 		produto2.setNome("Feijão Preto");
 		produto2.setCategoria(categoria);
-		lista = new ArrayList<Produto>();
-		prod.save(produto1);
-		prod.save(produto2);
-		lista.add(produto1);
-		lista.add(produto2);
-		user = new ClienteRequest();
-		user.setNome("Paulo");
-		user.setTelefone("98555555");
-		user.setEmail("paulo@gmail.com");
-		user.setSenha("fulano");
-		user.setEndereco("Rua da esquina");
-		cliente = new Cliente(user);
-		clien.save(cliente);
+		listaProdutos = new ArrayList<Produto>();
+		repositorioProdutos.save(produto1);
+		repositorioProdutos.save(produto2);
+		listaProdutos.add(produto1);
+		listaProdutos.add(produto2);
+		clienteRequest = new ClienteRequest();
+		clienteRequest.setNome("Paulo");
+		clienteRequest.setTelefone("98555555");
+		clienteRequest.setEmail("paulo@gmail.com");
+		clienteRequest.setSenha("fulano");
+		clienteRequest.setEndereco("Rua da esquina");
+		cliente = new Cliente(clienteRequest);
+		repositorioClientes.save(cliente);
 		marmita = new Marmita(15, TipoMarmita.TRADICIONAL, "3 carnes e 7 acompanhamentos", 3);
-		marmit.save(marmita);
+		repositorioMarmitas.save(marmita);
 
 	}
 	
@@ -99,7 +99,7 @@ public class PedidoDAOTest {
 		pedido.setData(new Date());
 		pedido.setMarmita(marmita);
 		pedido.setObsvacoes("TALHERES");
-		pedido.setProdutos(lista);
+		pedido.setProdutos(listaProdutos);
 		pedido.setTipoPagamento(TipoPagamento.DINHEIRO);
 	
 	}
@@ -109,9 +109,9 @@ public class PedidoDAOTest {
 	 */
 	@Test
 	public void criarPedidoTest() {
-		repo.save(pedido);
-		assertThat(repo.count()).isEqualTo(1);
-		assertThat(repo.getOne(1L)).isEqualTo(pedido);
+		repositorioPedidos.save(pedido);
+		assertThat(repositorioPedidos.count()).isEqualTo(1);
+		assertThat(repositorioPedidos.getOne(1L)).isEqualTo(pedido);
 
 	}
 	
@@ -121,7 +121,7 @@ public class PedidoDAOTest {
 	@Test(expected = ConstraintViolationException.class)
 	public void criarPedidoClienteNuloTest() {
 		pedido.setCliente(null);
-		repo.save(pedido);
+		repositorioPedidos.save(pedido);
 
 	}
 	
@@ -131,7 +131,7 @@ public class PedidoDAOTest {
 	@Test(expected = ConstraintViolationException.class)
 	public void criarPedidoDataNulaTest() {
 		pedido.setData(null);
-		repo.save(pedido);
+		repositorioPedidos.save(pedido);
 
 	}
 	
@@ -141,7 +141,7 @@ public class PedidoDAOTest {
 	@Test(expected = ConstraintViolationException.class)
 	public void criarPedidoObservacoesNulaTest() {
 		pedido.setObsvacoes(null);
-		repo.save(pedido);
+		repositorioPedidos.save(pedido);
 
 	}
 	
@@ -151,7 +151,7 @@ public class PedidoDAOTest {
 	@Test(expected = ConstraintViolationException.class)
 	public void criarPedidoMarmitaNulaTest() {
 		pedido.setMarmita(null);
-		repo.save(pedido);
+		repositorioPedidos.save(pedido);
 
 	}
 	
@@ -161,7 +161,7 @@ public class PedidoDAOTest {
 	@Test(expected = ConstraintViolationException.class)
 	public void criarPedidoListaProdutosNulaTest() {
 		pedido.setProdutos(null);
-		repo.save(pedido);
+		repositorioPedidos.save(pedido);
 
 	}
 	
@@ -171,7 +171,7 @@ public class PedidoDAOTest {
 	@Test(expected = ConstraintViolationException.class)
 	public void criarPedidoConfirmacaoNulaTest() {
 		pedido.setConfirmado(null);
-		repo.save(pedido);
+		repositorioPedidos.save(pedido);
 
 	}
 

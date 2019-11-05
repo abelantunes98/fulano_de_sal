@@ -19,7 +19,7 @@ import br.com.marmitaria.persistence.model.Categoria;
 public class CategoriaDAOTest {
 
 	@Autowired
-	private CategoriaDAO repo;
+	private CategoriaDAO repositorioCategorias;
 
 	/**
 	 * Testa criar uma categoria corretamente
@@ -27,9 +27,9 @@ public class CategoriaDAOTest {
 	@Test
 	public void criarCategoriaTest() {
 		Categoria categoria = new Categoria("Feijões");
-		repo.save(categoria);
-		assertThat(repo.count()).isEqualTo(1);
-		assertThat(repo.findByDescricao("Feijões")).isNotNull();
+		repositorioCategorias.save(categoria);
+		assertThat(repositorioCategorias.count()).isEqualTo(1);
+		assertThat(repositorioCategorias.findByDescricao("Feijões")).isNotNull();
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class CategoriaDAOTest {
 	public void criarCategoriaDescricaoNulaTest() {
 
 		Categoria categoria = new Categoria(null);
-		repo.save(categoria);
+		repositorioCategorias.save(categoria);
 
 	}
 	/**
@@ -48,7 +48,7 @@ public class CategoriaDAOTest {
 	@Test(expected = ConstraintViolationException.class)
 	public void criarCategoriaDescricaoVaziaTest() {
 		Categoria categoria = new Categoria("");
-		repo.save(categoria);
+		repositorioCategorias.save(categoria);
 
 	}
 	/**
@@ -57,10 +57,10 @@ public class CategoriaDAOTest {
 	@Test
 	public void atualizarCategoriaTest() {
 		Categoria categoria = new Categoria("Feijões");
-		repo.save(categoria);
+		repositorioCategorias.save(categoria);
 		categoria.setDescricao("Massas");
-		repo.save(categoria);
-		assertThat(repo.getOne(categoria.getId()).getDescricao()).isEqualTo("Massas");
+		repositorioCategorias.save(categoria);
+		assertThat(repositorioCategorias.getOne(categoria.getId()).getDescricao()).isEqualTo("Massas");
 
 	}
 
@@ -70,10 +70,10 @@ public class CategoriaDAOTest {
 	@Test
 	public void deletarCategoriaTest() {
 		Categoria categoria = new Categoria("Feijões");
-		repo.save(categoria);
-		assertThat(repo.count()).isEqualTo(1);
-		repo.delete(categoria);
-		assertThat(repo.count()).isEqualTo(0);
+		repositorioCategorias.save(categoria);
+		assertThat(repositorioCategorias.count()).isEqualTo(1);
+		repositorioCategorias.delete(categoria);
+		assertThat(repositorioCategorias.count()).isEqualTo(0);
 
 	}
 }

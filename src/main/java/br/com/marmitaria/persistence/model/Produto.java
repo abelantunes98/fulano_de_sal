@@ -28,6 +28,7 @@ public class Produto implements Serializable,Comparable<Produto>{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idProduto;
 	
+
 	@NotNull
 	@NotEmpty
 	@Column(name = "NOME")

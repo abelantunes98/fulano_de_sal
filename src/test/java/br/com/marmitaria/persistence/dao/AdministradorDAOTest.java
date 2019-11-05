@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.marmitaria.persistence.model.Administrador;
 
-import br.com.marmitaria.rest.request.ClienteRequest;
+import br.com.marmitaria.rest.request.UsuarioRequest;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -18,21 +18,19 @@ import br.com.marmitaria.rest.request.ClienteRequest;
 public class AdministradorDAOTest {
 
 	@Autowired
-	private AdministradorDAO repo;
+	private AdministradorDAO repositorioAdministradores;
 
-	private ClienteRequest user;
+	private UsuarioRequest usuario;
 
 	/**
 	 * Inicia variáveis para os testes
 	 */
 	@Before
 	public void init() {
-		user = new ClienteRequest();
-		user.setNome("Paulo");
-		user.setTelefone("98555555");
-		user.setEmail("paulo@gmail.com");
-		user.setSenha("fulano");
-		user.setEndereco("Rua da esquina");
+		usuario = new UsuarioRequest();
+		usuario.setNome("Paulo");
+		usuario.setEmail("paulo@gmail.com");
+		usuario.setSenha("fulano");
 	}
 
 	/**
@@ -40,8 +38,8 @@ public class AdministradorDAOTest {
 	 */
 	@Test
 	public void criarAdministradorTest() {
-		Administrador cliente = new Administrador(user);
-		repo.save(cliente);
+		Administrador cliente = new Administrador(usuario);
+		repositorioAdministradores.save(cliente);
 
 	}
 

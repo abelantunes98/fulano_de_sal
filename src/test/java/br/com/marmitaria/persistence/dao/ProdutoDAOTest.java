@@ -24,11 +24,12 @@ public class ProdutoDAOTest {
 	private Produto produto;
 
 	private Categoria categoria;
+	
 	@Autowired
-	private ProdutoDAO repo;
+	private ProdutoDAO repositorioProdutos;
 
 	@Autowired
-	private CategoriaDAO categ;
+	private CategoriaDAO repositorioCategorias;
 
 	/**
 	 * Inicia variáveis para os testes
@@ -37,7 +38,7 @@ public class ProdutoDAOTest {
 	public void init() {
 		produto = new Produto();
 		categoria = new Categoria("Feijões");
-		categ.save(categoria);
+		repositorioCategorias.save(categoria);
 		produto.setNome("Feijão Branco");
 		produto.setCategoria(categoria);
 	}
@@ -47,9 +48,9 @@ public class ProdutoDAOTest {
 	 */
 	@Test
 	public void criarProdutoTest() {
-		repo.save(produto);
-		assertThat(repo.count()).isEqualTo(1);
-		assertThat(repo.findByNome("Feijão Branco")).isNotNull();
+		repositorioProdutos.save(produto);
+		assertThat(repositorioProdutos.count()).isEqualTo(1);
+		assertThat(repositorioProdutos.findByNome("Feijão Branco")).isNotNull();
 	}
 	
 //	/**
@@ -71,7 +72,7 @@ public class ProdutoDAOTest {
 	@Test(expected = ConstraintViolationException.class)
 	public void criarProdutoCategoriaNulaTest() {
 		produto.setCategoria(null);
-		repo.save(produto);
+		repositorioProdutos.save(produto);
 
 	}
 
@@ -82,7 +83,7 @@ public class ProdutoDAOTest {
 	@Test(expected = ConstraintViolationException.class)
 	public void criarProdutoNomeVazioTest() {
 		produto.setNome("");
-		repo.save(produto);
+		repositorioProdutos.save(produto);
 
 	}
 	
@@ -93,7 +94,7 @@ public class ProdutoDAOTest {
 	@Test(expected = ConstraintViolationException.class)
 	public void criarProdutoNomeNuloTest() {
 		produto.setNome(null);
-		repo.save(produto);
+		repositorioProdutos.save(produto);
 
 	}
 
@@ -102,11 +103,11 @@ public class ProdutoDAOTest {
 	 */
 	@Test
 	public void atualizarNomeProdutoTest() {
-		repo.save(produto);
-		assertThat(repo.getOne(produto.getIdProduto()).getNome()).isEqualTo("Feijão Branco");
+		repositorioProdutos.save(produto);
+		assertThat(repositorioProdutos.getOne(produto.getIdProduto()).getNome()).isEqualTo("Feijão Branco");
 		produto.setNome("Feijão Preto");
-		repo.save(produto);
-		assertThat(repo.getOne(produto.getIdProduto()).getNome()).isEqualTo("Feijão Preto");
+		repositorioProdutos.save(produto);
+		assertThat(repositorioProdutos.getOne(produto.getIdProduto()).getNome()).isEqualTo("Feijão Preto");
 
 	}
 
@@ -115,10 +116,10 @@ public class ProdutoDAOTest {
 	 */
 	@Test
 	public void atualizarCategoriaProdutoTest() {
-		repo.save(produto);
-		assertThat(repo.count()).isEqualTo(1);
-		repo.delete(produto);
-		assertThat(repo.count()).isEqualTo(0);
+		repositorioProdutos.save(produto);
+		assertThat(repositorioProdutos.count()).isEqualTo(1);
+		repositorioProdutos.delete(produto);
+		assertThat(repositorioProdutos.count()).isEqualTo(0);
 	}
 
 	/**
@@ -126,10 +127,10 @@ public class ProdutoDAOTest {
 	 */
 	@Test
 	public void deletarProdutoTest() {
-		repo.save(produto);
-		assertThat(repo.count()).isEqualTo(1);
-		repo.delete(produto);
-		assertThat(repo.count()).isEqualTo(0);
+		repositorioProdutos.save(produto);
+		assertThat(repositorioProdutos.count()).isEqualTo(1);
+		repositorioProdutos.delete(produto);
+		assertThat(repositorioProdutos.count()).isEqualTo(0);
 
 	}
 

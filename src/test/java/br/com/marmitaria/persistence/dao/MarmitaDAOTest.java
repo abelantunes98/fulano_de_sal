@@ -21,9 +21,10 @@ import br.com.marmitaria.persistence.model.TipoMarmita;
 public class MarmitaDAOTest {
 
 	@Autowired
-	private MarmitaDAO repo;
+	private MarmitaDAO repositorioMarmitas;
 
-	private Marmita marmita;
+	private Marmita marmita1;
+	
 	private Marmita marmita2;
 
 	/**
@@ -32,9 +33,9 @@ public class MarmitaDAOTest {
 	@Before
 	public void init() {
 		
-		marmita = new Marmita(15, TipoMarmita.TRADICIONAL, "3 carnes e 7 acompanhamentos", 3);
+		marmita1 = new Marmita(15, TipoMarmita.TRADICIONAL, "3 carnes e 7 acompanhamentos", 3);
 		marmita2 = new Marmita(10, TipoMarmita.DIVISORIA, "3 carnes e 7 acompanhamentos", 2);
-		repo.save(marmita2);
+		repositorioMarmitas.save(marmita2);
 	}
 
 	/**
@@ -42,9 +43,9 @@ public class MarmitaDAOTest {
 	 */
 	@Test
 	public void criarMarmitaTest() {
-		repo.save(marmita);
-		assertThat(repo.getOne(marmita.getIdMarmita()).getDescricao()).isEqualTo("3 carnes e 7 acompanhamentos");
-		assertThat(repo.count()).isEqualTo(2);
+		repositorioMarmitas.save(marmita1);
+		assertThat(repositorioMarmitas.getOne(marmita1.getIdMarmita()).getDescricao()).isEqualTo("3 carnes e 7 acompanhamentos");
+		assertThat(repositorioMarmitas.count()).isEqualTo(2);
 	}
 
 	/**
@@ -53,8 +54,8 @@ public class MarmitaDAOTest {
 
 	@Test(expected = ConstraintViolationException.class)
 	public void criarMarmitaDescricaoNulaTest() {
-		marmita.setDescricao(null);
-		repo.save(marmita);
+		marmita1.setDescricao(null);
+		repositorioMarmitas.save(marmita1);
 	}
 
 	/**
@@ -62,8 +63,8 @@ public class MarmitaDAOTest {
 	 */
 	@Test(expected = ConstraintViolationException.class)
 	public void criarMarmitaValorNegativoTest() {
-		marmita.setValor(-1);
-		repo.save(marmita);
+		marmita1.setValor(-1);
+		repositorioMarmitas.save(marmita1);
 
 	}
 	
@@ -72,8 +73,8 @@ public class MarmitaDAOTest {
 	 */
 	@Test(expected = ConstraintViolationException.class)
 	public void criarMarmitaValorZeroTest() {
-		marmita.setValor(0);
-		repo.save(marmita);
+		marmita1.setValor(0);
+		repositorioMarmitas.save(marmita1);
 
 	}
 	
@@ -83,8 +84,8 @@ public class MarmitaDAOTest {
 	 */
 	@Test(expected = ConstraintViolationException.class)
 	public void criarMarmitaTipoNuloTest() {
-		marmita.setTipoMarmita(null);
-		repo.save(marmita);
+		marmita1.setTipoMarmita(null);
+		repositorioMarmitas.save(marmita1);
 
 	}
 
@@ -93,8 +94,8 @@ public class MarmitaDAOTest {
 	 */
 	@Test(expected = ConstraintViolationException.class)
 	public void criarMarmitaQuantidadeDeCarnesNegativaTest() {
-		marmita.setCarnes(-1);
-		repo.save(marmita);
+		marmita1.setCarnes(-1);
+		repositorioMarmitas.save(marmita1);
 	}
 	
 	/**
@@ -102,19 +103,19 @@ public class MarmitaDAOTest {
 	 */
 	@Test(expected = ConstraintViolationException.class)
 	public void criarMarmitaQuantidadeDeCarnesZeroTest() {
-		marmita.setCarnes(0);
-		repo.save(marmita);
+		marmita1.setCarnes(0);
+		repositorioMarmitas.save(marmita1);
 	}
 
 	/**
 	 * Testa atualizar a quantidade de carnes de uma marmita
 	 */
 	@Test
-	public void atualizarQuantidadeDeCarnes() {
-		assertThat(repo.getOne(marmita2.getIdMarmita()).getCarnes()).isEqualTo(2);
+	public void atualizarQuantidadeDeCarnesTest() {
+		assertThat(repositorioMarmitas.getOne(marmita2.getIdMarmita()).getCarnes()).isEqualTo(2);
 		marmita2.setCarnes(1);
-		repo.save(marmita2);
-		assertThat(repo.getOne(marmita2.getIdMarmita()).getCarnes()).isEqualTo(1);
+		repositorioMarmitas.save(marmita2);
+		assertThat(repositorioMarmitas.getOne(marmita2.getIdMarmita()).getCarnes()).isEqualTo(1);
 
 	}
 
@@ -123,10 +124,10 @@ public class MarmitaDAOTest {
 	 */
 	@Test
 	public void atualizarDescricaoTest() {
-		assertThat(repo.getOne(marmita2.getIdMarmita()).getDescricao()).isEqualTo("3 carnes e 7 acompanhamentos");
+		assertThat(repositorioMarmitas.getOne(marmita2.getIdMarmita()).getDescricao()).isEqualTo("3 carnes e 7 acompanhamentos");
 		marmita2.setDescricao("2 carnes e 8 acompanhamentos");
-		repo.save(marmita2);
-		assertThat(repo.getOne(marmita2.getIdMarmita()).getDescricao()).isEqualTo("2 carnes e 8 acompanhamentos");
+		repositorioMarmitas.save(marmita2);
+		assertThat(repositorioMarmitas.getOne(marmita2.getIdMarmita()).getDescricao()).isEqualTo("2 carnes e 8 acompanhamentos");
 	}
 
 	/**
@@ -134,10 +135,10 @@ public class MarmitaDAOTest {
 	 */
 	@Test
 	public void atualizarValorTest() {
-		assertThat(repo.getOne(marmita2.getIdMarmita()).getValor()).isEqualTo(10);
+		assertThat(repositorioMarmitas.getOne(marmita2.getIdMarmita()).getValor()).isEqualTo(10);
 		marmita2.setValor(7);
-		repo.save(marmita2);
-		assertThat(repo.getOne(marmita2.getIdMarmita()).getValor()).isEqualTo(7);
+		repositorioMarmitas.save(marmita2);
+		assertThat(repositorioMarmitas.getOne(marmita2.getIdMarmita()).getValor()).isEqualTo(7);
 	}
 
 }
