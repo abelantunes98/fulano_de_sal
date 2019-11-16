@@ -67,6 +67,7 @@ public class CardapioController {
 			cardapio.getProdutos().add(produto);
 		}
 		cardapio.setData(new Date());
+		cardapio.setLiberado(false);
 		cardapio = cardapioService.salvar(cardapio);
 		
 		return new ResponseEntity<Cardapio>(cardapio,HttpStatus.OK);
@@ -79,9 +80,9 @@ public class CardapioController {
 	public ResponseEntity<CardapioRespose> cardapioDoDia() {
 		Cardapio retorno = null;
 		CardapioRespose cardapioRespose = null;
-		List<Cardapio> cardapios = cardapioService.findAll();
-		if(cardapios != null && !cardapios.isEmpty()) {
-			retorno = cardapios.get(0);
+		Cardapio cardapio = cardapioService.findByLiberado(true);
+		if(cardapio != null) {
+			retorno = cardapio;
 			cardapioRespose = new CardapioRespose(retorno);
 		}
 		return new ResponseEntity<CardapioRespose>(cardapioRespose, HttpStatus.OK);
@@ -91,9 +92,8 @@ public class CardapioController {
 	@ResponseBody
 	@GetMapping("/liberar")
 	public ResponseEntity<CardapioRespose> liberarCardapioDoDia() {
-		List<Cardapio> cardapios = cardapioService.findAll();
-		if(cardapios != null && !cardapios.isEmpty()) {
-			Cardapio cardapio = cardapios.get(0);
+		Cardapio cardapio = cardapioService.findByLiberado(false);;
+		if(cardapio != null) {
 			cardapio.setLiberado(true);
 			cardapioService.atualizar(cardapio);
 		}
@@ -104,9 +104,8 @@ public class CardapioController {
 	@ResponseBody
 	@GetMapping("/bloquear")
 	public ResponseEntity<CardapioRespose> bloquearCardapioDoDia() {
-		List<Cardapio> cardapios = cardapioService.findAll();
-		if(cardapios != null && !cardapios.isEmpty()) {
-			Cardapio cardapio = cardapios.get(0);
+		Cardapio cardapio = cardapioService.findByLiberado(true);
+		if(cardapio != null) {
 			cardapio.setLiberado(false);
 			cardapioService.atualizar(cardapio);
 		}
