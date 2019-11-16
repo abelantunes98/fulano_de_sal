@@ -88,6 +88,25 @@ public class CardapioController {
 		return new ResponseEntity<CardapioRespose>(cardapioRespose, HttpStatus.OK);
 	}
 	
+	@ApiOperation("Retorna o último cardápio para o administrador")
+	@ResponseBody
+	@GetMapping("/ultimoAdmin")
+	public ResponseEntity<CardapioRespose> cardapioDoDiaAdmin() {
+		Cardapio retorno = null;
+		CardapioRespose cardapioRespose = null;
+		Cardapio cardapio = cardapioService.findByLiberado(true);
+		
+		if(cardapio==null) {
+			cardapio = cardapioService.findByLiberado(false);
+		}
+		
+		if(cardapio != null) {
+			retorno = cardapio;
+			cardapioRespose = new CardapioRespose(retorno);
+		}
+		return new ResponseEntity<CardapioRespose>(cardapioRespose, HttpStatus.OK);
+	}
+	
 	@ApiOperation("Liberar o último cardápio")
 	@ResponseBody
 	@GetMapping("/liberar")
