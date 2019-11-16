@@ -20,10 +20,12 @@ public class CardapioRespose implements Serializable{
 	
 	private String data;
 	private List<CategoriaResponse> categorias;
+	private boolean liberado;
 	
 	
 	public CardapioRespose(Cardapio cardapio) {
 		this.data = DateUtils.newDate(cardapio.getData());
+		this.liberado = cardapio.isLiberado();
 		Map<Categoria, List<ProdutoResponse>> produtos  = new HashMap<Categoria, List<ProdutoResponse>>();
 		categorias = new ArrayList<>();
 		for(Produto produto:cardapio.getProdutos()) {
@@ -38,7 +40,16 @@ public class CardapioRespose implements Serializable{
 			categorias.add(new CategoriaResponse(key,produtos.get(key)));
 		}
 	}
-
+	
+	
+	public boolean isLiberado() {
+		return liberado;
+	}
+	
+	public void setLiberado(boolean liberado) {
+		this.liberado = liberado;
+	}
+	
 	public String getData() {
 		return data;
 	}

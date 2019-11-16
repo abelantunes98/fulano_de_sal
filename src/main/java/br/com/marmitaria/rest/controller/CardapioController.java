@@ -87,6 +87,34 @@ public class CardapioController {
 		return new ResponseEntity<CardapioRespose>(cardapioRespose, HttpStatus.OK);
 	}
 	
+	@ApiOperation("Liberar o último cardápio")
+	@ResponseBody
+	@GetMapping("/liberar")
+	public ResponseEntity<CardapioRespose> liberarCardapioDoDia() {
+		List<Cardapio> cardapios = cardapioService.findAll();
+		if(cardapios != null && !cardapios.isEmpty()) {
+			Cardapio cardapio = cardapios.get(0);
+			cardapio.setLiberado(true);
+			cardapioService.atualizar(cardapio);
+		}
+		return new ResponseEntity<CardapioRespose>(HttpStatus.OK);
+	}
+	
+	@ApiOperation("Bloquear o último cardápio")
+	@ResponseBody
+	@GetMapping("/bloquear")
+	public ResponseEntity<CardapioRespose> bloquearCardapioDoDia() {
+		List<Cardapio> cardapios = cardapioService.findAll();
+		if(cardapios != null && !cardapios.isEmpty()) {
+			Cardapio cardapio = cardapios.get(0);
+			cardapio.setLiberado(false);
+			cardapioService.atualizar(cardapio);
+		}
+		return new ResponseEntity<CardapioRespose>(HttpStatus.OK);
+	}
+	
+	
+	
 	@ApiOperation("Retorna o último cardápio por categoria")
 	@ResponseBody
 	@GetMapping("/ultimoPorCategoria")
@@ -106,7 +134,6 @@ public class CardapioController {
 		}
 		return new ResponseEntity<List<ProdutoResponse>>(produtos, HttpStatus.OK);
 	}
-	
 	
 	
 	@ApiOperation("Remove o cardapio do dia")

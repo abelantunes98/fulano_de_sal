@@ -44,6 +44,9 @@ public class Cardapio implements Serializable, Comparable<Cardapio>{
 	@Column(name = "DATA_CARDAPIO")
 	private Date data;
 	
+	@Column(name = "LIBERADO")
+	private boolean liberado;
+	
 //	@OneToOne(fetch = FetchType.EAGER)
 //	@JoinColumn(name = "ID_MARMITA")
 //	private Marmita marmita;
@@ -56,9 +59,19 @@ public class Cardapio implements Serializable, Comparable<Cardapio>{
 //	public void setMarmita(Marmita marmita) {
 //		this.marmita = marmita;
 //	}
+	
+
 
 	public Long getIdCardapio() {
 		return idCardapio;
+	}
+
+	public boolean isLiberado() {
+		return liberado;
+	}
+
+	public void setLiberado(boolean liberado) {
+		this.liberado = liberado;
 	}
 
 	public void setIdCardapio(Long idCardapio) {
@@ -97,6 +110,7 @@ public class Cardapio implements Serializable, Comparable<Cardapio>{
 		int result = 1;
 		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + ((idCardapio == null) ? 0 : idCardapio.hashCode());
+		result = prime * result + (liberado ? 1231 : 1237);
 		result = prime * result + ((produtos == null) ? 0 : produtos.hashCode());
 		return result;
 	}
@@ -119,6 +133,8 @@ public class Cardapio implements Serializable, Comparable<Cardapio>{
 			if (other.idCardapio != null)
 				return false;
 		} else if (!idCardapio.equals(other.idCardapio))
+			return false;
+		if (liberado != other.liberado)
 			return false;
 		if (produtos == null) {
 			if (other.produtos != null)
